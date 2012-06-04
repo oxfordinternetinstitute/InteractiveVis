@@ -1,5 +1,5 @@
 var sigInst, canvas, $GP, clusters = [{
-    nom: "Uramin",
+    nom: "Josh",
     coords: {
         x: -2240,
         y: -1690
@@ -9,7 +9,7 @@ var sigInst, canvas, $GP, clusters = [{
     deltaY: 0,
     pos: "left"
 }, {
-    nom: "Institut de l'entreprise",
+    nom: "Oxford Internet Institute",
     coords: {
         x: -3090,
         y: -669
@@ -140,8 +140,8 @@ var sigInst, canvas, $GP, clusters = [{
     pos: "right"
 }];
 
-function Recherche(a) {
-    this.input = a.find("input[name=recherche]");
+function Search(a) {
+    this.input = a.find("input[name=search]");
     this.state = a.find(".state");
     this.results = a.find(".resultats");
     this.exactMatch = !1;
@@ -181,7 +181,7 @@ function Recherche(a) {
         this.searching = !0;
         this.lastSearch = a;
         this.results.empty();
-        if (2 >= a.length) this.results.html("<i>Veuillez faire une recherche sur un nom d'au minimum 3 lettres.</i>");
+        if (2 >= a.length) this.results.html("<i>You must search for a name with a minimum of 3 letters.</i>");
         else {
             sigInst.iterNodes(function (a) {
                 g.test(a.label.toLowerCase()) && c.push({
@@ -190,9 +190,9 @@ function Recherche(a) {
                 })
             });
             c.length ? (b = !0, nodeActif(c[0].id)) : b = showCluster(a);
-            a = ["<b>R\u00e9sultats de votre recherche : </b>"];
+            a = ["<b>Results of your search: </b>"];
             if (1 < c.length) for (var d = 0, h = c.length; d < h; d++) a.push('<a href="#' + c[d].nom + '" onclick="nodeActif(\'' + c[d].id + "')\">" + c[d].nom + "</a>");
-            0 == c.length && !b && a.push("<i>Aucun r\u00e9sultat trouv\u00e9</i>");
+            0 == c.length && !b && a.push("<i>No results found.</i>");
             1 < a.length && this.results.html(a.join(""));
             this.results.show()
         }
@@ -229,12 +229,12 @@ function Cluster(a) {
         this.select.addClass("close")
     }
 }
-function showGroupes(a) {
-    a ? ($GP.intro.find("#showGroupes").text("cacher les groupes"), $GP.bg.show(), $GP.bg2.hide(), $GP.showgroupe = !0) : ($GP.intro.find("#showGroupes").text("voir les groupes"), $GP.bg.hide(), $GP.bg2.show(), $GP.showgroupe = !1)
+function showGroups(a) {
+    a ? ($GP.intro.find("#showGroups").text("Hide groups"), $GP.bg.show(), $GP.bg2.hide(), $GP.showgroupe = !0) : ($GP.intro.find("#showGroups").text("View Groups"), $GP.bg.hide(), $GP.bg2.show(), $GP.showgroupe = !1)
 }
 
 function nodeNormal() {
-    !0 != $GP.calculating && !1 != sigInst.detail && (showGroupes(!1), $GP.calculating = !0, sigInst.detail = !0, $GP.info.hide(), $GP.cluster.hide(), sigInst.iterEdges(function (a) {
+    !0 != $GP.calculating && !1 != sigInst.detail && (showGroups(!1), $GP.calculating = !0, sigInst.detail = !0, $GP.info.hide(), $GP.cluster.hide(), sigInst.iterEdges(function (a) {
         a.attr.color = !1;
         a.hidden = !1
     }), sigInst.iterNodes(function (a) {
@@ -249,7 +249,7 @@ function nodeActif(a) {
     sigInst.neighbors = {};
     sigInst.detail = !0;
     var b = sigInst._core.graph.nodesIndex[a];
-    showGroupes(!1);
+    showGroups(!1);
     sigInst.iterEdges(function (b) {
         b.attr.lineWidth = !1;
         b.hidden = !0;
@@ -309,25 +309,24 @@ function nodeActif(a) {
                 h = "";
             switch (f.attributes[g].attr) {
             case "biography":
-                h = '<span class="plus"></span><a href="' + d + '" target="_blank" class="lien">Voir sa biographie</a>'
+                h = '<span class="plus"></span><a href="' + d + '" target="_blank" class="lien">View full biography</a>'
             }
             e.push(h)
         }
         $GP.info_data.html(e.join("<br/>"))
     }
     $GP.info_data.show();
-    $GP.info_p.html("est connect&eacute;(e) &agrave; :");
+    $GP.info_p.html("is connected to:");
     $GP.info.show();
     resize();
     sigInst.actif = a;
     window.location.hash = b.label;
-    _gaq.push(['_trackPageview', '/france/facenuke/' + b.label]);
 }
 
 function showCluster(a) {
     var b = sigInst.clusters[a];
     if (b && 0 < b.length) {
-        showGroupes(!1);
+        showGroups(!1);
         sigInst.detail = !0;
         b.sort();
         sigInst.iterEdges(function (a) {
@@ -346,12 +345,11 @@ function showCluster(a) {
         sigInst.draw(2, 2, 2, 2);
         $GP.info_name.html("<b>" + a + "</b>");
         $GP.info_data.hide();
-        $GP.info_p.html("qui regroupe :");
+        $GP.info_p.html("which includes:");
         $GP.info_link.find("ul").html(f.join(""));
         $GP.info.show();
         resize();
-        $GP.recherche.clean();
-        _gaq.push(['_trackPageview', '/france/facenuke/' + a]);
+        $GP.search.clean();
         return !0
     }
     return !1
@@ -359,10 +357,10 @@ function showCluster(a) {
 
 function init() {
     var a = sigma.init(document.getElementById("sigma-example")).drawingProperties({
-        defaultLabelColor: "#333",
+        defaultLabelColor: "#fff",
         defaultLabelSize: 12,
         defaultLabelBGColor: "#ddd",
-        defaultHoverLabelBGColor: "#009BE1",
+        defaultHoverLabelBGColor: "#258EA4",
         defaultLabelHoverColor: "#fff",
         labelThreshold: 8,
         defaultEdgeType: "curve",
@@ -384,7 +382,7 @@ function init() {
     a.actif = !1;
     a.neighbors = {};
     a.detail = !1;
-    a.parseGexf("data/france-nuke.xml");
+    a.parseGexf("data/egonet2.gexf");
     gexf = sigmaInst = null;
     a.clusters = {};
     for (var b = 0, f = clusters.length; b < f; b++) {
@@ -441,7 +439,7 @@ $(document).ready(function () {
     $GP.info_close.click(nodeNormal);
     $GP.info_close2.click(nodeNormal);
     $GP.form = a("#intro").find("form");
-    $GP.recherche = new Recherche($GP.form.find("#recherche"));
+    $GP.search = new Search($GP.form.find("#search"));
     $GP.cluster = new Cluster($GP.form.find("#cluster"));
     init();
     resize();
@@ -477,19 +475,19 @@ $(document).ready(function () {
         $GP.minifier.hide();
         $GP.mini.show()
     });
-    $GP.intro.find("#showGroupes").click(function () {
-        !0 == $GP.showgroupe ? showGroupes(!1) : showGroupes(!0)
+    $GP.intro.find("#showGroups").click(function () {
+        !0 == $GP.showgroupe ? showGroups(!1) : showGroups(!0)
     });
     a = window.location.hash.substr(1);
     if (0 < a.length) switch (a) {
-    case "groupes":
-        showGroupes(!0);
+    case "Groups":
+        showGroups(!0);
         break;
     case "savoir-plus":
         $.fancybox.open($("#plus"), b);
         break;
     default:
-        $GP.recherche.exactMatch = !0, $GP.recherche.search(a)
+        $GP.search.exactMatch = !0, $GP.search.search(a)
     }
 });
 $(window).resize(resize);

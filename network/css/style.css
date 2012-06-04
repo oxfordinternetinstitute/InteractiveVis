@@ -36,9 +36,9 @@ width: 100%;
 height: 100%;
 top: 0;
 left: 0;
-b-ackground-color: #009BE1;
-    background-color: #1b76a3;
-    background-image: url("assets/images/bg.jpg");
+background-color: #f0f0f0;
+/*    background-color: #1b76a3;*/
+/*    background-image: url("assets/images/bg.jpg");*/
     background-position: center center;
     background-repeat: no-repeat;
 }
@@ -63,7 +63,7 @@ height: 14px;
 }
 
 #info .retour em {
-background-image: url('assets/images/sprite.png');
+background-image: url('../images/sprite.png');
 background-repeat: no-repeat;
 display: block;
 width: 20px;
@@ -85,13 +85,13 @@ margin-top: 10px;
 }
 
 #info .fermer .c {
-border-top: 2px solid #009be1;
+border-top: 2px solid #258EA4;
 padding: 10px 0 14px 0;
 width: 196px;
 }
 
 #info .fermer em {
-background-image: url('assets/images/sprite.png');
+background-image: url('../images/sprite.png');
 background-repeat: no-repeat;
 background-position: -11px -13px;
 display: block;
@@ -123,7 +123,7 @@ padding: 0px 18px 18px 18px;
 
 #info .data .plus {
 background-repeat: no-repeat;
-background-image: url('assets/images/sprite.png');
+background-image: url('../images/sprite.png');
 background-position: -171px -122px;
 width: 22px;
 height: 20px;
@@ -163,7 +163,7 @@ width: 8px;
 }
 
 #info .reseau .n {
-border-top: 2px solid #009be1;
+border-top: 2px solid #258EA4;
 padding-top: 13px;
 float: left;
 width: 196px;
@@ -178,7 +178,7 @@ padding: 1px;
 
 #info .membre a:hover {
 color: #fff;
-background-color: #009be1;
+background-color: #258EA4;
 }
 
 #info .p {
@@ -186,15 +186,14 @@ padding: 0 0 0 16px;
 font-weight: bold;
 }
 
-#greenpeace {
-width: 158px;
-height: 25px;
+#oii {
+width: 190px;
+height: 50px;
 position: absolute;
 bottom: 10px;
 right: 10px;
-background-image: url('assets/images/sprite.png');
+background-image: url('http://people.oii.ox.ac.uk/images/logo_oii.gif');
 background-repeat: no-repeat;
-background-position: -11px -37px;
 }
 
 #greenpeace a {
@@ -217,13 +216,13 @@ left: 15px;
 padding: 13px 0 0 0;
 }
 
-#facenuke {
+#maintitle {
 position: absolute;
 top: 15px;
 left: 15px;
 width: 212px;
 height: 35px;
-background-image: url('assets/images/sprite.png');
+background-image: url('../images/sprite.png');
 background-position: -11px -62px;
 background-repeat: no-repeat;
 }
@@ -245,50 +244,50 @@ font-weight: bold;
 
 #presentation {
 padding: 6px 0 10px 0;
-border-bottom: 2px solid #009be1;
+border-bottom: 2px solid #258EA4;
 }
 
 #legende {
 padding: 0 0 3px 2px;
-border-bottom: 2px solid #009be1;
+border-bottom: 2px solid #258EA4;
 }
 
-#recherche input[name=recherche] {
-border: 1px solid #009be1;
+#search input[name=search] {
+border: 1px solid #258EA4;
 background-color: #fff;
 padding: 5px 7px 4px 7px;
 width: 164px;
 color: #000;
 }
 
-#recherche input.empty {
+#search input.empty {
 color: #000;
 }
 
-#recherche .state {
+#search .state {
 width: 14px;
 height: 14px;
-background-image: url('assets/images/sprite.png');
+background-image: url('../images/sprite.png');
 float: right;
 margin-top: 6px;
 cursor: pointer;
 background-position: -131px -13px;
 }
 
-#recherche .state.searching {
+#search .state.searching {
 background-position: -11px -13px;
 }
 
-#recherche .resultats {
+#search .resultats {
 display: none;
 margin: 8px 0 8px 0;
 }
 
-#recherche .resultats b {
+#search .resultats b {
 padding-left: 2px;
 }
 
-#recherche .resultats a {
+#search .resultats a {
 padding: 1px 2px;
 display: block;
 cursor: pointer;
@@ -296,8 +295,8 @@ text-decoration: none;
 color: #000;
 }
 
-#recherche .resultats a:hover {
-background-color: #009be1;
+#search .resultats a:hover {
+background-color: #258EA4;
 color: #fff;
 }
 
@@ -306,13 +305,13 @@ margin: 13px 0 0 0 ;
 }
 
 #cluster .select {
-border: 1px solid #009be1;
+border: 1px solid #258EA4;
 padding: 5px 7px 4px 7px;
 width: 189px; //164px;
 color: #fff;
 cursor: pointer;
-background-color: #009be1;
-background-image: url('assets/images/sprite.png');
+background-color: #258EA4;
+background-image: url('../images/sprite.png');
 background-repeat: no-repeat;
 background-position: 172px -144px;
 }
@@ -323,7 +322,7 @@ background-position: 172px -8px;
 
 #cluster .list {
 display: none;
-border: 1px solid #009be1;
+border: 1px solid #258EA4;
 padding: 6px;
 height: 300px;
 width: 191px;
@@ -340,7 +339,7 @@ color: #000;
 }
 
 #cluster .list a:hover {
-background-color: #009be1;
+background-color: #258EA4;
 color: #fff;
 }
 
@@ -353,7 +352,7 @@ width: 20px;
 height: 20px;
 float: left;
 background-repeat: no-repeat;
-background-image: url('assets/images/sprite.png');
+background-image: url('../images/sprite.png');
 }
 
 #legende dl {
@@ -412,12 +411,13 @@ left: 249px;
 }
 
 #zoom .z {
-width: 18px;
-height: 14px;
+width: 38px;
+height: 34px;
 background-repeat: no-repeat;
-background-image: url('assets/images/sprite.png');
+background-image: url('../images/sprite.png');
 margin-bottom: 5px;
 cursor: pointer;
+outline:1px solid black;
 }
 
 #zoom .z[rel=in] {
@@ -430,7 +430,7 @@ background-position: -131px -122px;
 
 .lien {
 font-size: 12px;
-color: #009be1;
+color: #258EA4;
 text-decoration: none;
 font-weight: bold;
 cursor: pointer;
@@ -454,8 +454,8 @@ margin: 0 0 4px 0;
 #plus .bouton {
 width: 14px;
 height: 14px;
-background-image: url('assets/images/sprite.png');
-border: 1px solid #009be1;
+background-image: url('../images/sprite.png');
+border: 1px solid #258EA4;
 display: inline-block;
 *display: inline;
 *zoom: 1;
@@ -477,7 +477,7 @@ background-position: -131px -122px;
 background-color: #fff;
 padding: 4px 4px 4px 25px;
 cursor: pointer;
-background-image: url('assets/images/sprite.png');
+background-image: url('../images/sprite.png');
 background-repeat: no-repeat;
 background-position: -167px -118px;
 position: absolute;
@@ -490,7 +490,7 @@ display: none;
 position: absolute;
 width: 20px;
 height: 16px;
-background-image: url('assets/images/sprite.png');
+background-image: url('../images/sprite.png');
 background-repeat: no-repeat;
 background-position: -45px -147px;
 cursor: pointer;

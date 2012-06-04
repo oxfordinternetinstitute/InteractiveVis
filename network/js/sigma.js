@@ -670,7 +670,7 @@ sigma.classes.EventDispatcher = function () {
         };
         this.p = {
             labelColor: "default",
-            defaultLabelColor: "#000",
+            defaultLabelColor: "#fff",
             labelHoverBGColor: "default",
             defaultHoverLabelBGColor: "#fff",
             labelHoverShadow: !0,
@@ -726,9 +726,9 @@ sigma.classes.EventDispatcher = function () {
                         v = i(g + 4);
                     i(g / 2 + 2);
                     f.font = j.p.fontStyle + g + "px " + j.p.font;
-                    f.fillStyle = "rgba(0, 155, 225, .5)";
+                    f.fillStyle = "#258EA4";
                     f.fillRect(m, l - v + 3, k, v);
-                    f.fillStyle = "#333";
+                    f.fillStyle = "#fff";
                     f.fillText(d.label, m + 4, l)
                 }
             } else j.currentLabelIndex++;
@@ -742,8 +742,8 @@ sigma.classes.EventDispatcher = function () {
                 h = c.source.displayY;
                 var g = c.target.displayX,
                     m = c.target.displayY,
-                    l = void 0,
-                    l = c.attr.color ? c.attr.color : "rgba(0, 0, 0, .6)";
+                    l = void 0;
+                   // l = c.attr.color ? c.attr.color : "rgba(255, 0, 0, .6)";
                 if (!l) switch (j.p.edgeColor) {
                 case "source":
                     l = c.source.color || j.p.defaultNodeColor;
@@ -819,22 +819,18 @@ sigma.classes.EventDispatcher = function () {
         };
         this.drawNode = function (a) {
             var c = Math.round(10 * a.displaySize) / 10;
-            b.fillStyle = a.attr.color ? a.attr.color : "#000";
+            b.fillStyle = a.attr.color ? a.attr.color : "#ff0000"; 
             b.strokeStyle = a.attr.strokeStyle ? a.attr.strokeStyle : "#000";
             a.attr.lineWidth && (b.lineWidth = a.attr.lineWidth);
             var d = 2 * Math.PI;
             1 > c && (c = 1);
             var f = a.displayX,
                 h = a.displayY,
-                i = 9 * c,
-                m = b.createRadialGradient(f, h, i - 7, f, h, i);
-            m.addColorStop(0, "#fff");
-            m.addColorStop(1, "rgba(255, 255, 255, 0)");
-            g.fillStyle = m;
-            g.beginPath();
-            g.arc(f, h, i, 0, d, !0);
-            g.closePath();
-            g.fill();
+                i = 9 * c;
+                // m = b.createRadialGradient(f, h, i - 7, f, h, i);
+            // m.addColorStop(0, "#ff0000");
+            //          m.addColorStop(1, "rgba(255, 255, 255, 0)");
+            //g.fillStyle = m;
             b.beginPath();
             b.arc(f, h, 1.4 * c, 0, d, !0);
             b.closePath();
