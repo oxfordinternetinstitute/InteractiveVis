@@ -48,16 +48,17 @@ display: none;
 #attributepane {
 display: none;
 position: absolute;
-top: 10%;
+top: 0px;
 right: 0px;
 width: 256px;
 background-color: #fff;
 padding: 18px 18px 8px 18px;
 margin: 0;
-margin-top:5px;
 border: 1px solid #ccc;
 word-wrap: break-word;
 background-color:rgba(255,255,255,0.7);
+z-index:999;
+height:100%;
 }
 
 #attributepane .returntext {
@@ -65,7 +66,7 @@ color: #000;
 cursor: pointer;
 margin-top: 5px;
 height: 14px;
-border-top: 2px solid #002147;
+border-top: 2px solid #777;
 padding: 14px 0 10px 0;
 }
 
@@ -73,8 +74,8 @@ padding: 14px 0 10px 0;
 color: #000;
 margin-bottom: 5px;
 height: 14px;
-border-bottom: 2px solid #002147;
-padding: 14px 0 10px 0;
+border-bottom: 2px solid #777;
+padding: 0px 0 10px 0;
 font-size:16px;
 font-weight:bold;
 }
@@ -103,7 +104,7 @@ margin-top: 10px;
 }
 
 #attributepane .close .c {
-border-top: 2px solid #002147;
+border-top: 2px solid #777;
 padding: 10px 0 14px 0;
 }
 
@@ -124,15 +125,16 @@ float: left;
 }
 
 #attributepane .nodeattributes {
-	height:400px;
+	height:87%;
 	overflow:scroll;
 }
 
 #attributepane .name {
 font-size: 14px;
 cursor: default;
-padding-bottom: 18px;
-padding: 18px;
+padding-bottom: 10px;
+padding-top: 18px;
+font-weight:bold;
 }
 
 #attributepane .data {
@@ -156,20 +158,22 @@ padding: 0 0 0 4px;
 
 #attributepane .link li {
 padding-top: 2px;
+cursor:pointer;
 }
 
 #attributepane .p {
-padding: 0 0 0 16px;
+padding-top: 10px;
 font-weight: bold;
+font-size:14px;
 }
 
 #jisc {
-width: 246px;
-height: 94px;
+width: 142px;
+height: 77px;
 position:absolute;
 bottom:5px;
-left:8px;
-background-image: url('../images/OIIat10_web_large.png');
+left:130px;
+background-image: url('../../images/jisc-logo.png');
 background-repeat: no-repeat;
 }
 
@@ -177,9 +181,23 @@ background-repeat: no-repeat;
 	display:none;
 }
 
+#oii {
+width: 96px;
+height: 72px;
+position:absolute;
+bottom:5px;
+left:20px;
+background-image: url('../images/oii.png');
+background-repeat: no-repeat;
+}
+
+#oii span {
+	display:none;
+}
+
 #maintitle {
 width: 246px;
-height: 185px;
+height: 77px;
 background-image: url('../../images/jisc-logo.png');
 background-repeat: no-repeat;
 }
@@ -190,23 +208,23 @@ display: none;
 
 #mainpanel {
 position: absolute;
-top: 0px;
+bottom: 30%;
 left: 0px;
-height:100%;
 background:#fff;
 background-color:rgba(255,255,255,0.7);
 border:1px solid #ccc;
-overflow:scroll;
+
 }
 
 #mainpanel .b1 {
-padding: 13px 0 0 0;
+padding: 0px 0 0 0;
 }
 
 #mainpanel .col {
 width: 240px;
 padding: 18px 18px 8px 18px;
 margin: 0;
+
 }
 
 #title {
@@ -215,16 +233,25 @@ font-weight: bold;
 
 #titletext {
 padding: 6px 0 10px 0;
-border-bottom: 2px solid #002147;
+}
+
+#info {
+	padding-bottom:10px;
 }
 
 #legend {
-padding: 0 0 3px 2px;
-border-bottom: 2px solid #002147;
+padding: 30px 0 0px 2px;
+
+border-top: 2px solid #777;
+}
+
+#search {
+
+	padding: 20px 0 0px 2px;
 }
 
 #search input[name=search] {
-border: 1px solid #002147;
+border: 1px solid #777;
 background-color: #fff;
 padding: 5px 7px 4px 7px;
 width: 205px;
@@ -250,8 +277,14 @@ background-position: -11px -13px;
 }
 
 #search .results {
-display: none;
-margin: 8px 0 8px 0;
+	display: none;
+	border: 1px solid #777;
+	padding: 6px;
+	height: 200px;
+	width: 226px;
+	position: absolute;
+	overflow: auto;
+	background-color: #fff;
 }
 
 #search .results b {
@@ -267,35 +300,35 @@ color: #000;
 }
 
 #search .results a:hover {
-background-color: #002147;
+background-color: #777;
 color: #fff;
 }
 
 #attributeselect {
-margin: 13px 0 0 0 ;
+margin: 20px 0 13px 0 ;
 }
 
 #attributeselect .select {
-border: 1px solid #002147;
+border: 1px solid #777;
 padding: 5px 7px 4px 7px;
 color: #fff;
 cursor: pointer;
-background-color: #002147;
+background-color: #777;
 background-image: url('../images/sprite.png');
 background-repeat: no-repeat;
 background-position: 200px -144px;
 }
 
 #attributeselect .close {
-background-position: 172px -8px;
+background-position: 200px -8px;
 }
 
 #attributeselect .list {
 display: none;
-border: 1px solid #002147;
+border: 1px solid #777;
 padding: 6px;
-height: 300px;
-width: 191px;
+height: 200px;
+width: 226px;
 position: absolute;
 overflow: auto;
 background-color: #fff;
@@ -309,15 +342,19 @@ color: #000;
 }
 
 #attributeselect .list a:hover {
-background-color: #002147;
+background-color: #777;
 color: #fff;
 }
 
 #mainpanel dl {
-margin-top: 13px;
+
 }
 
-#mainpanels dt {
+#mainpanel h2 {
+	font-size:14px;
+}
+
+#mainpanel dt {
 width: 20px;
 height: 20px;
 float: left;
@@ -334,27 +371,27 @@ margin-bottom: 8px;
 color: #000;
 }
 
-#intro .infos dd {
+#mainpanel .infos dd {
 margin-bottom: 12px;
 }
 
-#intro .node {
+#mainpanel .node {
 background-position: -11px -119px;
 }
 
-#intro .edge {
+#mainpanel .edge {
 background-position: -51px -122px;
 }
 
-#intro .regions {
+#mainpanel .regions {
 background-position: -171px -13px;
 }
 
-#intro .download {
+#mainpanel .download {
 background-position: -51px -13px;
 }
 
-#intro .plus {
+#mainpanel .moreinformation {
 background-position: -171px -122px;
 }
 
@@ -363,7 +400,7 @@ color: #000;
 font-size: 10px;
 position: absolute;
 bottom: 5px;
-right: 15px;
+left: 20px;
 }
 
 #copyright a {
@@ -376,32 +413,36 @@ display: none;
 
 #zoom {
 position: absolute;
-display:block;
-bottom: 20px;
-left: 290px;
+display:inline;
+bottom: 10%;
+left: 47%;
 z-index:999;
-line-height:0.5em;
 }
 
 #zoom .z {
 	background:#fff;
+	background-color:rgba(255,255,255,0.7);
 width: 50px;
 height: 50px;
 background-repeat: no-repeat;
 background-image: url('../images/sprite.png');
 cursor: pointer;
-outline:1px solid #ccc;
+border:1px solid #ccc;
+float:left;
+margin-right:4px;
 }
 
 #zoom .y {
 background:#fff;
+background-color:rgba(255,255,255,0.7);
 width: 50px;
 height: 50px;
 background-repeat: no-repeat;
 background-image: url('../images/zoom_reset.png');
 cursor: pointer;
-outline:1px solid #ccc;
-background-position:center; 
+border:1px solid #ccc;
+background-position:center;
+float:right; 
 }
 
 #zoom .z[rel=in] {
@@ -416,7 +457,7 @@ background-position:center;
 
 .line {
 font-size: 12px;
-color: #002147;
+color: #777;
 text-decoration: none;
 font-weight: bold;
 cursor: pointer;
@@ -441,7 +482,7 @@ margin: 0 0 4px 0;
 width: 14px;
 height: 14px;
 background-image: url('../images/sprite.png');
-border: 1px solid #002147;
+border: 1px solid #777;
 display: inline-block;
 *display: inline;
 *zoom: 1;

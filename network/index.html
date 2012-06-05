@@ -16,147 +16,7 @@
   <script src="js/jquery.fancybox.pack.js" type="text/javascript" language="javascript"></script>
   <script type="text/javascript" language="javascript">
 
-var sigInst, canvas, $GP, clusters = [{
-    nom: "Josh",
-    coords: {
-        x: -2240,
-        y: -1690
-    },
-    size: 70,
-    deltaX: 100,
-    deltaY: 0,
-    pos: "left"
-}, {
-    nom: "Oxford Internet Institute",
-    coords: {
-        x: -3090,
-        y: -669
-    },
-    size: 320,
-    deltaX: 0,
-    deltaY: 93,
-    pos: "left"
-}, {
-    nom: "Veolia",
-    coords: {
-        x: -2962,
-        y: 1620
-    },
-    size: 190,
-    deltaX: 204,
-    deltaY: 0,
-    pos: "left"
-}, {
-    nom: "UMP",
-    coords: {
-        x: -1127,
-        y: 1620
-    },
-    size: 285,
-    deltaX: 353,
-    deltaY: 80,
-    pos: "left"
-}, {
-    nom: "F\u00e9d\u00e8ration environnement durable",
-    coords: {
-        x: 21,
-        y: 2466
-    },
-    size: 115,
-    deltaX: 1020,
-    deltaY: 10,
-    pos: "left"
-}, {
-    nom: "GDF Suez",
-    coords: {
-        x: -1E3,
-        y: 93
-    },
-    size: 400,
-    deltaX: 217,
-    deltaY: 50,
-    pos: "left"
-}, {
-    nom: "Areva",
-    coords: {
-        x: -300,
-        y: -1960
-    },
-    size: 513,
-    deltaX: 70,
-    deltaY: -30,
-    pos: "left"
-}, {
-    nom: "Sauvons le climat",
-    coords: {
-        x: 1935,
-        y: -2200
-    },
-    size: 245,
-    deltaX: 60,
-    deltaY: 0,
-    pos: "right"
-}, {
-    nom: "ASN",
-    coords: {
-        x: 1370,
-        y: -40
-    },
-    size: 340,
-    deltaX: 140,
-    deltaY: -30,
-    pos: "right"
-}, {
-    nom: "IRSN",
-    coords: {
-        x: 1355,
-        y: 1460
-    },
-    size: 147,
-    deltaX: 475,
-    deltaY: 90,
-    pos: "right"
-}, {
-    nom: "Eiffage",
-    coords: {
-        x: 2800,
-        y: 220
-    },
-    size: 100,
-    deltaX: 155,
-    deltaY: 0,
-    pos: "right"
-}, {
-    nom: "X Mines",
-    coords: {
-        x: 545,
-        y: 239
-    },
-    size: 480,
-    deltaX: 130,
-    deltaY: 50,
-    pos: "right"
-}, {
-    nom: "Alstom",
-    coords: {
-        x: 2520,
-        y: 1457
-    },
-    size: 120,
-    deltaX: 218,
-    deltaY: 0,
-    pos: "right"
-}, {
-    nom: "Bouygues",
-    coords: {
-        x: 2888,
-        y: 2557
-    },
-    size: 200,
-    deltaX: 0,
-    deltaY: 0,
-    pos: "right"
-}];
+var sigInst, canvas, $GP
 
 function Search(a) {
     this.input = a.find("input[name=search]");
@@ -311,7 +171,7 @@ function nodeActive(a) {
     b.attr.lineWidth = 6;
     b.attr.strokeStyle = "#000000";
     sigInst.draw(2, 2, 2, 2);
-    $GP.info_name.html("<b onmouseover=\"sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex['" + b.id + '\'])" onmouseout="sigInst.refresh()">' + b.label + "</b>");
+
     $GP.info_link.find("ul").html(f.join(""));
     $GP.info_link.find("li").each(function () {
         var a = $(this),
@@ -326,10 +186,15 @@ function nodeActive(a) {
                 h = "";
             // switch (f.attributes[g].attr) {
             // case "biography":
+			if (f.attributes[g].attr == "Image File") {
+				// h = '<img src="' + d + '"><br/>'
+			} else {
                 h = '<span><strong>' + f.attributes[g].attr + ':</strong>' + d + '</span><br/>'
+			}
             // }
             e.push(h)
         }
+    	$GP.info_name.html("<div><img src=" + f.attributes[0].val + " style=\"vertical-align:middle\"> <span onmouseover=\"sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex['" + b.id + '\'])" onmouseout="sigInst.refresh()">' + b.label + "</span></div>");
         $GP.info_data.html(e.join("<br/>"))
     }
     $GP.info_data.show();
@@ -393,7 +258,7 @@ function init() {
         minRatio: 0.5,
         maxRatio: 32,
         zoomDelta: 0.1,
-        zoomMultiply: 0.2
+        zoomMultiply: 5
     });
     sigInst = a;
     a.active = !1;
@@ -510,9 +375,15 @@ $(window).resize(resize);
 
   <div class="col">
 		<div id="maintitle"><h1>Network Visualisation</h1></div>
-    <div id="title">Some title text about this visualisation</div>
+    <div id="title"><h2>Some title text about this visualisation</h2></div>
     <div id="titletext">Some more text explaining what precisely we are seeing here.</div>
-    <div id="legend">
+    <div class="info cf">
+      <dl>
+        <dt class="moreinformation"></dt>
+        <dd class="line"><a href="#information" class="line fb">More about this visualisation</a></dd>
+      </dl>
+    </div>
+    <div id="legend"><h2>Legend:</h2>
       <dl>
         <dt class="node"></dt>
         <dd>A person.</dd>
@@ -526,24 +397,16 @@ $(window).resize(resize);
    
     <div class="b1">
     <form>
-      <div id="search" class="cf">
+      <div id="search" class="cf"><h2>Search:</h2>
         <input type="text" name="search" value="Search by name" class="empty"/><div class="state"></div>
         <div class="results"></div>
       </div>
 
-      <div class="cf" id="attributeselect">
-        <div class="select">View by Group</div>
+      <div class="cf" id="attributeselect"><h2>Group Selector:</h2>
+        <div class="select">Select Group</div>
 	<div class="list cf"></div>
       </div>
     </form>
-
-    <div class="info cf">
-      <dl>
-        <dt class="moreinformation"></dt>
-        <dd class="line"><a href="#information" class="line fb">About this visualisation</a></dd>
-      </dl>
-    </div>
-	<div id="jisc"><a href="http://jisc.ac.uk" title="JISC"><span>JISC</span></a></div>
     </div>
 
   </div>
@@ -558,9 +421,8 @@ $(window).resize(resize);
 </div>
 
 <div id="zoom">
-  <div class="z" rel="in"></div><br>
-  <div class="z" rel="out"></div><br>
-  <div class="y" rel="center" onclick="resize();"></div>
+  <div class="z" rel="in"></div> <div class="z" rel="out"></div> <div class="y" rel="center" onclick="sigInst.position(0,0,1).draw();"></div>
+	<div style="clear:both"></div>
 </div>
 
 <div id="attributepane">
@@ -568,7 +430,7 @@ $(window).resize(resize);
 <div class="headertext"><span>Information Pane</span></div>	
   <div class="nodeattributes">
     <div class="name"></div>
-    <div class="data"></div>
+<div class="data"></div>
     <div class="p">Connections:</div>
     <div class="link">
       <ul>
@@ -583,7 +445,8 @@ $(window).resize(resize);
 
 
 
-
+<!-- <div id="jisc"><a href="http://jisc.ac.uk" title="JISC"><span>JISC</span></a></div>
+<div id="oii"><a href="http://oii.ox.ac.uk" title="OII"><span>OII</span></a></div> -->
 <div id="copyright">
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="images/CC.png" /></a></div>
 </div>
