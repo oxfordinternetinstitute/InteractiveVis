@@ -72,7 +72,8 @@ function Search(a) {
             if (1 < c.length) for (var d = 0, h = c.length; d < h; d++) a.push('<a href="#' + c[d].name + '" onclick="nodeActive(\'' + c[d].id + "')\">" + c[d].name + "</a>");
             0 == c.length && !b && a.push("<i>No results found.</i>");
             1 < a.length && this.results.html(a.join(""));
-            this.results.show()
+            if(c.length!=1) this.results.show();
+            if(c.length==1) this.results.hide();
         }
     }
 }
