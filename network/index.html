@@ -68,7 +68,7 @@ function Search(a) {
                 })
             });
             c.length ? (b = !0, nodeActive(c[0].id)) : b = showCluster(a);
-            a = ["<b>Results of your search: </b>"];
+            a = ["<b>Search Results: </b>"];
             if (1 < c.length) for (var d = 0, h = c.length; d < h; d++) a.push('<a href="#' + c[d].name + '" onclick="nodeActive(\'' + c[d].id + "')\">" + c[d].name + "</a>");
             0 == c.length && !b && a.push("<i>No results found.</i>");
             1 < a.length && this.results.html(a.join(""));
@@ -265,7 +265,7 @@ function init() {
     a.active = !1;
     a.neighbors = {};
     a.detail = !1;
-    a.parseGexf("data/test3.gexf");
+    a.parseGexf("data/oii-twitter-clean.gexf");
     gexf = sigmaInst = null;
     a.clusters = {};
 
