@@ -64,12 +64,12 @@ function Search(a) {
             sigInst.iterNodes(function (a) {
                 g.test(a.label.toLowerCase()) && c.push({
                     id: a.id,
-                    nom: a.label
+                    name: a.label
                 })
             });
             c.length ? (b = !0, nodeActive(c[0].id)) : b = showCluster(a);
             a = ["<b>Results of your search: </b>"];
-            if (1 < c.length) for (var d = 0, h = c.length; d < h; d++) a.push('<a href="#' + c[d].nom + '" onclick="nodeActive(\'' + c[d].id + "')\">" + c[d].nom + "</a>");
+            if (1 < c.length) for (var d = 0, h = c.length; d < h; d++) a.push('<a href="#' + c[d].name + '" onclick="nodeActive(\'' + c[d].id + "')\">" + c[d].name + "</a>");
             0 == c.length && !b && a.push("<i>No results found.</i>");
             1 < a.length && this.results.html(a.join(""));
             this.results.show()
@@ -112,7 +112,7 @@ function showGroups(a) {
 }
 
 function nodeNormal() {
-    !0 != $GP.calculating && !1 != sigInst.detail && (showGroups(!1), $GP.calculating = !0, sigInst.detail = !0, $GP.info.animate({width:'hide'},350), $GP.cluster.hide(), sigInst.iterEdges(function (a) {
+    !0 != $GP.calculating && !1 != sigInst.detail && (showGroups(!1), $GP.calculating = !0, sigInst.detail = !0, $GP.info.animate({width:'hide'},350), sigInst.position(0,0,1).draw(), $GP.cluster.hide(), sigInst.iterEdges(function (a) {
         a.attr.color = !1;
         a.hidden = !1
     }), sigInst.iterNodes(function (a) {
@@ -132,8 +132,8 @@ function nodeActive(a) {
         b.attr.lineWidth = !1;
         b.hidden = !0;
         if (a == b.source || a == b.target) sigInst.neighbors[a == b.target ? b.source : b.target] = {
-            nom: b.label,
-            couleur: b.color
+            name: b.label,
+            colour: b.color
         }, b.hidden = !1, b.attr.color = "rgba(0, 0, 0, 1)"
     });
     var f = [];
@@ -149,23 +149,23 @@ function nodeActive(a) {
         var d = sigInst._core.graph.nodesIndex[g];
         d.hidden = !1;
         d.attr.lineWidth = !1;
-        d.attr.color = c[g].couleur;
+        d.attr.color = c[g].colour;
         a != g && e.push({
             id: g,
-            nom: d.label,
-            reseau: c[g].nom,
-            couleur: c[g].couleur
+            name: d.label,
+            group: c[g].name,
+            colour: c[g].colour
         })
     }
     e.sort(function (a, b) {
-        var c = a.reseau.toLowerCase(),
-            d = b.reseau.toLowerCase(),
-            e = a.nom.toLowerCase(),
-            f = b.nom.toLowerCase();
+        var c = a.group.toLowerCase(),
+            d = b.group.toLowerCase(),
+            e = a.name.toLowerCase(),
+            f = b.name.toLowerCase();
         return c != d ? c < d ? -1 : c > d ? 1 : 0 : e < f ? -1 : e > f ? 1 : 0
     });
     d = "";
-    for (g in e) c = e[g], c.reseau != d && (d = c.reseau, f.push('<li class="cf" rel="' + c.couleur + '"><div class=""></div><div class="">' + d + "</div></li>")), f.push('<li class="membership"><a href="#' + c.nom + '" onmouseover="sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex[\'' + c.id + "'])\" onclick=\"nodeActive('" + c.id + '\')" onmouseout="sigInst.refresh()">' + c.nom + "</a></li>");
+    for (g in e) c = e[g], c.group != d && (d = c.group, f.push('<li class="cf" rel="' + c.colour + '"><div class=""></div><div class="">' + d + "</div></li>")), f.push('<li class="membership"><a href="#' + c.name + '" onmouseover="sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex[\'' + c.id + "'])\" onclick=\"nodeActive('" + c.id + '\')" onmouseout="sigInst.refresh()">' + c.name + "</a></li>");
     b.hidden = !1;
     b.attr.color = b.color;
     b.attr.lineWidth = 6;
@@ -187,9 +187,9 @@ function nodeActive(a) {
             // switch (f.attributes[g].attr) {
             // case "biography":
 			if (f.attributes[g].attr == "Image File") {
-				// h = '<img src="' + d + '"><br/>'
+			 	// h = '<img src="' + g + '"><br/>'
 			} else {
-                h = '<span><strong>' + f.attributes[g].attr + ':</strong>' + d + '</span><br/>'
+                h = '<span><strong>' + f.attributes[g].attr + ':</strong> ' + d + '</span><br/>'
 			}
             // }
             e.push(h)
@@ -268,11 +268,23 @@ function init() {
     gexf = sigmaInst = null;
     a.clusters = {};
 
-    a.iterEdges(function (b) {
-        a.clusters[b.label] || (a.clusters[b.label] = []);
-        a.clusters[b.label].push(b.source);
-        a.clusters[b.label].push(b.target)
-    });
+	    a.iterEdges(
+		function (b) {
+	        	// a.clusters[b.label] || (a.clusters[b.label] = []);
+	        	// a.clusters[b.label].push(b.source);
+	        	// a.clusters[b.label].push(b.target)
+	    	}
+	);
+	
+	a.iterNodes(
+		function (b) {
+			
+			a.clusters[b.color] || (a.clusters[b.color] = []);
+			a.clusters[b.color].push(b.label)
+		}
+		
+	);
+	
     a.bind("upnodes", function (a) {
         nodeActive(a.content[0])
     });
@@ -284,7 +296,6 @@ function resize() {
     500 > a.width() ? ($GP.intro.hide(), $GP.mini.show()) : ($GP.intro.show(), $GP.mini.hide());
     $GP.minifier.hide();
     a = a.height() - 120;
-    // $GP.info.css("height", a);
 }
 $(document).ready(function () {
     var a = $;
@@ -314,7 +325,7 @@ $(document).ready(function () {
     $GP.bg2 = a(sigInst._core.domElements.bg2);
     var a = [],
         b;
-    for (b in sigInst.clusters) a.push('<div><a href="#' + b + '">' + b + "</a></div>");
+    for (b in sigInst.clusters) a.push('<div><a href="#' + b + '">' + b + '(' + sigInst.clusters[b].length + ' members)</a></div>');
     a.sort();
     $GP.cluster.content(a.join(""));
     b = {
@@ -355,6 +366,7 @@ $(document).ready(function () {
         break;
     default:
         $GP.search.exactMatch = !0, $GP.search.search(a)
+		$GP.search.clean();
     }
 });
 $(window).resize(resize);
@@ -426,7 +438,7 @@ $(window).resize(resize);
 </div>
 
 <div id="attributepane">
-
+<div class="text">
 <div class="headertext"><span>Information Pane</span></div>	
   <div class="nodeattributes">
     <div class="name"></div>
@@ -439,7 +451,7 @@ $(window).resize(resize);
   </div>
 	<div class="returntext"><div class="c cf"><em></em><span>Return to the full network</span></div></div>
 </div>
-
+</div>
 
 
 
