@@ -54,7 +54,7 @@ width: 256px;
 background-color: #fff;
 margin: 0;
 word-wrap: break-word;
-background-color:rgba(255,255,255,0.7);
+background-color:rgba(255,255,255,0.8);
 z-index:999;
 height:100%;
 border-left: 1px solid #ccc;	
@@ -179,8 +179,8 @@ width: 142px;
 height: 77px;
 position:absolute;
 bottom:5px;
-left:130px;
-background-image: url('../../images/jisc-logo.png');
+left:30px;
+background-image: url('../../images/jisc-logo-small.png');
 background-repeat: no-repeat;
 }
 
@@ -196,6 +196,7 @@ bottom:5px;
 left:20px;
 background-image: url('../images/oii.png');
 background-repeat: no-repeat;
+
 }
 
 #oii span {
@@ -203,10 +204,12 @@ background-repeat: no-repeat;
 }
 
 #maintitle {
-width: 246px;
-height: 77px;
-background-image: url('../../images/jisc-logo.png');
+width: 100%;
+height: 72px;
+background-image: url('../images/OIIat10_web_large.png');
+background-position:center;
 background-repeat: no-repeat;
+margin-bottom:20px;
 }
 
 #maintitle h1 {
@@ -220,7 +223,7 @@ left: 0;
 margin-top:50px;
 margin-left:25px;
 background:#fff;
-background-color:rgba(255,255,255,0.7);
+background-color:rgba(255,255,255,0.8);
 border:1px solid #ccc;
 
 }
