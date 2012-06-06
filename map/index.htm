@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Literacy and Gender</title>
+<link type="text/css" rel="stylesheet" href="css/literacy.css" />
+<style>
+#canvas {/*border: 1px solid red;*/}
+#svg {/*border: 1px solid pink;*/}
+</style>
+</head>
+<body>
+<div id="canvas">
+	<div id="svg"></div>
+	<div id="toolbar"><a href="#" id="reset">reset</a></div>
+	<div id="info">
+		<h1 class="title">Literacy and Gender</h1>
+		<div class="panel">
+			<p class="subtitle">Adult Literacy</p>
+			<ul id="legends">
+				<li><span class="colourblock" style="background-color: #e0e2e2"></span><span class="colourlabel">0 - 50%</span></li>
+				<li><span class="colourblock" style="background-color: #bac3cf"></span><span class="colourlabel">51 - 60%</span></li>
+				<li><span class="colourblock" style="background-color: #95aabd"></span><span class="colourlabel">61 - 70%</span></li>
+				<li><span class="colourblock" style="background-color: #7494ae"></span><span class="colourlabel">71 - 80%</span></li>
+				<li><span class="colourblock" style="background-color: #50799d"></span><span class="colourlabel">81 - 90%</span></li>
+				<li><span class="colourblock" style="background-color: #2e668e"></span><span class="colourlabel">91-100%</span></li>
+			</ul>
+		</div>
+		<div class="panel">
+			<p id="chartname" class="subtitle">Country</p>
+			<div id="chart"></div>
+		</div>
+	</div>
+</div>
+<script src="../js/jquery/1.7.1/jquery.min.js"></script>
+<script src="../js/jquery/plugins/jquery.mousewheel.min.js"></script>
+<script src="../js/jquery/plugins/jquery.smartresize.js"></script>
+<script src="../js/raphael/2.0.2/raphael-min.js"></script>
+<script src="js/worldmap.js"></script>
+<script src="js/countrycodes.js"></script>
+<script src="js/literacy.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
