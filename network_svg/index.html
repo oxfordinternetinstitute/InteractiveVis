@@ -1,0 +1,245 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Network map</title>
+<style type="text/css">
+	div#legend {
+		font-size: 10pt;
+		position: fixed;
+		top: 25px;
+		right: 20px;
+		/*left: 1429px;*/
+	}
+	div#intro {
+		font-size: 10pt;
+		position: fixed;
+		top: 25px;
+		left: 10px;
+	}
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-623501-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script src="js/raphael-min.js"></script>
+<script src="js/g4.js"></script>
+<script>
+var previousId="";
+var outgoing = "#157b19";//#639C42";//"#CE639C";//"rgba(247, 102, 10, 1)";
+var incoming = "#11639C";//"rgba(247, 102, 10, 1)";
+var mutual = "#F66332";//"rgba(247, 102, 10, 1)";
+
+window.onload = function() {
+
+	//initial legend
+	//drawRect("outgoing",outgoing);
+	//drawRect("incoming",incoming);
+	//drawRect("mutual",mutual);
+
+	// create paper
+	var paper=Raphael('svg', window.innerWidth, window.innerHeight);//'100%', '100%');
+	//var text=paper.text(0,0,"");
+	//text.id="text";
+	
+	paper.setViewBox(-1000, -755, 1411, 1600, false);
+	//paper.setStart();
+	for (var e in edges) {
+		var obj=paper.path(edges[e].path);
+		obj.id=e;
+		obj.attr("stroke",edges[e].stroke);
+		
+		//add arrows
+		obj=paper.path(arrows[e].path);
+		obj.attr("fill",arrows[e].fill);
+		obj.id="arrow"+e;
+	}
+	
+	// loop through nodes
+	for (var n in nodes) {
+		// set the attributes for each shape
+		var attributes={fill: nodes[n].fill, stroke: 'none', 'stroke-width': 0, 'stroke-linejoin': 'round'};	
+		var obj;
+		//alert(n);
+		r=nodes[n].r;
+		if (nodeLabels[n].type=="dept") {
+			obj=paper.rect(nodes[n].x-r,nodes[n].y-r,2*r,2*r);
+		} else {
+			obj=paper.circle(nodes[n].x,nodes[n].y,nodes[n].r);//x,y,radius
+		}
+		obj.attr(attributes);
+		obj.id=n;
+		obj.mouseover(function(){
+			highlightNode(this.id);
+		});
+		
+		//labels with opacity 0
+		text = paper.text(nodes[n].x,nodes[n].y,nodeLabels[n].text);
+		//text.attr("fill",color);
+		text.attr("fill-opacity",0);
+		text.attr("font-size","45pt");
+		text.attr("font-weight","bold");		
+		text.id=("text"+n);
+		text.mouseover(function(){
+			var str = this.id;
+			str=str.replace("text","");
+			highlightNode(str);
+		});
+
+		
+	}
+	
+	/*for (var l in nodeLabels) {
+		//var attributes={'arrow-end': 'classic',stroke: edges[e].stroke};
+		var obj=paper.text(nodeLabels[l].x,nodeLabels[l].y,nodeLabels[l].text);
+		obj.id="label_"+l;
+		//obj.attr(attributes);
+		obj.attr("font-size","50pt");
+	}*/
+
+	//var st = paper.setFinish();
+	function highlightNode(nodeId) {
+			//alert(nodeId);
+			//paper.getById("text").remove();
+			//text = paper.getById("text"+nodeId);
+			//t=nodeLabels[nodeId].text;
+			//if (t.indexOf(".uk")==-1) t=t+".gov.uk";
+			//text = paper.text(nodes[nodeId].x,nodes[nodeId].y,t);
+			//text.attr("font-size","50pt");
+			//text.attr("font-weight","bold");
+			//text.attr("fill","#000000");
+			//text.attr("fill-opacity",1);
+			//text.id=("text");
+				
+			//previous node
+			var previous = paper.getById(previousId);
+			if (previousId) {
+				previous.animate({"fill":nodes[previousId].fill},500);
+				previoust=paper.getById("text"+previousId);
+				//t=previoust.attr("text");
+				//if (t.indexOf(".gov.uk")!=-1
+				//previoust.animate({"text":nodeLabels[previousId].text},500);//cannot animate
+				previoust.attr("text",nodeLabels[previousId].text);
+			}
+			
+			//hide all text lables
+			for (var l in nodes) {
+				if (l==nodeId||l==previousId) continue;
+				var o = paper.getById("text"+l);
+				//if (o) o.animate(hideAni);//o.attr("fill-opacity",0);//remove();
+				if (o) o.animate({"fill-opacity":0},500);
+			}
+			
+			text = paper.getById("text"+nodeId);
+			t=nodeLabels[nodeId].text;
+			if (t.indexOf(".uk")==-1) t=t+".gov.uk";
+			//text.animate({"text":t},300);
+			//text = paper.text(nodes[nodeId].x,nodes[nodeId].y,t);
+			
+			//text.attr("font-size","50pt");
+			//text.attr("font-weight","bold");
+			//text.attr("fill","#000000");
+			//text.attr("fill-opacity",1);
+			//text.animate(showAni);
+			//text.animate({"fill-opacity":0},10000,show(nodeId));
+			//alert(t);
+			text.attr("text",t);
+			var attr={
+				text:t,
+				//"font-size":"50pt",
+				"fill":"#000000",
+				"fill-opacity":1
+			}
+			text.animate(attr,500);
+			//alert(attr.text);
+			
+
+			//node
+			var node = paper.getById(nodeId);
+			node.animate({"fill":outgoing},500);
+			previousId=nodeId;
+			
+			
+			for (var e in edges) {
+				var edge=paper.getById(e);
+				var arrow=paper.getById("arrow"+e);
+				n=e.split("_");
+				other=-1;
+				color=-1;
+				opp=n[1]+"_"+n[0];
+				if (n[0]==nodeId) {		
+					color = outgoing;
+					other=n[1];
+				} else if  (n[1]==nodeId) {
+					color = incoming;
+					other=n[0];
+				} else {
+					edge.attr("stroke",edges[e].stroke);
+					arrow.attr("fill",arrows[e].fill);
+					continue;
+				}
+				if (edges.hasOwnProperty(opp)) {
+					color=mutual;
+				} 
+				edge.attr("stroke",color);
+				arrow.attr("fill",color);
+				text = paper.getById("text"+other);
+				//if (!text) {
+				//	text = paper.text(nodes[other].x,nodes[other].y,nodeLabels[other].text);
+				//}
+				if (text) {
+				//text.attr("font-size","45pt");
+				//text.attr("font-weight","bold");
+				
+				//text.id=("text"+other);
+				/*text.mouseover(function(){
+					var str = this.id;
+					str=str.replace("text","");
+					highlightNode(str);
+				});*/
+//				text.attr("fill-opacity",1);
+
+				//text.attr("fill",color);
+				text.animate({fill:color,"fill-opacity":1},500);
+				}
+					
+				
+			}
+			
+
+		}
+		
+	function drawRect(label,color) {
+		var p = Raphael(label,20,10);
+		p.rect(0,0,20,10).attr("fill",color).attr("stroke","none");
+	}
+	
+	//alert(st.getBBox(false).width);
+	//alert(st.attr("width"));
+
+}
+</script>
+</head>
+
+<body>
+<div id="svg"></div>
+<p id="msg"></p>
+<div id="legend">
+	Each circle (node) is a central government website.<br/>Place your mouse over a site for more details...<br/>
+	<!--<div id="outgoing">The selected site links to the other site</div>
+	<div id="incoming">The selected site is linked-to from the other site</div>
+	<div id="mutual">The selected site links to and is linked-to from the other site</div>-->
+	<img src="key.png">
+</div>
+<div id="intro"></div>
+</body>
+</html>
