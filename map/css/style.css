@@ -537,3 +537,14 @@ background-position: -45px -147px;
 cursor: pointer;
 display: none;
 }
+
+.left-close {
+	background-image: url('fancybox_sprite.png');
+	position: absolute;
+	top: -5px;
+	left: -18px;
+	width: 36px;
+	height: 36px;
+	cursor: pointer;
+	z-index: 8040;
+}
