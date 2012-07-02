@@ -6,8 +6,7 @@
   </meta>
   <graph defaultedgetype="directed" timeformat="double" mode="dynamic">
     <attributes class="node" mode="static">
-      <attribute id="page_id" title="page_id" type="integer"></attribute>
-      <attribute id="numPages" title="numPages" type="integer"></attribute>
+      <attribute id="numPages" title="Number of Pages" type="integer"></attribute>
       <attribute id="modularity_class" title="Modularity Class" type="integer">
         <default>0</default>
       </attribute>
@@ -15,7 +14,6 @@
     <nodes>
       <node id="attorneygeneral.gov.uk" label="attorneygeneral.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12301"></attvalue>
           <attvalue for="numPages" value="141"></attvalue>
           <attvalue for="modularity_class" value="0"></attvalue>
         </attvalues>
@@ -25,7 +23,6 @@
       </node>
       <node id="bis.gov.uk" label="bis.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12104"></attvalue>
           <attvalue for="numPages" value="3208"></attvalue>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -35,7 +32,6 @@
       </node>
       <node id="cabinetoffice.gov.uk" label="cabinetoffice.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12141"></attvalue>
           <attvalue for="numPages" value="2696"></attvalue>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -45,7 +41,6 @@
       </node>
       <node id="charitycommission.gov.uk" label="charitycommission.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12354"></attvalue>
           <attvalue for="numPages" value="3385"></attvalue>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -55,7 +50,6 @@
       </node>
       <node id="coi.gov.uk" label="coi.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="13100"></attvalue>
           <attvalue for="numPages" value="465"></attvalue>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -65,7 +59,6 @@
       </node>
       <node id="communities.gov.uk" label="communities.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12101"></attvalue>
           <attvalue for="numPages" value="2999"></attvalue>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -75,7 +68,6 @@
       </node>
       <node id="cps.gov.uk" label="cps.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12387"></attvalue>
           <attvalue for="numPages" value="1913"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -85,7 +77,6 @@
       </node>
       <node id="culture.gov.uk" label="culture.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12397"></attvalue>
           <attvalue for="numPages" value="1639"></attvalue>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -95,7 +86,6 @@
       </node>
       <node id="decc.gov.uk" label="decc.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12202"></attvalue>
           <attvalue for="numPages" value="2295"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -105,7 +95,6 @@
       </node>
       <node id="defra.gov.uk" label="defra.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12097"></attvalue>
           <attvalue for="numPages" value="10161"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -115,7 +104,6 @@
       </node>
       <node id="dfid.gov.uk" label="dfid.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12414"></attvalue>
           <attvalue for="numPages" value="1659"></attvalue>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -125,7 +113,6 @@
       </node>
       <node id="dft.gov.uk" label="dft.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12139"></attvalue>
           <attvalue for="numPages" value="5959"></attvalue>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -135,7 +122,6 @@
       </node>
       <node id="dh.gov.uk" label="dh.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12269"></attvalue>
           <attvalue for="numPages" value="6165"></attvalue>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -145,7 +131,6 @@
       </node>
       <node id="direct.gov.uk" label="direct.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="1"></attvalue>
           <attvalue for="numPages" value="25181"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -155,7 +140,6 @@
       </node>
       <node id="dmo.gov.uk" label="dmo.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12421"></attvalue>
           <attvalue for="numPages" value="2571"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -165,7 +149,6 @@
       </node>
       <node id="dwp.gov.uk" label="dwp.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12111"></attvalue>
           <attvalue for="numPages" value="3902"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -175,7 +158,6 @@
       </node>
       <node id="education.gov.uk" label="education.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12221"></attvalue>
           <attvalue for="numPages" value="4082"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -185,7 +167,6 @@
       </node>
       <node id="equalities.gov.uk" label="equalities.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12451"></attvalue>
           <attvalue for="numPages" value="195"></attvalue>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -195,7 +176,6 @@
       </node>
       <node id="fco.gov.uk" label="fco.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12121"></attvalue>
           <attvalue for="numPages" value="9979"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -205,7 +185,6 @@
       </node>
       <node id="food.gov.uk" label="food.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12463"></attvalue>
           <attvalue for="numPages" value="4944"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -215,7 +194,6 @@
       </node>
       <node id="forestry.gov.uk" label="forestry.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12466"></attvalue>
           <attvalue for="numPages" value="3553"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -225,7 +203,6 @@
       </node>
       <node id="gad.gov.uk" label="gad.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="319343"></attvalue>
           <attvalue for="numPages" value="2"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -235,7 +212,6 @@
       </node>
       <node id="hm-treasury.gov.uk" label="hm-treasury.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12109"></attvalue>
           <attvalue for="numPages" value="1506"></attvalue>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -245,7 +221,6 @@
       </node>
       <node id="hmrc.gov.uk" label="hmrc.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12119"></attvalue>
           <attvalue for="numPages" value="6212"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -255,7 +230,6 @@
       </node>
       <node id="homeoffice.gov.uk" label="homeoffice.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12131"></attvalue>
           <attvalue for="numPages" value="6498"></attvalue>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -265,7 +239,6 @@
       </node>
       <node id="justice.gov.uk" label="justice.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12118"></attvalue>
           <attvalue for="numPages" value="2959"></attvalue>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -275,7 +248,6 @@
       </node>
       <node id="landregistry.gov.uk" label="landregistry.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12554"></attvalue>
           <attvalue for="numPages" value="749"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -285,7 +257,6 @@
       </node>
       <node id="mod.uk" label="mod.uk">
         <attvalues>
-          <attvalue for="page_id" value="12596"></attvalue>
           <attvalue for="numPages" value="809"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -295,7 +266,6 @@
       </node>
       <node id="nationalschool.gov.uk" label="nationalschool.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="51231"></attvalue>
           <attvalue for="numPages" value="65"></attvalue>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -305,7 +275,6 @@
       </node>
       <node id="nio.gov.uk" label="nio.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12617"></attvalue>
           <attvalue for="numPages" value="183"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -315,7 +284,6 @@
       </node>
       <node id="oag.gov.uk" label="oag.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="406756"></attvalue>
           <attvalue for="numPages" value="2"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -325,7 +293,6 @@
       </node>
       <node id="ofgem.gov.uk" label="ofgem.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12636"></attvalue>
           <attvalue for="numPages" value="542"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -335,7 +302,6 @@
       </node>
       <node id="ofqual.gov.uk" label="ofqual.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12638"></attvalue>
           <attvalue for="numPages" value="842"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -345,7 +311,6 @@
       </node>
       <node id="ofsted.gov.uk" label="ofsted.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12639"></attvalue>
           <attvalue for="numPages" value="750"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -355,7 +320,6 @@
       </node>
       <node id="oft.gov.uk" label="oft.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12133"></attvalue>
           <attvalue for="numPages" value="3975"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -365,7 +329,6 @@
       </node>
       <node id="ofwat.gov.uk" label="ofwat.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12641"></attvalue>
           <attvalue for="numPages" value="1439"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -375,7 +338,6 @@
       </node>
       <node id="parliament.uk" label="parliament.uk">
         <attvalues>
-          <attvalue for="page_id" value="12247"></attvalue>
           <attvalue for="numPages" value="6035"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -385,7 +347,6 @@
       </node>
       <node id="rail-reg.gov.uk" label="rail-reg.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12676"></attvalue>
           <attvalue for="numPages" value="612"></attvalue>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -395,7 +356,6 @@
       </node>
       <node id="scotlandoffice.gov.uk" label="scotlandoffice.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12707"></attvalue>
           <attvalue for="numPages" value="5"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -405,7 +365,6 @@
       </node>
       <node id="sfo.gov.uk" label="sfo.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="18289"></attvalue>
           <attvalue for="numPages" value="236"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -415,7 +374,6 @@
       </node>
       <node id="statisticsauthority.gov.uk" label="statisticsauthority.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="34634"></attvalue>
           <attvalue for="numPages" value="86"></attvalue>
           <attvalue for="modularity_class" value="2"></attvalue>
         </attvalues>
@@ -425,7 +383,6 @@
       </node>
       <node id="tsol.gov.uk" label="tsol.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="18290"></attvalue>
           <attvalue for="numPages" value="40"></attvalue>
           <attvalue for="modularity_class" value="0"></attvalue>
         </attvalues>
@@ -435,7 +392,6 @@
       </node>
       <node id="ukti.gov.uk" label="ukti.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="12410"></attvalue>
           <attvalue for="numPages" value="767"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>
@@ -445,7 +401,6 @@
       </node>
       <node id="walesoffice.gov.uk" label="walesoffice.gov.uk">
         <attvalues>
-          <attvalue for="page_id" value="60111"></attvalue>
           <attvalue for="numPages" value="4"></attvalue>
           <attvalue for="modularity_class" value="1"></attvalue>
         </attvalues>

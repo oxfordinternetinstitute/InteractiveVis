@@ -195,7 +195,7 @@ function nodeActive(a) {
             // }
             e.push(h)
         }
-    	$GP.info_name.html("<div><img src=" + f.attributes[0].val + " style=\"vertical-align:middle\"> <span onmouseover=\"sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex['" + b.id + '\'])" onmouseout="sigInst.refresh()">' + b.label + "</span></div>");
+    	$GP.info_name.html("<div><span onmouseover=\"sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex['" + b.id + '\'])" onmouseout="sigInst.refresh()">' + b.label + "</span></div>");
         $GP.info_data.html(e.join("<br/>"))
     }
     $GP.info_data.show();
@@ -389,7 +389,7 @@ $(window).resize(resize);
 
   <div class="col">
 		<div id="maintitle"><h1>UK Government</h1></div>
-    <div id="title"><h2>Network UK central government websites</h2></div>
+    <div id="title"><h2>Links between UK central government websites</h2></div>
     <div id="titletext">Webcrawls offer a new way to analyze and visualize government presence online.</div>
     <div class="info cf">
       <dl>
@@ -400,10 +400,10 @@ $(window).resize(resize);
     <div id="legend"><h2>Legend:</h2>
       <dl>
         <dt class="node"></dt>
-        <dd>A government website</dd>
+        <dd>Government website</dd>
 
         <dt class="edge"></dt>
-        <dd>A link between two government websites</dd>
+        <dd>Link between two government websites</dd>
 
       </dl>
 
