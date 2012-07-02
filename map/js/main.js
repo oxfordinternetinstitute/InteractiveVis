@@ -2,7 +2,7 @@
 $(document).ready(function() {
 	
 	// map
-	var canvas=$('#canvas');
+	//var canvas=$('#canvas');
 	var svg=$('#svg');
 	var image=worldmap;
 	var include=['XK','PS-GAZASTRIP','PS-WESTBANK'];
@@ -312,28 +312,62 @@ $(document).ready(function() {
 	
 	function resize(e) {
 		var scale;
-		if ($(window).width()>=$(window).height()) scale=$(window).width()/image.width;
-		else scale=$(window).height()/image.height;
+		
+		//always scale on width
+		//var limitWidth=false;
+		if ($(window).width()>=$(window).height()) {
+			scale=$(window).width()/image.width;
+		} else {
+			scale=$(window).height()/image.height;
+		//	limitWidth=true;			
+		}
 		scale*=.95; //Reduce scale to  95% of max to avoid scroll bars in some browsers
-		canvas.css({
+		/*canvas.css({
 			'width': image.width*scale+'px',
 			'height': image.height*scale+'px',
 			'margin': '0 auto'
-		});		
+		});	*/	
 		svg.css({
-			'width': image.width*scale+'px',
-			'height': image.height*scale+'px',
+			'width': '100%',
+			'height': '100%',
 			'margin': '0 auto'
 		});
-		map.setSize(svg.width(), svg.height());
+		
+		var vdelta=(svg.height()-image.height*scale)/2;
+		if (vdelta<0) vdelta=0;
+		
+		//TODO: THis isn't working
+		var hdelta=(svg.width()-image.width*scale)/2;
+		if (hdelta<0) hdelta=0;
+		console.log("hdelta: "+hdelta);
+		console.log("vdelta: "+vdelta);
+
+		//console.log("Scale:  " + scale);
+		//console.log($(window).width() +","+ $(window).height());
+		//console.log("svg.height: " + svg.height() + "; Delta is: " + delta);
+		//if (!limitWidth) {		
+			//if scale is choosen based on height, use above instead.
+			map.setSize(svg.width(), svg.height());
+			//scale the map to fit and translate to center vertically
+			console.log("scaling,translating");	
+			set.transform("s" + scale + "," + image.width/2 +  "," + image.height/2  + "t" + hdelta + "," + vdelta);
+		//} else {
+		//	console.log("normal");
+		//	map.setSize(image.width*scale,image.height*scale);
+		//}
 	}	
 	
 	function reset(e) {
 		if (e!=null) e.preventDefault();
-		var s=viewbox.width/image.width;
-		viewbox.x=viewbox.y=0;
-		viewbox.width/=s;
-		viewbox.height/=s;
+		//var s=viewbox.width/image.width;
+		//console.log(s);
+		viewbox.x=0;
+		//delta=svg.height()-image.height*scale;
+		viewbox.y=0;//delta/-2
+		//viewbox.width/=s;
+		//viewbox.height/=s;
+		viewbox.width=image.width;
+		viewbox.height=image.height;
 		map.setViewBox(viewbox.x, viewbox.y, viewbox.width, viewbox.height);
 	}
 	
@@ -390,7 +424,7 @@ $(document).ready(function() {
 
 	
 	// initialize
-	//$(window).resize();
+	$(window).resize();
 	svg.animate({'opacity': 1}, 500);
 
 
