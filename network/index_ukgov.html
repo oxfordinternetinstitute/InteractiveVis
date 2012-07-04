@@ -43,12 +43,13 @@ function Search(a) {
         this.state.removeClass("searching");
         this.results.hide();
         this.searching = !1;
+        this.input.val("");//SAH -- let's erase string when we close
         nodeNormal()
     };
     this.clean = function () {
         this.results.empty().hide();
         this.state.removeClass("searching");
-        this.input.val("")
+        this.input.val("");
     };
     this.search = function (a) {
         var b = !1,
@@ -73,7 +74,7 @@ function Search(a) {
             0 == c.length && !b && a.push("<i>No results found.</i>");
             1 < a.length && this.results.html(a.join(""));
         }
-        if(c.length!=1) this.results.show();
+        if(c.length!=1) this.results.show();//SAH Need to show panel regardless of if there are results or not on search
 		if(c.length==1) this.results.hide();
     }
 }
@@ -129,44 +130,89 @@ function nodeActive(a) {
     sigInst.detail = !0;
     var b = sigInst._core.graph.nodesIndex[a];
     showGroups(!1);
+
+	var outgoing=[],incoming=[],mutual=[];//SAH
     sigInst.iterEdges(function (b) {
         b.attr.lineWidth = !1;
         b.hidden = !0;
+
+   	   if (a==b.source) outgoing.push(b.target);		//SAH
+	   else if (a==b.target) incoming.push(b.source);		//SAH
+
         if (a == b.source || a == b.target) sigInst.neighbors[a == b.target ? b.source : b.target] = {
             name: b.label,
-            colour: b.color
+            color: b.color
         }, b.hidden = !1, b.attr.color = "rgba(0, 0, 0, 1)"
     });
-    var f = [];
+
     sigInst.iterNodes(function (a) {
         a.hidden = !0;
         a.attr.lineWidth = !1;
         a.attr.color = a.color
     });
-    var e = [],
-        c = sigInst.neighbors,
-        g;
-    for (g in c) {
-        var d = sigInst._core.graph.nodesIndex[g];
-        d.hidden = !1;
-        d.attr.lineWidth = !1;
-        d.attr.color = c[g].colour;
-        a != g && e.push({
-            id: g,
-            name: d.label,
-            group: c[g].name,
-            colour: c[g].colour
-        })
+
+	//SAH - Compute intersection for mutual and remove these from incoming/outgoing
+    for (e in outgoing) {
+    	name=outgoing[e];
+    	if (incoming.indexOf(name)!=-1) {
+    		mutual.push(name);
+    		incoming.splice(incoming.indexOf(name),1);
+    		outgoing.splice(outgoing.indexOf(name),1);
+    	}
     }
-    e.sort(function (a, b) {
-        var c = a.group.toLowerCase(),
-            d = b.group.toLowerCase(),
-            e = a.name.toLowerCase(),
-            f = b.name.toLowerCase();
-        return c != d ? c < d ? -1 : c > d ? 1 : 0 : e < f ? -1 : e > f ? 1 : 0
-    });
-    d = "";
-    for (g in e) c = e[g], c.group != d && (d = c.group, f.push('<li class="cf" rel="' + c.colour + '"><div class=""></div><div class="">' + d + "</div></li>")), f.push('<li class="membership"><a href="#' + c.name + '" onmouseover="sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex[\'' + c.id + "'])\" onclick=\"nodeActive('" + c.id + '\')" onmouseout="sigInst.refresh()">' + c.name + "</a></li>");
+    
+    var createList=function(c) {
+        var f = [];
+		var e = [],
+//		    c = sigInst.neighbors,
+		    g;
+    
+		for (g in c) {	
+		    var d = sigInst._core.graph.nodesIndex[c[g]];//sigInst.getNodes(c[g]);
+		    //console.log(d);
+		    d.hidden = !1;
+		    d.attr.lineWidth = !1;
+		    d.attr.color = c[g].color;
+		    a != g && e.push({
+		        id: d.id,//g,
+		        name: d.label,
+		        //group: c[g].name,
+		        color: d.color//c[g].color
+		    })
+		}
+		e.sort(function (a, b) {
+		    var //c = a.group.toLowerCase(),
+		        //d = b.group.toLowerCase(),
+		        e = a.name.toLowerCase(),
+		        f = b.name.toLowerCase();
+		    return /*c != d ? c < d ? -1 : c > d ? 1 : 0 :*/ e < f ? -1 : e > f ? 1 : 0
+		});
+		d = "";
+		for (g in e) {
+			c = e[g];
+			/*if (c.group != d) {
+				d = c.group;
+				f.push('<li class="cf" rel="' + c.color + '"><div class=""></div><div class="">' + d + "</div></li>");
+			}*/
+			f.push('<li class="membership"><a href="#' + c.name + '" onmouseover="sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex[\'' + c.id + '\'])\" onclick=\"nodeActive(\'' + c.id + '\')" onmouseout="sigInst.refresh()">' + c.name + "</a></li>");
+		}
+		return f;
+	}
+	
+	/*console.log("mutual:" + mutual);
+	console.log("incoming:" + incoming);
+	console.log("outgoing:" + outgoing);
+	*/
+	
+	var f=[];
+	f.push("<strong>Mututal (" + mutual.length + ")</strong><br>");
+	(mutual.length>0)? f=f.concat(createList(mutual)) : f.push("No mutual links<br>");
+	f.push("<strong>Incoming (" + incoming.length + ")</strong><br>");
+	(incoming.length>0)? f=f.concat(createList(incoming)) : f.push("No incoming links<br>");
+	f.push("<strong>Outgoing (" + outgoing.length + ")</strong><br>");
+	(outgoing.length>0)? f=f.concat(createList(outgoing)) : f.push("No outgoing links<br>");
+	
+	//b is object of active node -- SAH
     b.hidden = !1;
     b.attr.color = b.color;
     b.attr.lineWidth = 6;
@@ -195,6 +241,10 @@ function nodeActive(a) {
             // }
             e.push(h)
         }
+//        //Add some general network properties properties -- SAH
+//        e.push("<span><strong>Links to this site:</strong> " + b.inDegree+'</span><br/>');
+//        e.push("<span><strong>Links from this site:</strong> " + b.outDegree+'</span><br/>');
+//        e.push("<span><strong>Total links to/from this site:</strong> " + b.degree+'</span><br/>');
     	$GP.info_name.html("<div><span onmouseover=\"sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex['" + b.id + '\'])" onmouseout="sigInst.refresh()">' + b.label + "</span></div>");
         $GP.info_data.html(e.join("<br/>"))
     }
@@ -416,10 +466,10 @@ $(window).resize(resize);
         <div class="results"></div>
       </div>
 
-      <div class="cf" id="attributeselect"><h2>Group Selector:</h2>
+      <!--<div class="cf" id="attributeselect"><h2>Group Selector:</h2>
         <div class="select">Select Group</div>
 	<div class="list cf"></div>
-      </div>
+      </div>-->
     </form>
     </div>
 
