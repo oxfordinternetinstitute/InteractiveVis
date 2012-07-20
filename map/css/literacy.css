@@ -1,5 +1,5 @@
 * {margin: 0; padding: 0;}
-body {font: 18px/1.166 Helvetica, Arial, sans-serif; color: #666; background-color: #eee; -webkit-font-smoothing: subpixel-antialiased;}
+body {font: 18px/1.166 Helvetica, Arial, sans-serif; background-color: #eee; -webkit-font-smoothing: subpixel-antialiased;}
 #canvas {background: url(../../images/ajax-loader.gif) no-repeat center;}
 #svg {margin: 0 auto; background-color: #eee; opacity: 0;}
 #toolbar {position: absolute; top: 0; right: 5%; padding: 10px; background-color: #fff; opacity: 0.8;}
@@ -12,7 +12,7 @@ h1.title {font-size: 1.5em; line-height: 1; padding: 10px; border-bottom: 1px do
 #legends li {list-style-type: none; clear: both;}
 #legends li span {display: table-cell;}
 #legends li span.colourblock {width: 30px; height: 30px; margin-right: 10px;}
-#legends li span.colourlabel {padding-left: 10px; vertical-align: middle; font-size: 14px;}
+#legends li span.colourlabel {padding-left: 10px; vertical-align: middle; font-size: 12px;}
 
 
 
