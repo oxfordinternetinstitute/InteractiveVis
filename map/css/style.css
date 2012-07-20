@@ -210,7 +210,10 @@ background-image: url('../images/oii_brand.png');*/
 background-position:center;
 background-repeat: no-repeat;
 margin-bottom:20px;
-}#maintitle img.logo {width: 100%;}
+}
+#maintitle img.logo {
+width: 100%;
+}
 
 #maintitle h1 {
 display: none;
@@ -404,7 +407,10 @@ background-position: -51px -13px;
 }
 
 #mainpanel .moreinformation {
-background-position: -171px -122px;
+/*background-position: -171px -122px;*/
+background: url('../images/info.png');
+background-repeat: no-repeat;
+margin-left: 5px;
 }
 
 #copyright {

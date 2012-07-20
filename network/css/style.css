@@ -64,7 +64,6 @@ padding: 0px 18px 0px 18px;
 
 #attributepane .text {
 height:100%;
-x
 }
 
 #attributepane .headertext {
@@ -211,8 +210,6 @@ background-repeat: no-repeat;
 #maintitle {
 width: 100%;
 height: 72px;
-/*background-image: url('../images/oii_brand.png');
-background-position:center;*/
 background-repeat: no-repeat;
 margin-bottom:20px;
 }
@@ -415,6 +412,11 @@ background-position: -11px -119px;
 background-position: -51px -122px;
 }
 
+#legend .note {
+margin-bottom: 8px;
+
+}
+
 #mainpanel .regions {
 background-position: -171px -13px;
 }
@@ -424,7 +426,10 @@ background-position: -51px -13px;
 }
 
 #mainpanel .moreinformation {
-background-position: -171px -122px;
+/*background-position: -171px -122px;*/
+background: url('../images/info.png');
+background-repeat: no-repeat;
+margin-left: 5px;
 }
 
 #copyright {
@@ -500,7 +505,7 @@ display: none;
 	text-decoration: none;
 	font-weight: bold;
 	cursor: pointer;
-	cursor: hand;	
+	cursor: hand;
 }
 
 #information {
