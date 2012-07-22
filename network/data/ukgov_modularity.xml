@@ -12,15 +12,6 @@
       </attribute>
     </attributes>
     <nodes>
-      <node id="attorneygeneral.gov.uk" label="attorneygeneral.gov.uk">
-        <attvalues>
-          <attvalue for="numPages" value="141"></attvalue>
-          <attvalue for="modularity_class" value="0"></attvalue>
-        </attvalues>
-        <viz:size value="10.08164"></viz:size>
-        <viz:position x="143.2376" y="708.9633" z="0.0"></viz:position>
-        <viz:color r="226" g="54" b="54"></viz:color>
-      </node>
       <node id="bis.gov.uk" label="bis.gov.uk">
         <attvalues>
           <attvalue for="numPages" value="3208"></attvalue>
@@ -132,11 +123,11 @@
       <node id="direct.gov.uk" label="direct.gov.uk">
         <attvalues>
           <attvalue for="numPages" value="25181"></attvalue>
-          <attvalue for="modularity_class" value="1"></attvalue>
+          <attvalue for="modularity_class" value="0"></attvalue>
         </attvalues>
         <viz:size value="24.788559"></viz:size>
         <viz:position x="53.192394" y="-248.1701" z="0.0"></viz:position>
-        <viz:color r="54" g="54" b="226"></viz:color>
+        <viz:color r="226" g="54" b="54"></viz:color>
       </node>
       <node id="dmo.gov.uk" label="dmo.gov.uk">
         <attvalues>
@@ -381,15 +372,6 @@
         <viz:position x="511.49673" y="453.03232" z="0.0"></viz:position>
         <viz:color r="54" g="226" b="54"></viz:color>
       </node>
-      <node id="tsol.gov.uk" label="tsol.gov.uk">
-        <attvalues>
-          <attvalue for="numPages" value="40"></attvalue>
-          <attvalue for="modularity_class" value="0"></attvalue>
-        </attvalues>
-        <viz:size value="10.022319"></viz:size>
-        <viz:position x="679.5694" y="281.994" z="0.0"></viz:position>
-        <viz:color r="226" g="54" b="54"></viz:color>
-      </node>
       <node id="ukti.gov.uk" label="ukti.gov.uk">
         <attvalues>
           <attvalue for="numPages" value="767"></attvalue>
@@ -410,48 +392,6 @@
       </node>
     </nodes>
     <edges>
-      <edge id="e1" source="attorneygeneral.gov.uk" target="attorneygeneral.gov.uk" weight="1735.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="1735.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e60" source="attorneygeneral.gov.uk" target="charitycommission.gov.uk">
-        <viz:color r="255" g="255" b="255"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="1.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e99" source="attorneygeneral.gov.uk" target="cps.gov.uk" weight="3.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="3.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e205" source="attorneygeneral.gov.uk" target="direct.gov.uk" weight="3.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="3.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e551" source="attorneygeneral.gov.uk" target="sfo.gov.uk" weight="2.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="2.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e569" source="attorneygeneral.gov.uk" target="tsol.gov.uk" weight="21.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="21.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e6" source="bis.gov.uk" target="bis.gov.uk" weight="60058.0">
-        <viz:color r="229" g="229" b="229"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="60058.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e32" source="bis.gov.uk" target="cabinetoffice.gov.uk" weight="122.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
@@ -608,22 +548,10 @@
           <attvalue for="weight" value="612.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e2" source="cabinetoffice.gov.uk" target="attorneygeneral.gov.uk">
-        <viz:color r="255" g="255" b="255"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="1.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e7" source="cabinetoffice.gov.uk" target="bis.gov.uk" weight="6.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
           <attvalue for="weight" value="6.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e33" source="cabinetoffice.gov.uk" target="cabinetoffice.gov.uk" weight="115226.0">
-        <viz:color r="206" g="206" b="206"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="115226.0"></attvalue>
         </attvalues>
       </edge>
       <edge id="e61" source="cabinetoffice.gov.uk" target="charitycommission.gov.uk" weight="2.0">
@@ -746,12 +674,6 @@
           <attvalue for="weight" value="10.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e3" source="charitycommission.gov.uk" target="attorneygeneral.gov.uk" weight="4.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="4.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e8" source="charitycommission.gov.uk" target="bis.gov.uk" weight="4.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
@@ -762,12 +684,6 @@
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
           <attvalue for="weight" value="23.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e62" source="charitycommission.gov.uk" target="charitycommission.gov.uk" weight="228551.0">
-        <viz:color r="157" g="157" b="157"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="228551.0"></attvalue>
         </attvalues>
       </edge>
       <edge id="e85" source="charitycommission.gov.uk" target="communities.gov.uk" weight="2.0">
@@ -890,12 +806,6 @@
           <attvalue for="weight" value="3.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e67" source="coi.gov.uk" target="coi.gov.uk" weight="3696.0">
-        <viz:color r="253" g="253" b="253"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="3696.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e209" source="coi.gov.uk" target="direct.gov.uk" weight="54.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
@@ -924,12 +834,6 @@
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
           <attvalue for="weight" value="5.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e86" source="communities.gov.uk" target="communities.gov.uk" weight="42248.0">
-        <viz:color r="237" g="237" b="237"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="42248.0"></attvalue>
         </attvalues>
       </edge>
       <edge id="e108" source="communities.gov.uk" target="culture.gov.uk" weight="2.0">
@@ -1016,18 +920,6 @@
           <attvalue for="weight" value="11.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e4" source="cps.gov.uk" target="attorneygeneral.gov.uk" weight="4.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="4.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e101" source="cps.gov.uk" target="cps.gov.uk" weight="15984.0">
-        <viz:color r="248" g="248" b="248"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="15984.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e211" source="cps.gov.uk" target="direct.gov.uk" weight="300.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
@@ -1074,12 +966,6 @@
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
           <attvalue for="weight" value="9.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e109" source="culture.gov.uk" target="culture.gov.uk" weight="32762.0">
-        <viz:color r="241" g="241" b="241"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="32762.0"></attvalue>
         </attvalues>
       </edge>
       <edge id="e139" source="culture.gov.uk" target="defra.gov.uk" weight="12.0">
@@ -1200,12 +1086,6 @@
         <viz:color r="255" g="255" b="255"></viz:color>
         <attvalues>
           <attvalue for="weight" value="1.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e122" source="decc.gov.uk" target="decc.gov.uk" weight="58316.0">
-        <viz:color r="230" g="230" b="230"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="58316.0"></attvalue>
         </attvalues>
       </edge>
       <edge id="e140" source="decc.gov.uk" target="defra.gov.uk" weight="50.0">
@@ -1346,12 +1226,6 @@
           <attvalue for="weight" value="49.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e141" source="defra.gov.uk" target="defra.gov.uk" weight="98146.0">
-        <viz:color r="213" g="213" b="213"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="98146.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e163" source="defra.gov.uk" target="dfid.gov.uk" weight="2.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
@@ -1472,12 +1346,6 @@
           <attvalue for="weight" value="1.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e164" source="dfid.gov.uk" target="dfid.gov.uk" weight="15555.0">
-        <viz:color r="248" g="248" b="248"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="15555.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e215" source="dfid.gov.uk" target="direct.gov.uk" weight="220.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
@@ -1548,12 +1416,6 @@
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
           <attvalue for="weight" value="3.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e176" source="dft.gov.uk" target="dft.gov.uk" weight="106956.0">
-        <viz:color r="209" g="209" b="209"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="106956.0"></attvalue>
         </attvalues>
       </edge>
       <edge id="e192" source="dft.gov.uk" target="dh.gov.uk" weight="2.0">
@@ -1712,12 +1574,6 @@
           <attvalue for="weight" value="1.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e193" source="dh.gov.uk" target="dh.gov.uk" weight="135480.0">
-        <viz:color r="197" g="197" b="197"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="135480.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e217" source="dh.gov.uk" target="direct.gov.uk" weight="1109.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
@@ -1844,11 +1700,6 @@
           <attvalue for="weight" value="1.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e218" source="direct.gov.uk" target="direct.gov.uk" weight="600580.0">
-        <attvalues>
-          <attvalue for="weight" value="600580.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e254" source="direct.gov.uk" target="dwp.gov.uk" weight="278.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
@@ -1921,12 +1772,6 @@
           <attvalue for="weight" value="2.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e243" source="dmo.gov.uk" target="dmo.gov.uk" weight="11077.0">
-        <viz:color r="250" g="250" b="250"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="11077.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e16" source="dwp.gov.uk" target="bis.gov.uk" weight="24.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
@@ -1985,12 +1830,6 @@
         <viz:color r="255" g="255" b="255"></viz:color>
         <attvalues>
           <attvalue for="weight" value="1.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e255" source="dwp.gov.uk" target="dwp.gov.uk" weight="57890.0">
-        <viz:color r="230" g="230" b="230"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="57890.0"></attvalue>
         </attvalues>
       </edge>
       <edge id="e270" source="dwp.gov.uk" target="education.gov.uk" weight="8.0">
@@ -2069,12 +1908,6 @@
         <viz:color r="255" g="255" b="255"></viz:color>
         <attvalues>
           <attvalue for="weight" value="1.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e271" source="education.gov.uk" target="education.gov.uk" weight="31523.0">
-        <viz:color r="241" g="241" b="241"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="31523.0"></attvalue>
         </attvalues>
       </edge>
       <edge id="e337" source="education.gov.uk" target="hm-treasury.gov.uk" weight="4.0">
@@ -2191,12 +2024,6 @@
           <attvalue for="weight" value="1.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e300" source="fco.gov.uk" target="fco.gov.uk" weight="164468.0">
-        <viz:color r="185" g="185" b="185"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="164468.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e338" source="fco.gov.uk" target="hm-treasury.gov.uk" weight="3.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
@@ -2305,12 +2132,6 @@
           <attvalue for="weight" value="3.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e315" source="food.gov.uk" target="food.gov.uk" weight="54309.0">
-        <viz:color r="231" g="231" b="231"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="54309.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e359" source="food.gov.uk" target="hmrc.gov.uk" weight="8.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
@@ -2369,12 +2190,6 @@
         <viz:color r="255" g="255" b="255"></viz:color>
         <attvalues>
           <attvalue for="weight" value="1.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e322" source="forestry.gov.uk" target="forestry.gov.uk" weight="14994.0">
-        <viz:color r="248" g="248" b="248"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="14994.0"></attvalue>
         </attvalues>
       </edge>
       <edge id="e339" source="forestry.gov.uk" target="hm-treasury.gov.uk">
@@ -2441,12 +2256,6 @@
         <viz:color r="255" g="255" b="255"></viz:color>
         <attvalues>
           <attvalue for="weight" value="1.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e340" source="hm-treasury.gov.uk" target="hm-treasury.gov.uk" weight="14117.0">
-        <viz:color r="249" g="249" b="249"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="14117.0"></attvalue>
         </attvalues>
       </edge>
       <edge id="e360" source="hm-treasury.gov.uk" target="hmrc.gov.uk" weight="46.0">
@@ -2539,12 +2348,6 @@
           <attvalue for="weight" value="52.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e361" source="hmrc.gov.uk" target="hmrc.gov.uk" weight="79787.0">
-        <viz:color r="221" g="221" b="221"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="79787.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e384" source="hmrc.gov.uk" target="homeoffice.gov.uk" weight="29.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
@@ -2627,12 +2430,6 @@
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
           <attvalue for="weight" value="8.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e385" source="homeoffice.gov.uk" target="homeoffice.gov.uk" weight="339266.0">
-        <viz:color r="110" g="110" b="110"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="339266.0"></attvalue>
         </attvalues>
       </edge>
       <edge id="e407" source="homeoffice.gov.uk" target="justice.gov.uk" weight="174.0">
@@ -2725,12 +2522,6 @@
           <attvalue for="weight" value="5.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e408" source="justice.gov.uk" target="justice.gov.uk" weight="34816.0">
-        <viz:color r="240" g="240" b="240"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="34816.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e418" source="justice.gov.uk" target="landregistry.gov.uk" weight="2.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
@@ -2821,12 +2612,6 @@
           <attvalue for="weight" value="1.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e419" source="landregistry.gov.uk" target="landregistry.gov.uk" weight="8412.0">
-        <viz:color r="251" g="251" b="251"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="8412.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e536" source="landregistry.gov.uk" target="parliament.uk" weight="2.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
@@ -2863,12 +2648,6 @@
           <attvalue for="weight" value="1.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e428" source="mod.uk" target="mod.uk" weight="1712.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="1712.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e537" source="mod.uk" target="parliament.uk">
         <viz:color r="255" g="255" b="255"></viz:color>
         <attvalues>
@@ -2879,12 +2658,6 @@
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
           <attvalue for="weight" value="2.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e469" source="nationalschool.gov.uk" target="nationalschool.gov.uk" weight="82.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="82.0"></attvalue>
         </attvalues>
       </edge>
       <edge id="e56" source="nio.gov.uk" target="cabinetoffice.gov.uk">
@@ -2915,12 +2688,6 @@
         <viz:color r="255" g="255" b="255"></viz:color>
         <attvalues>
           <attvalue for="weight" value="1.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e484" source="nio.gov.uk" target="nio.gov.uk" weight="543.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="543.0"></attvalue>
         </attvalues>
       </edge>
       <edge id="e540" source="nio.gov.uk" target="parliament.uk">
@@ -2965,12 +2732,6 @@
           <attvalue for="weight" value="5.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e489" source="ofgem.gov.uk" target="ofgem.gov.uk" weight="1491.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="1491.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e513" source="ofgem.gov.uk" target="oft.gov.uk">
         <viz:color r="255" g="255" b="255"></viz:color>
         <attvalues>
@@ -3013,22 +2774,10 @@
           <attvalue for="weight" value="33.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e495" source="ofqual.gov.uk" target="ofqual.gov.uk" weight="2906.0">
-        <viz:color r="253" g="253" b="253"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="2906.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e235" source="ofsted.gov.uk" target="direct.gov.uk" weight="26.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
           <attvalue for="weight" value="26.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e501" source="ofsted.gov.uk" target="ofsted.gov.uk" weight="2040.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="2040.0"></attvalue>
         </attvalues>
       </edge>
       <edge id="e29" source="oft.gov.uk" target="bis.gov.uk" weight="6.0">
@@ -3059,12 +2808,6 @@
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
           <attvalue for="weight" value="3.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e514" source="oft.gov.uk" target="oft.gov.uk" weight="30021.0">
-        <viz:color r="242" g="242" b="242"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="30021.0"></attvalue>
         </attvalues>
       </edge>
       <edge id="e520" source="oft.gov.uk" target="ofwat.gov.uk" weight="5.0">
@@ -3127,19 +2870,7 @@
           <attvalue for="weight" value="5.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e521" source="ofwat.gov.uk" target="ofwat.gov.uk" weight="32690.0">
-        <viz:color r="241" g="241" b="241"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="32690.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e546" source="ofwat.gov.uk" target="rail-reg.gov.uk">
-        <viz:color r="255" g="255" b="255"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="1.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e5" source="parliament.uk" target="attorneygeneral.gov.uk">
         <viz:color r="255" g="255" b="255"></viz:color>
         <attvalues>
           <attvalue for="weight" value="1.0"></attvalue>
@@ -3265,12 +2996,6 @@
           <attvalue for="weight" value="1.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e541" source="parliament.uk" target="parliament.uk" weight="83650.0">
-        <viz:color r="219" g="219" b="219"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="83650.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e550" source="parliament.uk" target="scotlandoffice.gov.uk" weight="2.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
@@ -3301,40 +3026,16 @@
           <attvalue for="weight" value="1.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e547" source="rail-reg.gov.uk" target="rail-reg.gov.uk" weight="3013.0">
-        <viz:color r="253" g="253" b="253"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="3013.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e239" source="sfo.gov.uk" target="direct.gov.uk" weight="25.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
           <attvalue for="weight" value="25.0"></attvalue>
         </attvalues>
       </edge>
-      <edge id="e556" source="sfo.gov.uk" target="sfo.gov.uk" weight="1116.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="1116.0"></attvalue>
-        </attvalues>
-      </edge>
       <edge id="e240" source="statisticsauthority.gov.uk" target="direct.gov.uk" weight="5.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
           <attvalue for="weight" value="5.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e568" source="statisticsauthority.gov.uk" target="statisticsauthority.gov.uk" weight="265.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="265.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e570" source="tsol.gov.uk" target="tsol.gov.uk" weight="166.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="166.0"></attvalue>
         </attvalues>
       </edge>
       <edge id="e31" source="ukti.gov.uk" target="bis.gov.uk" weight="6.0">
@@ -3377,12 +3078,6 @@
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues>
           <attvalue for="weight" value="4.0"></attvalue>
-        </attvalues>
-      </edge>
-      <edge id="e578" source="ukti.gov.uk" target="ukti.gov.uk" weight="2891.0">
-        <viz:color r="253" g="253" b="253"></viz:color>
-        <attvalues>
-          <attvalue for="weight" value="2891.0"></attvalue>
         </attvalues>
       </edge>
     </edges>

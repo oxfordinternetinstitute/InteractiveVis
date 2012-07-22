@@ -105,9 +105,8 @@ $(document).ready(function() {
 	$(".fb").fancybox({
         minWidth: 400,
         maxWidth: 800,
-        minHeight: 300,
         maxHeight: 600
-    });
+    });//        minHeight: 300,
 	datachange('World', literacy['world']);
 	set.drag(move(set), movestart);
 	svg.mousewheel(zoom);    
