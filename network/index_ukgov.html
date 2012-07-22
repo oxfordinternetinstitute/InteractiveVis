@@ -205,11 +205,11 @@ function nodeActive(a) {
 	*/
 	
 	var f=[];
-	f.push("<h2>Mututal (" + mutual.length + ")</h2><br>");
+	f.push("<h2>Mututal (" + mutual.length + ")</h2>");
 	(mutual.length>0)? f=f.concat(createList(mutual)) : f.push("No mutual links<br>");
-	f.push("<h2>Incoming (" + incoming.length + ")</h2><br>");
+	f.push("<h2>Incoming (" + incoming.length + ")</h2>");
 	(incoming.length>0)? f=f.concat(createList(incoming)) : f.push("No incoming links<br>");
-	f.push("<h2>Outgoing (" + outgoing.length + ")</h2><br>");
+	f.push("<h2>Outgoing (" + outgoing.length + ")</h2>");
 	(outgoing.length>0)? f=f.concat(createList(outgoing)) : f.push("No outgoing links<br>");
 	
 	//b is object of active node -- SAH

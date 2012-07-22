@@ -368,6 +368,11 @@ background-color: #fff;
 color: #000;
 }
 
+.link h2 {
+font-size: 1em;
+padding-top: 1em;
+}
+
 #mainpanel dl {
 	padding-bottom:10px;
 }
