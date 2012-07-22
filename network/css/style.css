@@ -90,8 +90,6 @@ float: left;
 #attributepane .returntext span {
 padding-left: 5px;
 display: block;
-width: 200px;
-
 }
 
 #attributepane .close {
@@ -149,7 +147,6 @@ display: block;
 }
 
 #attributepane .link {
-overflow: auto;
 padding: 0 0 0 4px;
 }
 
