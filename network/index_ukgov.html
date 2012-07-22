@@ -205,11 +205,11 @@ function nodeActive(a) {
 	*/
 	
 	var f=[];
-	f.push("<strong>Mututal (" + mutual.length + ")</strong><br>");
+	f.push("<h2>Mututal (" + mutual.length + ")</h2><br>");
 	(mutual.length>0)? f=f.concat(createList(mutual)) : f.push("No mutual links<br>");
-	f.push("<strong>Incoming (" + incoming.length + ")</strong><br>");
+	f.push("<h2>Incoming (" + incoming.length + ")</h2><br>");
 	(incoming.length>0)? f=f.concat(createList(incoming)) : f.push("No incoming links<br>");
-	f.push("<strong>Outgoing (" + outgoing.length + ")</strong><br>");
+	f.push("<h2>Outgoing (" + outgoing.length + ")</h2><br>");
 	(outgoing.length>0)? f=f.concat(createList(outgoing)) : f.push("No outgoing links<br>");
 	
 	//b is object of active node -- SAH
@@ -383,9 +383,8 @@ $(document).ready(function () {
     b = {
         minWidth: 400,
         maxWidth: 800,
-        minHeight: 300,
         maxHeight: 600
-    };
+    };//        minHeight: 300,
     $("a.fb").fancybox(b);
     $("#zoom").find("div.z").each(function () {
         var a = $(this),
@@ -479,8 +478,22 @@ $(window).resize(resize);
 
 
   <div id="information">
-	<h3>Explanatory text here....</h3>
-	<p>&nbsp;  	</p>
+	<h3>Description</h3>
+	<p>Citizen-government interactions occur primarily online, making government web presence often the primary way citizens experience government. This interactive network diagram maps the hyperlinks connecting UK central government websites. We can see that while several websites (such as the direct.gov portal and BIS, the Department for Business and Innovation Skills) are clearly quite central and well-linked to from other sites within the UK government (gov.uk) domain, some websites (such as the Serious Fraud Office and Government Actuary's Department) seem to be quite peripheral, with only a few links.</p>
+
+<p>Clicking or tapping a particular website in the interactive version will bring up information about the selected site and list all the sites it is connected to. Sites unconnected to the selected site will be hidden.</p>
+
+<p>This diagram is part of ongoing work that is looking at navigability measures for government websites in the UK, as well as comparing the web presences of several other national governments (LIST) as part of <a href="http://www.governmentontheweb.org/projects/70">The Internet, Public Policy and Political Science Project</a>. Working with the British Library, the JISC-sponsored <a href="http://www.governmentontheweb.org/projects/74">Big Data Project</a> will map changes in UK government web presence from 1996 to 2010.</p>
+
+<h3>About this visualization</h3>
+
+<p>The data was collected via a <a href="https://github.com/computermacgyver/phpWebCralwer">custom-built PHP web crawler</a> and stored in a MySQL database. The crawl includes all websites that the researchers classified as part of UK central government.</p>
+
+<p>The visualization was first laid out in <a href="http://gephi.org/">Gephi</a> using a Fruchterman-Reingold layout. Nodes were sized according to the number of HTML pages on each site. The interactive display is created with the <a href="http://sigmajs.org/">Sigma.js library</a>, JavaScipt, and CSS based on an earlier interface by Greenpeace. The visualization is part of the ongoing JISC-sponsored <a href="http://blogs.oii.ox.ac.uk/vis/">InteractiveVis Project</a> to produce online tools to allow the easy the creation of such visualizations.</p>
+
+<p>Please note that this is an experimental visualization that may not work on all browsers. It has been tested to work on Firefox 12, Chrome 18, Android Ice Cream Sandwich, and iPad 2. We welcome your comments and feedback about compatibility with other browsers at <a href="http://blogs.oii.ox.ac.uk/vis/">the InteractiveVis project blog</a> via email or comment. All individuals leaving helpful feedback will be entered into a draw for prizes.</p>
+
+<p>The data was collected by <a href="http://www.oii.ox.ac.uk/people/?id=195">Scott A. Hale</a>, <a href="http://www.oii.ox.ac.uk/people/?id=2">Helen Margetts</a>, and <a href="http://www.oii.ox.ac.uk/people/?id=211">Tom Nicholls</a>, and the visualization produced by <a href="http://www.oii.ox.ac.uk/people/?id=195">Scott A. Hale</a>, <a href="http://www.oii.ox.ac.uk/people/?id=273">Joshua R. Melville</a>, and Kunika Kono.</p>
 </div>
 
 </div>
