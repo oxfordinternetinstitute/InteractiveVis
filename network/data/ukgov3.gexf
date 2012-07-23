@@ -237,15 +237,6 @@
         <viz:position x="-1123.9938" y="2976.898" z="0.0"></viz:position>
         <viz:color r="54" g="54" b="226"></viz:color>
       </node>
-      <node id="nio.gov.uk" label="nio.gov.uk">
-        <attvalues>
-          <attvalue for="numPages" value="183"></attvalue>
-          <attvalue for="modularity_class" value="1"></attvalue>
-        </attvalues>
-        <viz:size value="51.35286"></viz:size>
-        <viz:position x="-2301.1228" y="3246.51" z="0.0"></viz:position>
-        <viz:color r="54" g="54" b="226"></viz:color>
-      </node>
       <node id="ofgem.gov.uk" label="ofgem.gov.uk">
         <attvalues>
           <attvalue for="numPages" value="542"></attvalue>
@@ -1042,10 +1033,6 @@
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues></attvalues>
       </edge>
-      <edge id="e480" source="dft.gov.uk" target="nio.gov.uk" weight="2.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues></attvalues>
-      </edge>
       <edge id="e488" source="dft.gov.uk" target="ofgem.gov.uk">
         <viz:color r="255" g="255" b="255"></viz:color>
         <attvalues></attvalues>
@@ -1638,10 +1625,6 @@
         <viz:color r="255" g="255" b="255"></viz:color>
         <attvalues></attvalues>
       </edge>
-      <edge id="e481" source="homeoffice.gov.uk" target="nio.gov.uk" weight="2.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues></attvalues>
-      </edge>
       <edge id="e534" source="homeoffice.gov.uk" target="parliament.uk" weight="4.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues></attvalues>
@@ -1763,30 +1746,6 @@
         <attvalues></attvalues>
       </edge>
       <edge id="e537" source="mod.uk" target="parliament.uk">
-        <viz:color r="255" g="255" b="255"></viz:color>
-        <attvalues></attvalues>
-      </edge>
-      <edge id="e56" source="nio.gov.uk" target="cabinetoffice.gov.uk">
-        <viz:color r="255" g="255" b="255"></viz:color>
-        <attvalues></attvalues>
-      </edge>
-      <edge id="e367" source="nio.gov.uk" target="hmrc.gov.uk">
-        <viz:color r="255" g="255" b="255"></viz:color>
-        <attvalues></attvalues>
-      </edge>
-      <edge id="e389" source="nio.gov.uk" target="homeoffice.gov.uk">
-        <viz:color r="255" g="255" b="255"></viz:color>
-        <attvalues></attvalues>
-      </edge>
-      <edge id="e412" source="nio.gov.uk" target="justice.gov.uk">
-        <viz:color r="255" g="255" b="255"></viz:color>
-        <attvalues></attvalues>
-      </edge>
-      <edge id="e430" source="nio.gov.uk" target="mod.uk">
-        <viz:color r="255" g="255" b="255"></viz:color>
-        <attvalues></attvalues>
-      </edge>
-      <edge id="e540" source="nio.gov.uk" target="parliament.uk">
         <viz:color r="255" g="255" b="255"></viz:color>
         <attvalues></attvalues>
       </edge>
@@ -1967,10 +1926,6 @@
         <attvalues></attvalues>
       </edge>
       <edge id="e431" source="parliament.uk" target="mod.uk" weight="2.0">
-        <viz:color r="254" g="254" b="254"></viz:color>
-        <attvalues></attvalues>
-      </edge>
-      <edge id="e485" source="parliament.uk" target="nio.gov.uk" weight="2.0">
         <viz:color r="254" g="254" b="254"></viz:color>
         <attvalues></attvalues>
       </edge>
