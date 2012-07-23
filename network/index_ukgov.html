@@ -296,14 +296,14 @@ function init() {
         defaultLabelBGColor: "#ddd",
         defaultHoverLabelBGColor: "#002147",
         defaultLabelHoverColor: "#fff",
-        labelThreshold: 8,
+        labelThreshold: 1,
         defaultEdgeType: "curve",
         hoverFontStyle: "bold",
         fontStyle: "bold",
         activeFontStyle: "bold"
     }).graphProperties({
-        minNodeSize: 1,
-        maxNodeSize: 7,
+        minNodeSize: 5,
+        maxNodeSize: 25,
         minEdgeSize: 0.2,
         maxEdgeSize: 0.5
     }).mouseProperties({
@@ -316,7 +316,7 @@ function init() {
     a.active = !1;
     a.neighbors = {};
     a.detail = !1;
-    a.parseGexf("data/ukgov_modularity.xml");
+    a.parseGexf("data/ukgov3.gexf");
     gexf = sigmaInst = null;
     a.clusters = {};
 
