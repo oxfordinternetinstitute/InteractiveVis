@@ -282,7 +282,7 @@ function init() {
 		function (b) { //This is where we populate the array used for the group select box
 			
 			a.clusters[b.color] || (a.clusters[b.color] = []);
-			a.clusters[b.color].push(b.label)
+			a.clusters[b.color].push(b.id);//SAH: push id not label
 		}
 		
 	);
