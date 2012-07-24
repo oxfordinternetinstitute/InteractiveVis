@@ -270,13 +270,13 @@ function init() {
     gexf = sigmaInst = null;
     a.clusters = {};
 
-	    a.iterEdges(
+	    /*a.iterEdges(
 		function (b) {
 	        	// a.clusters[b.label] || (a.clusters[b.label] = []);
 	        	// a.clusters[b.label].push(b.source);
 	        	// a.clusters[b.label].push(b.target)
 	    	}
-	);
+	);*/
 	
 	a.iterNodes(
 		function (b) { //This is where we populate the array used for the group select box
@@ -326,9 +326,9 @@ $(document).ready(function () {
     $GP.bg = a(sigInst._core.domElements.bg);
     $GP.bg2 = a(sigInst._core.domElements.bg2);
     var a = [],
-        b;
-    for (b in sigInst.clusters) a.push('<div><a href="#' + b + '">' + b + '(' + sigInst.clusters[b].length + ' members)</a></div>');
-    a.sort();
+        b,x=1;
+    for (b in sigInst.clusters) a.push('<div><a href="#' + b + '">Group ' + (x++) + ' (' + sigInst.clusters[b].length + ' members)</a></div>');
+    //a.sort();
     $GP.cluster.content(a.join(""));
     b = {
         minWidth: 400,
