@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-<link rel="stylesheet" href="../css/global.css" type="text/css"/>
 <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
 
 <!--[if IE]><script type="text/javascript" src="js/excanvas.js"></script><![endif]--> <!-- js/default.js -->
@@ -281,8 +280,12 @@ function init() {
 	a.iterNodes(
 		function (b) { //This is where we populate the array used for the group select box
 			
+			// alert(b.attr.attributes[0].val);
+			// a.clusters[b.attr.attributes[0].val] || (a.clusters[b.attr.attributes[0].val] = []);
+			// 				a.clusters[b.attr.attributes[0].val].push(b.label);
 			a.clusters[b.color] || (a.clusters[b.color] = []);
 			a.clusters[b.color].push(b.label)
+							
 		}
 		
 	);
