@@ -5,6 +5,7 @@
 <title>OII Network Visualisation Example</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1,user-scalable=no" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
 
@@ -239,13 +240,13 @@ function showCluster(a) {
 }
 
 function init() {
-    var a = sigma.init(document.getElementById("sigma-example")).drawingProperties({
+    var a = sigma.init(document.getElementById("sigma-canvas")).drawingProperties({
         defaultLabelColor: "#000",
         defaultLabelSize: 14,
         defaultLabelBGColor: "#ddd",
         defaultHoverLabelBGColor: "#002147",
         defaultLabelHoverColor: "#fff",
-        labelThreshold: 8,
+        labelThreshold: 10,
         defaultEdgeType: "curve",
         hoverFontStyle: "bold",
         fontStyle: "bold",
@@ -256,10 +257,8 @@ function init() {
         minEdgeSize: 0.2,
         maxEdgeSize: 0.5
     }).mouseProperties({
-        minRatio: 0.5,
-        maxRatio: 32,
-        zoomDelta: 0.1,
-        zoomMultiply: 5
+        minRatio: 0.5, // How far can we zoom out?
+        maxRatio: 20, // How far can we zoom in?
     });
     sigInst = a;
     a.active = !1;
@@ -344,8 +343,13 @@ $(document).ready(function () {
         var a = $(this),
             b = a.attr("rel");
         a.click(function () {
-            var a = sigInst._core;
-            sigInst.zoomTo(a.domElements.nodes.width / 2, a.domElements.nodes.height / 2, a.mousecaptor.ratio * ("in" == b ? 1.5 : 0.5))
+			if (b == "center") {
+				sigInst.position(0,0,1).draw();
+			} else {
+		        var a = sigInst._core;
+	            sigInst.zoomTo(a.domElements.nodes.width / 2, a.domElements.nodes.height / 2, a.mousecaptor.ratio * ("in" == b ? 1.5 : 0.5));		
+			}
+
         })
     });
     $GP.mini.click(function () {
@@ -384,7 +388,7 @@ $(window).resize(resize);
 
 <body>
   <div class="sigma-parent">
-    <div class="sigma-expand" id="sigma-example"></div>
+    <div class="sigma-expand" id="sigma-canvas"></div>
   </div>
 
 <div id="mainpanel">
@@ -443,10 +447,14 @@ $(window).resize(resize);
 </div>
 
 </div>
-
-<div id="zoom">
-  <div class="z" rel="in"></div> <div class="z" rel="out"></div> <div class="y" rel="center" onclick="sigInst.position(0,0,1).draw();"></div>
-	<div style="clear:both"></div>
+<div id="zoomcontainer">
+	<div id="zoom">
+  		<div class="z" rel="in"></div> <div class="z" rel="out"></div> <div class="z" rel="center"></div>
+		<div style="clear:both"></div>
+	</div>
+	<div id="copyright">
+		<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="images/CC.png" /></a></div>
+	</div>
 </div>
 
 <div id="attributepane">
@@ -465,11 +473,6 @@ $(window).resize(resize);
     </div>
   </div>
 	</div>
-</div>
-
-
-<div id="copyright">
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="images/CC.png" /></a></div>
 </div>
 
 <a href="http://jisc.ac.uk" title="JISC"><div id="jisc"><span>JISC</span></div></a>

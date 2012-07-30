@@ -4,102 +4,108 @@ margin: 0px;
 }
 
 .cf:before, .cf:after {
-content: "";
-display: table;
+	content: "";
+	display: table;
 }
 
 .cf:after {
-clear: both;
+	clear: both;
 }
 
 .cf {
-zoom: 1;
+	zoom: 1;
 }
 
 html,body {
-width: 100%;
-height: 100%;
-margin: 0px;
-padding: 0px;
-font-size: 12px;
-font-family: sans-serif;
-line-height:1.25em;
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	font-size: 12px;
+	font-family: sans-serif;
+	line-height:1.25em;
 }
 
 .sigma-parent {
-position: relative;
-height: 100%;
+	position: relative;
+	height: 100%;
 }
 
 .sigma-expand {
-position: absolute;
-width: 100%;
-height: 100%;
-top: 0;
-left: 0;
-background-color: #eee;
-    background-position: center center;
-    background-repeat: no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: #eee;
+	background-position: center center;
+	background-repeat: no-repeat;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 canvas#sigma_bg_1 {
-display: none;
+	display: none;
 }
 
 #attributepane {
-display: none;
-position: absolute;
-top: 0px;
-right: 0px;
-width: 240px;
-background-color: #fff;
-margin: 0;
-word-wrap: break-word;
-background-color:rgba(255,255,255,0.8);
-height:97%;
-border-left: 1px solid #ccc;
-padding: 0px 18px 0px 18px;			
+	display: none;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 240px;
+	background-color: #fff;
+	margin: 0;
+	word-wrap: break-word;
+	background-color:rgba(255,255,255,0.8);
+	height:97%;
+	border-left: 1px solid #ccc;
+	padding: 0px 18px 0px 18px;			
 }
 
 
 #attributepane .text {
-height:100%;
+	height:100%;
 }
 
 #attributepane .headertext {
-color: #000;
-margin-bottom: 5px;
-height: 14px;
-border-bottom: 1px solid #999;
-padding: 0px 0 10px 0;
-font-size:16px;
-font-weight:bold;
+	color: #000;
+	margin-bottom: 5px;
+	height: 14px;
+	border-bottom: 1px solid #999;
+	padding: 0px 0 10px 0;
+	font-size:16px;
+	font-weight:bold;
 }
 
 
 #attributepane .returntext em {
-background-image: url('../images/sprite.png');
-background-repeat: no-repeat;
-display: block;
-width: 20px;
-height: 20px;
-background-position: -91px -13px;
-float: left;
+	background-image: url('../images/sprite.png');
+	background-repeat: no-repeat;
+	display: block;
+	width: 20px;
+	height: 20px;
+	background-position: -91px -13px;
+	float: left;
 }
 
 #attributepane .returntext span {
-padding-left: 5px;
-display: block;
+	padding-left: 5px;
+	display: block;
 }
 
 #attributepane .close {
-padding-left: 14px;
-margin-top: 10px;
+	padding-left: 14px;
+	margin-top: 10px;
 }
 
 #attributepane .close .c {
-border-top: 2px solid #999;
-padding: 10px 0 14px 0;
+	border-top: 2px solid #999;
+	padding: 10px 0 14px 0;
 }
 
 #attributepane .close em {
@@ -192,6 +198,7 @@ background-repeat: no-repeat;
 #oii {
 width: 227px;
 height: 56px;
+background-size:227px 56px;
 position:absolute;
 bottom:12px;
 left:20px;
@@ -424,19 +431,15 @@ background-position: -51px -13px;
 }
 
 #mainpanel .moreinformation {
-/*background-position: -171px -122px;*/
 background: url('../images/info.png');
 background-repeat: no-repeat;
 margin-left: 5px;
 }
 
 #copyright {
-position:absolute;
-left:47%;
-bottom:12px;
-color: #000;
-font-size: 10px;
-width:88px;
+	margin:0 auto;	
+	width:300px;
+	margin-top:30px;
 }
 
 #copyright a {
@@ -447,11 +450,18 @@ color: #000;
 display: none;
 }
 
+#zoomcontainer {
+	position:fixed;
+	bottom:0px;
+	margin:0px auto;
+	padding:0;
+	text-align:center;
+	width:100%;
+}
+
 #zoom {
-	position: absolute;
-	display:inline;
-	bottom: 10%;
-	left: 45%;
+	margin-bottom: 20px;
+	margin:0 auto;
 	z-index:999;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -459,32 +469,25 @@ display: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	width:258px;
+	text-align:left;
 }
 
 #zoom .z {
 	background:#fff;
 	background-color:rgba(255,255,255,0.7);
-	width: 50px;
-	height: 50px;
-	background-repeat: no-repeat;
-	background-image: url('../images/sprite.png');
+	width: 80px;
+	height: 80px;
 	cursor: pointer;
 	border:1px solid #ccc;
 	float:left;
 	margin-right:4px;
+	background-repeat:no-repeat;
 }
 
-#zoom .y {
-	background:#fff;
-	background-color:rgba(255,255,255,0.7);
-	width: 50px;
-	height: 50px;
-	background-repeat: no-repeat;
+#zoom .z[rel=center] {
 	background-image: url('../images/zoom_reset.png');
-	cursor: pointer;
-	border:1px solid #ccc;
 	background-position:center;
-	float:right; 
 }
 
 #zoom .z[rel=in] {
@@ -565,3 +568,4 @@ background-position: -45px -147px;
 cursor: pointer;
 display: none;
 }
+
