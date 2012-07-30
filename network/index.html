@@ -153,7 +153,7 @@ function nodeActive(a) {
         a != g && e.push({
             id: g,
             name: d.label,
-            group: c[g].name,
+            group: (c[g].name)? c[g].name:"",
             colour: c[g].colour
         })
     }
@@ -221,7 +221,7 @@ function showCluster(a) {
         });
         for (var f = [], e = [], c = 0, g = b.length; c < g; c++) {
             var d = sigInst._core.graph.nodesIndex[b[c]];
-            !0 == d.hidden && (e.push(b[c]), d.hidden = !1, d.attr.lineWidth = !1, d.attr.color = d.color, f.push('<li class="membership" onmouseover="sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex[\'' + d.id + "'])\" onclick=\"nodeActive('" + d.id + '\')" onmouseout="sigInst.refresh()"><div class="n">' + d.label + "</div></li>"))
+            !0 == d.hidden && (e.push(b[c]), d.hidden = !1, d.attr.lineWidth = !1, d.attr.color = d.color, f.push('<li class="membership"><a href="#'+d.label+'" onmouseover="sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex[\'' + d.id + "'])\" onclick=\"nodeActive('" + d.id + '\')" onmouseout="sigInst.refresh()">' + d.label + "</a></li>"))
         }
         sigInst.clusters[a] = e;
         sigInst.draw(2, 2, 2, 2);
@@ -265,17 +265,17 @@ function init() {
     a.active = !1;
     a.neighbors = {};
     a.detail = !1;
-    a.parseGexf("data/oii-twitter-mutual.gexf");
+    a.parseGexf("data/twitter_mutual2.gexf");
     gexf = sigmaInst = null;
     a.clusters = {};
 
-	    a.iterEdges(
+	    /*a.iterEdges(
 		function (b) {
 	        	// a.clusters[b.label] || (a.clusters[b.label] = []);
 	        	// a.clusters[b.label].push(b.source);
 	        	// a.clusters[b.label].push(b.target)
 	    	}
-	);
+	);*/
 	
 	a.iterNodes(
 		function (b) { //This is where we populate the array used for the group select box
@@ -284,8 +284,12 @@ function init() {
 			// a.clusters[b.attr.attributes[0].val] || (a.clusters[b.attr.attributes[0].val] = []);
 			// 				a.clusters[b.attr.attributes[0].val].push(b.label);
 			a.clusters[b.color] || (a.clusters[b.color] = []);
+<<<<<<< HEAD
 			a.clusters[b.color].push(b.label)
 							
+=======
+			a.clusters[b.color].push(b.id);//SAH: push id not label
+>>>>>>> 3a0ee0eeade3f3a77dff94df740671d124a5eb0f
 		}
 		
 	);
@@ -329,9 +333,9 @@ $(document).ready(function () {
     $GP.bg = a(sigInst._core.domElements.bg);
     $GP.bg2 = a(sigInst._core.domElements.bg2);
     var a = [],
-        b;
-    for (b in sigInst.clusters) a.push('<div><a href="#' + b + '">' + b + '(' + sigInst.clusters[b].length + ' members)</a></div>');
-    a.sort();
+        b,x=1;
+    for (b in sigInst.clusters) a.push('<div><a href="#' + b + '">Group ' + (x++) + ' (' + sigInst.clusters[b].length + ' members)</a></div>');
+    //a.sort();
     $GP.cluster.content(a.join(""));
     b = {
         minWidth: 400,
