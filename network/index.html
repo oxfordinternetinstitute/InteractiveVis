@@ -115,7 +115,7 @@ function showGroups(a) {
 }
 
 function nodeNormal() {
-    !0 != $GP.calculating && !1 != sigInst.detail && (showGroups(!1), $GP.calculating = !0, sigInst.detail = !0, $GP.info.delay(400).animate({width:'hide'},350), sigInst.position(0,0,1).draw(), $GP.cluster.hide(), sigInst.iterEdges(function (a) {
+    !0 != $GP.calculating && !1 != sigInst.detail && (showGroups(!1), $GP.calculating = !0, sigInst.detail = !0, $GP.info.delay(400).animate({width:'hide'},350),$GP.cluster.hide(), sigInst.iterEdges(function (a) {
         a.attr.color = !1;
         a.hidden = !1
     }), sigInst.iterNodes(function (a) {
@@ -203,7 +203,6 @@ function nodeActive(a) {
     $GP.info_data.show();
     $GP.info_p.html("Connections:");
     $GP.info.animate({width:'show'},350);
-    resize();
     sigInst.active = a;
     window.location.hash = b.label;
 }
