@@ -127,9 +127,11 @@ float: left;
 }
 
 #attributepane .nodeattributes {
-	height:80%;
+	display:block;
+	height:85%;
 	overflow-y: scroll;
 	overflow-x: hidden;
+	border-bottom:1px solid #999;
 }
 
 #attributepane .name {
