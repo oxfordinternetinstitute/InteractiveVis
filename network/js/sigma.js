@@ -888,8 +888,8 @@ sigma.classes.EventDispatcher = function () {
             d.style.position = "absolute";
             d.setAttribute("id", "sigma_" + b + "_" + a.id);
             d.setAttribute("class", "sigma_" + b + "_" + c);
-            d.setAttribute("width", a.width);
-            d.setAttribute("height", a.height);
+	        d.setAttribute("width", a.width);
+	        d.setAttribute("height", a.height);
             a.domRoot.appendChild(d);
             "undefined" != typeof G_vmlCanvasManager && "canvas" == c && (d = G_vmlCanvasManager.initElement(d));
             a.domElements[b] = d;
