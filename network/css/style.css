@@ -53,16 +53,18 @@ canvas#sigma_bg_1 {
 }
 
 #attributepane {
+   	display: block;	
 	display: none;
-	position: absolute;
-	top: 0px;
-	right: 0px;
+    position:absolute;
+    height:auto;
+    bottom:0;
+    top:0;
+    right:0;
 	width: 240px;
 	background-color: #fff;
 	margin: 0;
 	word-wrap: break-word;
 	background-color:rgba(255,255,255,0.8);
-	height:97%;
 	border-left: 1px solid #ccc;
 	padding: 0px 18px 0px 18px;			
 }
@@ -125,7 +127,7 @@ float: left;
 }
 
 #attributepane .nodeattributes {
-	height:87%;
+	height:80%;
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
@@ -181,14 +183,19 @@ font-size:14px;
 
 }
 
+#developercontainer {
+	margin-left:25px;
+	margin-bottom:25px;
+	position:fixed;
+	bottom:0;
+}
+
 #jisc {
 width: 71px;
-height: 39px;
-position:absolute;
-bottom:21px;
-left:260px;
+height: 56px;
 background-image: url('../images/jisc-logo-small.png');
 background-repeat: no-repeat;
+display:inline-block;
 }
 
 #jisc span {
@@ -198,12 +205,10 @@ background-repeat: no-repeat;
 #oii {
 width: 227px;
 height: 56px;
-background-size:227px 56px;
-position:absolute;
-bottom:12px;
-left:20px;
 background-image: url('../images/oii_text.png');
 background-repeat: no-repeat;
+display:inline-block;
+margin-right:10px;
 
 }
 
@@ -223,13 +228,14 @@ display: none;
 }
 
 #mainpanel {
-position: absolute;
-top: 50px;
-left: 25px;
+margin-top: 50px;
+margin-left: 25px;
 background:#fff;
 background-color:rgba(255,255,255,0.8);
 border:1px solid #ccc;
 z-index:20;
+position:fixed;
+top:0;
 }
 
 #mainpanel .b1 {
@@ -469,15 +475,15 @@ display: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	width:258px;
+	width:200px;
 	text-align:left;
 }
 
 #zoom .z {
 	background:#fff;
 	background-color:rgba(255,255,255,0.7);
-	width: 80px;
-	height: 80px;
+	width: 60px;
+	height: 60px;
 	cursor: pointer;
 	border:1px solid #ccc;
 	float:left;
