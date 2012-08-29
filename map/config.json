@@ -1,0 +1,38 @@
+{
+	"type":"map",
+	"data":"data.json",
+	"version":"1.0",
+	"logo":{
+		"file":"oii_brand.png",
+		"link":"http://www.oii.ox.ac.uk/",
+		"text":"Oxford Internet Institute"
+	},
+	"text":{
+		"title":"Literacy and Gender",
+		"intro":"Literacy is an often overlooked factor in examining the flows, production and consumption of knowledge. This map visualises overall literacy rates and rates of literacy by gender around the world.",
+		"more":"<h3>Data</h3> <p>It is a challenge to obtain statistics that uniformly define \"literacy.\" This map employs the CIA Factbook's index of literacy rates, which merges data from several national studies. The most common definition of literacy is the number of people over 15 years of age who can read and write. However, a small number of countries report data using different criteria.</p> <h3>Findings</h3> <p>Many countries in the world have attained high rates of literacy. Large parts of the Americas, Europe and Asia are characterized by literacy rates that exceed 90%. However, there are still significant parts of the world in which more than a third of the adult population are unable to read and write. In particular, there are only a few countries in Africa, the Middle East and South Asia with full or high levels of literacy. Surprisingly, there are still twenty-one countries in which literate people are a minority of the population. It is also important to point out that there are significant differences in literacy rates between genders with females having lower rate of literacy than males. Globally, 82% of people are literate; but this statistic masks the fact that 87% of the world's men can read and write whilst only 77% of women are literate. This contrast is especially pronounced in Afghanistan and Niger. In both countries, about three times more men than women are literate.</p> <h3>Visualization</h3> The interactive display is created with the <a href=\"http://raphaeljs.com/\">Raphael JavaScript Library</a>, jQuery, and CSS. The visualization is part of the ongoing JISC-sponsored <a href=\"http://blogs.oii.ox.ac.uk/vis/\">InteractiveVis Project</a> to produce online tools to allow the easy the creation of such visualizations.<p></p> <p>Please note that this is an experimental visualization that may not work on all browsers. It has been tested to work on Firefox 12, Chrome 18, Android Ice Cream Sandwich, and iPad 2. We welcome your comments and feedback about compatibility with other browsers at <a href=\"http://blogs.oii.ox.ac.uk/vis/\">the InteractiveVis project blog</a> via email or comment. All individuals leaving helpful feedback will be entered into a draw for prizes.</p>"
+	},
+	"legend":{
+		"title":"Adult Literacy",
+		"cutpoints":[51,61,71,81,91],
+		"labels":["0-50%","51-60%","61-70%","71-80%","81-90%","91-100%"]
+	},
+	"features":{
+		"mainstatistic":"total",
+		"allowSelectionOfMainStat": false,
+		"countryHighlightColor":"#00FF00"
+	},
+	"informationPanel":{
+		"showOnLoad": {
+			"enabled":true,
+			"label":"World",
+			"stat":"world"
+		},
+		"titleStat":"countryName",
+		"feature":"bars",
+		"bars":{
+			"labels":["Total","Male","Female"],
+			"datapoints":["total","male","female"]
+		}
+	}
+}
