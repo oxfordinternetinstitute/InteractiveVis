@@ -9,10 +9,10 @@ body {font: 18px/1.166 Helvetica, Arial, sans-serif; background-color: #eee; -we
 .panel {width: 230px; padding: 10px; display: table-cell; opacity: 1;}
 h1.title {font-size: 1.5em; line-height: 1; padding: 10px; border-bottom: 1px dotted #ccc;}
 #info .subtitle {height: 36px; margin-bottom: 12px;}
-#legends li {list-style-type: none; clear: both;}
-#legends li span {display: table-cell;}
-#legends li span.colourblock {width: 30px; height: 30px; margin-right: 10px;}
-#legends li span.colourlabel {padding-left: 10px; vertical-align: middle; font-size: 12px;}
+#legendColors li {list-style-type: none; clear: both;}
+#legendColors li span {display: table-cell;}
+#legendColors li span.colourblock {width: 30px; height: 30px; margin-right: 10px;}
+#legendColors li span.colourlabel {padding-left: 10px; vertical-align: middle; font-size: 12px;}
 
 
 

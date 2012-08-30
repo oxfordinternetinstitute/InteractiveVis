@@ -3,7 +3,7 @@
 	"data":"data.json",
 	"version":"1.0",
 	"logo":{
-		"file":"oii_brand.png",
+		"file":"images/oii_brand.png",
 		"link":"http://www.oii.ox.ac.uk/",
 		"text":"Oxford Internet Institute"
 	},
@@ -14,8 +14,9 @@
 	},
 	"legend":{
 		"title":"Adult Literacy",
-		"cutpoints":[51,61,71,81,91],
-		"labels":["0-50%","51-60%","61-70%","71-80%","81-90%","91-100%"]
+		"cutpoints":[50.5,60.5,70.5,80.5,90.5],
+		"labels":["0 - 50%","51 - 60%","61 - 70%","71 - 80%","81 - 90%","91 - 100%"],
+		"colors":["#e0e2e2","#bac3cf","#95aabd","#7494ae","#50799d","#2e668e"]
 	},
 	"features":{
 		"mainstatistic":"total",
@@ -32,7 +33,9 @@
 		"feature":"bars",
 		"bars":{
 			"labels":["Total","Male","Female"],
-			"datapoints":["total","male","female"]
+			"datapoints":["total","male","female"],
+			"units":"%",
+			"maxValue":100
 		}
 	}
 }

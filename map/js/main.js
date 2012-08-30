@@ -1,5 +1,58 @@
 //library=$(function() {
 $(document).ready(function() {
+
+
+//Load
+var config={};
+jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
+	config=data;
+	
+	if (config.type!="map") {
+		//bad config
+		alert("Cannot find configuration settings.")
+		return;
+	}
+	
+	//init GUI
+	var logo="";//Default title
+	if (config.logo.file) {
+		/*<a href="http://www.oii.ox.ac.uk"><img src="images/oii_brand.png" alt="Oxford Internet Institute" class="logo" /></a><h1 id="textTitle">&nbsp;</h1>*/
+		logo = "<img src=\"" + config.logo.file +"\"";
+		if (config.logo.text) logo+=" alt=\"" + config.logo.text + "\"";
+		logo+=">";
+	} else if (config.logo.text) {
+		logo="<h1>"+config.logo.text+"</h1>";
+	}
+	if (config.logo.link) logo="<a href=\"" + config.logo.link + "\">"+logo+"</a>";
+	$("#maintitle").html(logo);
+	//#title <h2>Literacy and  Gender</h2>
+	$("#title").html("<h2>"+config.text.title+"</h2>");
+	
+
+	//#titletext
+	$("#titletext").html(config.text.intro);
+	
+	//more information
+	if (config.text.more) {
+		$("#information").html(config.text.more);
+	} else {
+		//hide more information link
+		$("#moreinformation").hide();
+	}
+	
+	//Legend
+	$("#legendtitle").html(data.legend.title);
+	if (data.legend.labels && data.legend.colors) {
+		//<li><span class="colourblock" style="background-color: #e0e2e2"></span><span class="colourlabel">0 - 50%</span></li>
+		var legendColors="";
+		for(var i=0; i<data.legend.labels.length; i++) {
+			var color=data.legend.colors[i];
+			var label=data.legend.labels[i];
+			legendColors+="<li><span class=\"colourblock\" style=\"background-color: "+color+"\"></span><span class=\"colourlabel\">"+label+"</span>\n";
+		}
+		$("#legendColors").html(legendColors);
+	}
+	
 	
 	// map
 	//var canvas=$('#canvas');
@@ -33,8 +86,8 @@ $(document).ready(function() {
 	
 	// chart
 	var elem=$('#chart');
-	var chartlabels=['Total', 'Male', 'Female'];
-	var chartsuffix='%';
+	var chartlabels=config.informationPanel.bars.labels;//['Total', 'Male', 'Female'];
+	var chartsuffix=config.informationPanel.bars.units;//'%';
 	var chartstyle={};
 	chartstyle.labels={'text-anchor': 'middle', 'font': '12px Helvetica, Arial, sans-serif', fill: '#666'};
 	chartstyle.plots={
@@ -107,7 +160,15 @@ $(document).ready(function() {
         maxWidth: 800,
         maxHeight: 600
     });//        minHeight: 300,
-	datachange('World', literacy['world']);
+    
+    if (config.informationPanel.showOnLoad.enabled) {
+    	datachange(config.informationPanel.showOnLoad.label,
+    		mapData[config.informationPanel.showOnLoad.stat]);
+    } else {//hide panel on load
+    	$("#attributepane").hide();
+    }
+    
+	//datachange('World', mapData['world']);
 	set.drag(move(set), movestart);
 	svg.mousewheel(zoom);    
 	
@@ -115,7 +176,7 @@ $(document).ready(function() {
 		var obj=map.path(image.shapes[country]);
 		obj.id=country;
 		obj.attr({
-			fill: hex2rgb((literacy[country] && !isNaN(literacy[country][0])) ? scale2hex(literacy[country][0]) : '#ccc', 'string'),
+			fill: hex2rgb((mapData[country] && !isNaN(mapData[country][0])) ? scale2hex(mapData[country][0]) : '#ccc', 'string'),
 			stroke: hex2rgb(mapstyle.stroke, 'string'),
 			'stroke-width': mapstyle['stroke-width'],
 			'stroke-linejoin': mapstyle['stroke-join']		
@@ -127,32 +188,33 @@ $(document).ready(function() {
 		})
 		.mouseout(function(){
 			this.animate({
-				fill: hex2rgb((literacy[country] && !isNaN(literacy[country][0])) ? scale2hex(literacy[country][0]) : '#ccc', 'string')
+				fill: hex2rgb((mapData[country] && !isNaN(mapData[country][0])) ? scale2hex(mapData[country][0]) : '#ccc', 'string')
 			}, 300);
 		})
 		.mousedown(function() {
 			var name;
 			if (countrycodes['iso2'][this.id]) name=countrycodes['iso2'][this.id].hname;
 			else if (countrycodes['user-defined'][this.id]) name=countrycodes['user-defined'][this.id].hname;
-			datachange(name, literacy[this.id]);
+			datachange(name, mapData[this.id]);
 		});
 	}
 	
-	function scale2hex(percentage) {
-		if (percentage<=50) return'#e0e2e2';
-		else if (percentage>50 && percentage<=60) return '#bac3cf';
-		else if (percentage>60 && percentage<=70) return '#95aabd';
-		else if (percentage>70 && percentage<=80) return '#7494ae';
-		else if (percentage>80 && percentage<=90) return '#50799d';
-		else if (percentage>90 && percentage<=100) return '#2e668e';	
+	function scale2hex(value) {
+		color="#888888";
+		for (var i=0; i<data.legend.cutpoints.length;i++) {
+			if (value<data.legend.cutpoints[i]) {
+				return data.legend.colors[i];
+			}
+		}
+		return data.legend.colors[data.legend.colors.length-1];
 	}
 	
-	function scale2rgb(percentage) {
+	/*function scale2rgb(percentage) {
 		var minimum=hex2rgb(mapstyle.fill[1]), maximum=hex2rgb(mapstyle.fill[2]);
 		var scale=percentage/100;
 		var colours=[scale*maximum.r+(1-scale)*minimum.r, scale*maximum.g+(1-scale)*minimum.g, scale*maximum.b+(1-scale)*minimum.b];
 		return 'rgb('+colours+')';
-	}
+	}*/
 	
 	function hex2rgb (hex, format) {
 		if (hex.charAt(0)=='#') hex=hex.substr(1);
@@ -375,7 +437,7 @@ $(document).ready(function() {
 		$("#attributepane").show();
 
 		$('#chartname').text(name);
-		var maxvalue=100;
+		var maxvalue=data.informationPanel.bars.maxValue;
 		var scale=plot.height/maxvalue;
 
 		if (animate) values.attr('opacity', 0);
@@ -396,6 +458,7 @@ $(document).ready(function() {
 
 		for (var i=0; i<bars.length; i++) {
 			var h=0;
+			//TODO: Order these based on the config data (config.informationPanel.bars.datapoints)
 			if (data && !(isNaN(data[i]))) {
 				h=data[i]*scale;
 			}
@@ -426,5 +489,6 @@ $(document).ready(function() {
 	$(window).resize();
 	svg.animate({'opacity': 1}, 500);
 
+});//End JSON load
 
 });
