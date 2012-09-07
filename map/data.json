@@ -604,7 +604,9 @@
             "label": "United Kingdom",
             "total": 99,
             "male": 99,
-            "female": 99
+            "female": 99,
+            "year":"2003 est.",
+            "def":"age 15 and over has completed five or more years of schooling"
         },
         "KH": {
             "label": "Cambodia",
@@ -640,7 +642,9 @@
             "label": "Egypt",
             "total": 71.4,
             "male": 83,
-            "female": 59.4
+            "female": 59.4,
+            "year":"2010 est.",
+            "def":"age 10 and over can read and write"
         },
         "UA": {
             "label": "Ukraine",
@@ -658,7 +662,9 @@
             "label": "Spain",
             "total": 97.9,
             "male": 98.7,
-            "female": 97.2
+            "female": 97.2,
+            "year":"2010 est.",
+            "def": "age 15 and over can read and write"
         },
         "ET": {
             "label": "Ethiopia",
@@ -730,13 +736,17 @@
             "label": "undefined",
             "total": 82,
             "male": 87,
-            "female": 77
+            "female": 77,
+            "year":"2005 est.",
+            "def":"age 15 and over can read and write"
         },
         "FR": {
             "label": "France",
             "total": 99,
             "male": 99,
-            "female": 99
+            "female": 99,
+            "year":"2003 est.",
+            "def":"age 15 and over can read and write"
         },
         "SA": {
             "label": "Saudi Arabia",
@@ -1054,7 +1064,9 @@
             "label": "United States",
             "total": 99,
             "male": 99,
-            "female": 99
+            "female": 99,
+            "year":"2003 est.",
+            "def":"age 15 and over can read and write"
         },
         "IL": {
             "label": "Israel",

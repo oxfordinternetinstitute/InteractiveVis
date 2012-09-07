@@ -29,13 +29,15 @@
 			"label":"World",
 			"stat":"world"
 		},
-		"titleStat":"countryName",
-		"feature":"bars",
 		"bars":{
 			"labels":["Total","Male","Female"],
-			"datapoints":["total","male","female"],
+			"stats":["total","male","female"],
 			"units":"%",
 			"maxValue":100
+		},
+		"text":{
+			"labels":["Year","Definition"],
+			"stats":["year","def"]
 		}
 	}
 }

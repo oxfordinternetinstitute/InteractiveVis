@@ -546,3 +546,22 @@ display: none;
 	cursor: pointer;
 	z-index: 8040;
 }
+
+#attributeText ul {
+	font-size: 14px;
+	margin-left: 20px;
+	text-indent: -20px;
+	list-style-type: none;
+}
+
+#attributeText li .label{
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+#attributeText li{
+	margin-bottom: 10px;
+}
+
+
+	

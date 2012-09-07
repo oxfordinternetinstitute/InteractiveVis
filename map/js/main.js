@@ -93,65 +93,66 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 	map.setViewBox(viewbox.x, viewbox.y, viewbox.width, viewbox.height);
 	
 	// chart
-	var elem=$('#chart');
-	var chartlabels=config.informationPanel.bars.labels;//['Total', 'Male', 'Female'];
-	var chartsuffix=config.informationPanel.bars.units;//'%';
-	var chartstyle={};
-	chartstyle.labels={'text-anchor': 'middle', 'font': '12px Helvetica, Arial, sans-serif', fill: '#666'};
-	chartstyle.plots={
-		'colours': [
-			{fill: '#d70060', stroke: 'none', 'stroke-width': 0},
-			{fill: '#e54028', stroke: 'none', 'stroke-width': 0},
-			{fill: '#f18d05', stroke: 'none', 'stroke-width': 0}],
-		'text': [
-			{'text-anchor': 'middle', 'font': '12px Helvetica, Arial, sans-serif', fill: '#fff'},
-			{'text-anchor': 'middle', 'font': '12px Helvetica, Arial, sans-serif', fill: '#fff'},
-			{'text-anchor': 'middle', 'font': '12px Helvetica, Arial, sans-serif', fill: '#fff'}]
-	};
+	if (config.informationPanel.bars) {
+		var elem=$('#chart');
+		var chartlabels=config.informationPanel.bars.labels;//['Total', 'Male', 'Female'];
+		var chartsuffix=config.informationPanel.bars.units;//'%';
+		var chartstyle={};
+		chartstyle.labels={'text-anchor': 'middle', 'font': '12px Helvetica, Arial, sans-serif', fill: '#666'};
+		chartstyle.plots={
+			'colours': [
+				{fill: '#d70060', stroke: 'none', 'stroke-width': 0},
+				{fill: '#e54028', stroke: 'none', 'stroke-width': 0},
+				{fill: '#f18d05', stroke: 'none', 'stroke-width': 0}],
+			'text': [
+				{'text-anchor': 'middle', 'font': '12px Helvetica, Arial, sans-serif', fill: '#fff'},
+				{'text-anchor': 'middle', 'font': '12px Helvetica, Arial, sans-serif', fill: '#fff'},
+				{'text-anchor': 'middle', 'font': '12px Helvetica, Arial, sans-serif', fill: '#fff'}]
+		};
 	
-	//var chart=Raphael(elem.attr('id'), elem.parent().width(), elem.parent().height()-(elem.position().top));
-	var chart=Raphael(elem.attr('id'), elem.parent().width(), elem.parent().height());//-$('#chartname').outerHeight()
-	var plot={};
-	plot.x=0;
-	plot.y=0;
-	plot.gutter=Math.round(chart.width*0.1);
-	plot.width=(chart.width-(plot.gutter*(chartlabels.length-1)))/chartlabels.length;
-	plot.height=Math.min(chart.height,300);
+		//var chart=Raphael(elem.attr('id'), elem.parent().width(), elem.parent().height()-(elem.position().top));
+		var chart=Raphael(elem.attr('id'), elem.parent().width(), elem.parent().height());//-$('#chartname').outerHeight()
+		var plot={};
+		plot.x=0;
+		plot.y=0;
+		plot.gutter=Math.round(chart.width*0.1);
+		plot.width=(chart.width-(plot.gutter*(chartlabels.length-1)))/chartlabels.length;
+		plot.height=Math.min(chart.height,300);
 	
-	var labels=chart.set();
-	for (var i=0; i<chartlabels.length; i++) {
-		var label=chart.text(plot.x+((plot.width+plot.gutter)*i)+plot.width/2, plot.y).attr(chartstyle.labels);
-		var words=chartlabels[i].split(' '), tmp='';
-		for (var n=0; n<words.length; n++) {
-			label.attr('text', tmp+' '+words[n]);
-			if (label.getBBox(0).width > plot.width) tmp+='\n'+words[n];
-			else tmp+=' '+words[n];
+		var labels=chart.set();
+		for (var i=0; i<chartlabels.length; i++) {
+			var label=chart.text(plot.x+((plot.width+plot.gutter)*i)+plot.width/2, plot.y).attr(chartstyle.labels);
+			var words=chartlabels[i].split(' '), tmp='';
+			for (var n=0; n<words.length; n++) {
+				label.attr('text', tmp+' '+words[n]);
+				if (label.getBBox(0).width > plot.width) tmp+='\n'+words[n];
+				else tmp+=' '+words[n];
+			}
+			label.attr('text', tmp.substring(1));		
+			labels.push(label);
 		}
-		label.attr('text', tmp.substring(1));		
-		labels.push(label);
-	}
-	var labely=plot.height-labels.getBBox(0).height;
-	for (var i=0; i<labels.length; i++) {
-		labels[i].attr({y: labely+labels[i].getBBox(0).height/2});
-	}
-	plot.height=plot.height-labels.getBBox(0).height-5;
+		var labely=plot.height-labels.getBBox(0).height;
+		for (var i=0; i<labels.length; i++) {
+			labels[i].attr({y: labely+labels[i].getBBox(0).height/2});
+		}
+		plot.height=plot.height-labels.getBBox(0).height-5;
 
-	var bars=chart.set();
-	for (var i=0; i<chartlabels.length; i++) {
-		chart.rect(plot.x+((plot.width+plot.gutter)*i), plot.y, plot.width, plot.height).attr({stroke:'none', fill:'#ccc'});
-		var bar=chart.rect(plot.x+((plot.width+plot.gutter)*i), plot.y+plot.height, plot.width, 0).attr(chartstyle.plots.colours[i]);
-		bars.push(bar);
-	}
+		var bars=chart.set();
+		for (var i=0; i<chartlabels.length; i++) {
+			chart.rect(plot.x+((plot.width+plot.gutter)*i), plot.y, plot.width, plot.height).attr({stroke:'none', fill:'#ccc'});
+			var bar=chart.rect(plot.x+((plot.width+plot.gutter)*i), plot.y+plot.height, plot.width, 0).attr(chartstyle.plots.colours[i]);
+			bars.push(bar);
+		}
 
-	var values=chart.set();
-	for (var i=0; i<chartlabels.length; i++) {
-		var value=chart.text(plot.x+((plot.width+plot.gutter)*i)+plot.width/2, 0).attr(chartstyle.plots.text[i]);
-		if (chartsuffix) value.suffix=chartsuffix;
-		value.attr('text', '0'+chartsuffix);
-		values.push(value);
-	}
-	values.attr({y: values.getBBox(0).height/2});
-	
+		var values=chart.set();
+		for (var i=0; i<chartlabels.length; i++) {
+			var value=chart.text(plot.x+((plot.width+plot.gutter)*i)+plot.width/2, 0).attr(chartstyle.plots.text[i]);
+			if (chartsuffix) value.suffix=chartsuffix;
+			value.attr('text', '0'+chartsuffix);
+			values.push(value);
+		}
+		values.attr({y: values.getBBox(0).height/2});
+	}//end if we have bars	
 	// initialize
 	$(window).smartresize(resize);
 
@@ -450,54 +451,70 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 		$("#attributepane").show();
 
 		$('#chartname').text(name);
-		var maxvalue=config.informationPanel.bars.maxValue;
-		var scale=plot.height/maxvalue;
+		
+		if (config.informationPanel.bars) {
+			var maxvalue=config.informationPanel.bars.maxValue;
+			var scale=plot.height/maxvalue;
 
-		if (animate) values.attr('opacity', 0);
-		for (var i=0; i<values.length; i++) {
-		//for (var i=0; i<chartlabels.length; i++) {
-			var stat=config.informationPanel.bars.datapoints[i];
-			var t, ty;
-			if (data && !(isNaN(data[stat]))) {
-				t=new String(data[stat]);
-				t+=(values[i].suffix)?values[i].suffix:'';
-				ty=plot.height-(data[stat]*scale)+10;
-			} else {
-				t='n/a';
-				ty=plot.y+plot.height-20;
+			if (animate) values.attr('opacity', 0);
+			for (var i=0; i<values.length; i++) {
+			//for (var i=0; i<chartlabels.length; i++) {
+				var stat=config.informationPanel.bars.stats[i];
+				var t, ty;
+				if (data && !(isNaN(data[stat]))) {
+					t=new String(data[stat]);
+					t+=(values[i].suffix)?values[i].suffix:'';
+					ty=plot.height-(data[stat]*scale)+10;
+				} else {
+					t='n/a';
+					ty=plot.y+plot.height-20;
+				}
+				values[i].attr('text', t);
+				values[i].attr({y: ty});
 			}
-			values[i].attr('text', t);
-			values[i].attr({y: ty});
-		}
 		
 
-		for (var i=0; i<bars.length; i++) {
-			var stat=config.informationPanel.bars.datapoints[i];
-			var h=0;
-			//TODO: Order these based on the config data (config.informationPanel.bars.datapoints)
-			if (data && !(isNaN(data[stat]))) {
-				h=data[stat]*scale;
-			}
+			for (var i=0; i<bars.length; i++) {
+				var stat=config.informationPanel.bars.stats[i];
+				var h=0;
+				//TODO: Order these based on the config data (config.informationPanel.bars.stats)
+				if (data && !(isNaN(data[stat]))) {
+					h=data[stat]*scale;
+				}
 			
-			//animale only if the pane is visible
-			if( animate ) {
-				bars[i].animate({
-						height: h, 
-						y: plot.height-h}, 
-					500, 
-					'>',
-					function() {
-						values.animate({'opacity': 1}, 500);
-					}
-				);
-			} else {
-				bars[i].attr({
-						height: h, 
-						y: plot.height-h}
-				);
-			}
+				//animale only if the pane is visible
+				if( animate ) {
+					bars[i].animate({
+							height: h, 
+							y: plot.height-h}, 
+						500, 
+						'>',
+						function() {
+							values.animate({'opacity': 1}, 500);
+						}
+					);
+				} else {
+					bars[i].attr({
+							height: h, 
+							y: plot.height-h}
+					);
+				}
 			
+			}
+		}//end if bars		
+		//If text is set to display, display any text
+		if (config.informationPanel.text.labels) {
+			var text ="<ul>";
+			var labels=config.informationPanel.text.labels;
+			var stats=config.informationPanel.text.stats;
+			for (var i=0; i<labels.length; i++) {
+				if (data[stats[i]])
+					text+="<li><span class=\"label\">"+labels[i]+"</span>" + data[stats[i]]+"</li>";
+			}
+			$("#attributeText").html(text+"</ul>");
 		}
+		
+		
 	}
 
 	
