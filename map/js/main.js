@@ -4,6 +4,7 @@ $(document).ready(function() {
 
 //Load
 var config={};
+var data={};//Previusly mapData and countrycodes. These should no longer be used
 jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 	config=data;
 	
@@ -12,6 +13,10 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 		alert("Cannot find configuration settings.")
 		return;
 	}
+	
+	jQuery.getJSON("data.json", function(data, textStatus, jqXHR) {
+	data=data.data;
+
 	
 	//init GUI
 	var logo="";//Default title
@@ -41,13 +46,13 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 	}
 	
 	//Legend
-	$("#legendtitle").html(data.legend.title);
-	if (data.legend.labels && data.legend.colors) {
+	$("#legendtitle").html(config.legend.title);
+	if (config.legend.labels && config.legend.colors) {
 		//<li><span class="colourblock" style="background-color: #e0e2e2"></span><span class="colourlabel">0 - 50%</span></li>
 		var legendColors="";
-		for(var i=0; i<data.legend.labels.length; i++) {
-			var color=data.legend.colors[i];
-			var label=data.legend.labels[i];
+		for(var i=0; i<config.legend.labels.length; i++) {
+			var color=config.legend.colors[i];
+			var label=config.legend.labels[i];
 			legendColors+="<li><span class=\"colourblock\" style=\"background-color: "+color+"\"></span><span class=\"colourlabel\">"+label+"</span>\n";
 		}
 		$("#legendColors").html(legendColors);
@@ -69,7 +74,10 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 	var map=Raphael(svg.attr('id'), svg.width(), svg.height());
 	map.setStart();
 	for (var country in image.shapes) {
-		if (countrycodes.iso2[country]||$.inArray(country, include)>-1) paint(country);
+		/*if (countrycodes.iso2[country]||$.inArray(country, include)>-1) paint(country);
+		else console.log("NOT printing " + country);
+		Used to skip: XS,XP,XN,XO,XC,XA*/
+		paint(country);
 	}
 	obj=map.rect(0, 0, image.width, image.height, 0).attr({stroke: 'none', fill: '#fff', opacity: 0});
 	obj.id='container';
@@ -163,7 +171,7 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
     
     if (config.informationPanel.showOnLoad.enabled) {
     	datachange(config.informationPanel.showOnLoad.label,
-    		mapData[config.informationPanel.showOnLoad.stat]);
+    		data[config.informationPanel.showOnLoad.stat]);
     } else {//hide panel on load
     	$("#attributepane").hide();
     }
@@ -174,39 +182,44 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 	
 	function paint(country) {
 		var obj=map.path(image.shapes[country]);
+		var mainStat=data[country] && !isNaN(data[country][config.features.mainStat]);
 		obj.id=country;
 		obj.attr({
-			fill: hex2rgb((mapData[country] && !isNaN(mapData[country][0])) ? scale2hex(mapData[country][0]) : '#ccc', 'string'),
+			fill: hex2rgb(mainStat ? scale2hex(data[country][config.features.mainStat]) : '#ccc', 'string'),
 			stroke: hex2rgb(mapstyle.stroke, 'string'),
 			'stroke-width': mapstyle['stroke-width'],
 			'stroke-linejoin': mapstyle['stroke-join']		
-		})
-		.mouseover(function(){
-			this.animate({
-				fill: 'rgba(247, 102, 10, 1)'
-			}, 300);
-		})
-		.mouseout(function(){
-			this.animate({
-				fill: hex2rgb((mapData[country] && !isNaN(mapData[country][0])) ? scale2hex(mapData[country][0]) : '#ccc', 'string')
-			}, 300);
-		})
-		.mousedown(function() {
-			var name;
-			if (countrycodes['iso2'][this.id]) name=countrycodes['iso2'][this.id].hname;
-			else if (countrycodes['user-defined'][this.id]) name=countrycodes['user-defined'][this.id].hname;
-			datachange(name, mapData[this.id]);
 		});
+		
+		if (data[country]) {//If no in data, don't provide any interaction
+			obj.mouseover(function(){
+				this.animate({
+					fill: 'rgba(247, 102, 10, 1)'
+				}, 300);
+			})
+			.mouseout(function(){
+				this.animate({
+					fill: hex2rgb((data[country] && !isNaN(data[country][config.features.mainStat])) ? scale2hex(data[country][config.features.mainStat]) : '#ccc', 'string')
+				}, 300);
+			})
+			.mousedown(function() {
+				/*var name;
+				if (countrycodes['iso2'][this.id]) name=countrycodes['iso2'][this.id].hname;
+				else if (countrycodes['user-defined'][this.id]) name=countrycodes['user-defined'][this.id].hname;*/
+				var name = data[this.id].label;
+				datachange(name, data[this.id]);
+			});
+		}
 	}
 	
 	function scale2hex(value) {
 		color="#888888";
-		for (var i=0; i<data.legend.cutpoints.length;i++) {
-			if (value<data.legend.cutpoints[i]) {
-				return data.legend.colors[i];
+		for (var i=0; i<config.legend.cutpoints.length;i++) {
+			if (value<config.legend.cutpoints[i]) {
+				return config.legend.colors[i];
 			}
 		}
-		return data.legend.colors[data.legend.colors.length-1];
+		return config.legend.colors[config.legend.colors.length-1];
 	}
 	
 	/*function scale2rgb(percentage) {
@@ -437,16 +450,18 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 		$("#attributepane").show();
 
 		$('#chartname').text(name);
-		var maxvalue=data.informationPanel.bars.maxValue;
+		var maxvalue=config.informationPanel.bars.maxValue;
 		var scale=plot.height/maxvalue;
 
 		if (animate) values.attr('opacity', 0);
 		for (var i=0; i<values.length; i++) {
+		//for (var i=0; i<chartlabels.length; i++) {
+			var stat=config.informationPanel.bars.datapoints[i];
 			var t, ty;
-			if (data && !(isNaN(data[i]))) {
-				t=new String(data[i]);
+			if (data && !(isNaN(data[stat]))) {
+				t=new String(data[stat]);
 				t+=(values[i].suffix)?values[i].suffix:'';
-				ty=plot.height-(data[i]*scale)+10;
+				ty=plot.height-(data[stat]*scale)+10;
 			} else {
 				t='n/a';
 				ty=plot.y+plot.height-20;
@@ -457,10 +472,11 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 		
 
 		for (var i=0; i<bars.length; i++) {
+			var stat=config.informationPanel.bars.datapoints[i];
 			var h=0;
 			//TODO: Order these based on the config data (config.informationPanel.bars.datapoints)
-			if (data && !(isNaN(data[i]))) {
-				h=data[i]*scale;
+			if (data && !(isNaN(data[stat]))) {
+				h=data[stat]*scale;
 			}
 			
 			//animale only if the pane is visible
@@ -489,6 +505,7 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 	$(window).resize();
 	svg.animate({'opacity': 1}, 500);
 
-});//End JSON load
+});//End JSON Data load
+});//End JSON Config load
 
 });

@@ -19,7 +19,7 @@
 		"colors":["#e0e2e2","#bac3cf","#95aabd","#7494ae","#50799d","#2e668e"]
 	},
 	"features":{
-		"mainstatistic":"total",
+		"mainStat":"total",
 		"allowSelectionOfMainStat": false,
 		"countryHighlightColor":"#00FF00"
 	},
