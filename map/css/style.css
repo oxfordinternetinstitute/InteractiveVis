@@ -564,4 +564,26 @@ display: none;
 }
 
 
-	
+#legendtitle #expand {
+	background-image: url('../images/expand.png');
+	height: 7px;
+	width: 12px;
+	margin-top: -.75em;
+	display: none;
+}
+
+#legendtitle span {
+	margin-left: 20px;
+}
+
+#altStats {
+	display: none;
+	margin-bottom: 1em;
+	margin-left: 20px;
+	font-size: 14px;
+	line-height: 1.5em;
+}
+#altStats ul {
+	list-style-type: none;
+}
+

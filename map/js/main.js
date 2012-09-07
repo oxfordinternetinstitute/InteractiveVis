@@ -52,6 +52,7 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 	//alternative main stats?
 	if (config.features.alternativeMainStats) {
 		$("#legendtitle").click(function() {$("#altStats").toggle();});
+		$("#legendtitle #expand").show();
 		//var txt=$("<select/>");
 		var txt=$("<ul/>");
 		///txt+="<li class=\"changestat\">" +//<a class=\"changestat\" href=\"javascript:changeMainStat('" + config.features.mainStat + "');\">"
@@ -69,7 +70,6 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 		//txt.change(function() {changeMainStat(this.options[this.selectedIndex].value);})
 		//$("#mainpanel").mouseout(function() {$("#altStats").hide();});
 		$("#altStats").html(txt);
-		$("#altStats").hide();
 	}
 	
 	// map
@@ -555,7 +555,7 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 		//Legend
 		var legend = config["legend_"+currentStat];
 		console.log(legend.title);
-		$("#legendtitle").html(legend.title);
+		$("#legendtitle span").html(legend.title);
 		if (legend.labels && legend.colors) {
 			//<li><span class="colourblock" style="background-color: #e0e2e2"></span><span class="colourlabel">0 - 50%</span></li>
 			var legendColors="";
