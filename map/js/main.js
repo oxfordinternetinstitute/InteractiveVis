@@ -4,6 +4,7 @@ $(document).ready(function() {
 
 //Load
 var config={};
+var data={};
 jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 	config=data;
 	
@@ -12,6 +13,11 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 		alert("Cannot find configuration settings.")
 		return;
 	}
+	
+	jQuery.getJSON("data.json", function(data, textStatus, jqXHR) {
+	data=data.data;
+	console.log(data);
+
 	
 	//init GUI
 	var logo="";//Default title
@@ -41,13 +47,13 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 	}
 	
 	//Legend
-	$("#legendtitle").html(data.legend.title);
-	if (data.legend.labels && data.legend.colors) {
+	$("#legendtitle").html(config.legend.title);
+	if (config.legend.labels && config.legend.colors) {
 		//<li><span class="colourblock" style="background-color: #e0e2e2"></span><span class="colourlabel">0 - 50%</span></li>
 		var legendColors="";
-		for(var i=0; i<data.legend.labels.length; i++) {
-			var color=data.legend.colors[i];
-			var label=data.legend.labels[i];
+		for(var i=0; i<config.legend.labels.length; i++) {
+			var color=config.legend.colors[i];
+			var label=config.legend.labels[i];
 			legendColors+="<li><span class=\"colourblock\" style=\"background-color: "+color+"\"></span><span class=\"colourlabel\">"+label+"</span>\n";
 		}
 		$("#legendColors").html(legendColors);
@@ -192,21 +198,24 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 			}, 300);
 		})
 		.mousedown(function() {
-			var name;
+			/*var name;
 			if (countrycodes['iso2'][this.id]) name=countrycodes['iso2'][this.id].hname;
-			else if (countrycodes['user-defined'][this.id]) name=countrycodes['user-defined'][this.id].hname;
+			else if (countrycodes['user-defined'][this.id]) name=countrycodes['user-defined'][this.id].hname;*/
+			var name = data[this.id].label;
+			console.log(name);
+			console.log("yea?");//2012-09-07
 			datachange(name, mapData[this.id]);
 		});
 	}
 	
 	function scale2hex(value) {
 		color="#888888";
-		for (var i=0; i<data.legend.cutpoints.length;i++) {
-			if (value<data.legend.cutpoints[i]) {
-				return data.legend.colors[i];
+		for (var i=0; i<config.legend.cutpoints.length;i++) {
+			if (value<config.legend.cutpoints[i]) {
+				return config.legend.colors[i];
 			}
 		}
-		return data.legend.colors[data.legend.colors.length-1];
+		return config.legend.colors[config.legend.colors.length-1];
 	}
 	
 	/*function scale2rgb(percentage) {
@@ -437,7 +446,7 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 		$("#attributepane").show();
 
 		$('#chartname').text(name);
-		var maxvalue=data.informationPanel.bars.maxValue;
+		var maxvalue=config.informationPanel.bars.maxValue;
 		var scale=plot.height/maxvalue;
 
 		if (animate) values.attr('opacity', 0);
@@ -489,6 +498,7 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 	$(window).resize();
 	svg.animate({'opacity': 1}, 500);
 
-});//End JSON load
+});//End JSON Data load
+});//End JSON Config load
 
 });
