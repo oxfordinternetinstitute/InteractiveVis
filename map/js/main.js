@@ -16,6 +16,8 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 	
 	jQuery.getJSON("data.json", function(data, textStatus, jqXHR) {
 	data=data.data;
+	
+	var currentStat=config.features.mainStat;
 
 	
 	//init GUI
@@ -45,19 +47,30 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 		$("#moreinformation").hide();
 	}
 	
-	//Legend
-	$("#legendtitle").html(config.legend.title);
-	if (config.legend.labels && config.legend.colors) {
-		//<li><span class="colourblock" style="background-color: #e0e2e2"></span><span class="colourlabel">0 - 50%</span></li>
-		var legendColors="";
-		for(var i=0; i<config.legend.labels.length; i++) {
-			var color=config.legend.colors[i];
-			var label=config.legend.labels[i];
-			legendColors+="<li><span class=\"colourblock\" style=\"background-color: "+color+"\"></span><span class=\"colourlabel\">"+label+"</span>\n";
-		}
-		$("#legendColors").html(legendColors);
-	}
+	updateLegend();
 	
+	//alternative main stats?
+	if (config.features.alternativeMainStats) {
+		$("#legendtitle").click(function() {$("#altStats").toggle();});
+		//var txt=$("<select/>");
+		var txt=$("<ul/>");
+		///txt+="<li class=\"changestat\">" +//<a class=\"changestat\" href=\"javascript:changeMainStat('" + config.features.mainStat + "');\">"
+		//	config["legend_"+config.features.mainStat].title + "</li>";//</a>
+		//console.log(config.features.alternativeMainStats);
+		for (var i=-1; i<config.features.alternativeMainStats.length; i++) {
+			if (i==-1) stat=config.features.mainStat;
+			else stat=config.features.alternativeMainStats[i];
+			//$("<option value=\"" + stat +"\">"+config["legend_"+stat].title+"</option>").appendTo(txt);
+			$("<li id=\"" + stat +"\">"+config["legend_"+stat].title+"</li>").click(function() {changeMainStat(this.id);$("#altStats").toggle();}).appendTo(txt);
+			//txt+="<li class=\"changestat\"><a class=\"changestat\" href=\"javascript:changeMainStat('" + stat + "');\">" +
+			//config["legend_"+stat].title + "</a></li>";
+		}
+		//.click(function() {changeMainStat(this.id);})
+		//txt.change(function() {changeMainStat(this.options[this.selectedIndex].value);})
+		//$("#mainpanel").mouseout(function() {$("#altStats").hide();});
+		$("#altStats").html(txt);
+		$("#altStats").hide();
+	}
 	
 	// map
 	//var canvas=$('#canvas');
@@ -183,10 +196,10 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 	
 	function paint(country) {
 		var obj=map.path(image.shapes[country]);
-		var mainStat=data[country] && !isNaN(data[country][config.features.mainStat]);
+		var mainStat=data[country] && !isNaN(data[country][currentStat]);
 		obj.id=country;
 		obj.attr({
-			fill: hex2rgb(mainStat ? scale2hex(data[country][config.features.mainStat]) : '#ccc', 'string'),
+			fill: hex2rgb(mainStat ? scale2hex(data[country][currentStat]) : '#ccc', 'string'),
 			stroke: hex2rgb(mapstyle.stroke, 'string'),
 			'stroke-width': mapstyle['stroke-width'],
 			'stroke-linejoin': mapstyle['stroke-join']		
@@ -200,7 +213,7 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 			})
 			.mouseout(function(){
 				this.animate({
-					fill: hex2rgb((data[country] && !isNaN(data[country][config.features.mainStat])) ? scale2hex(data[country][config.features.mainStat]) : '#ccc', 'string')
+					fill: hex2rgb((data[country] && !isNaN(data[country][currentStat])) ? scale2hex(data[country][currentStat]) : '#ccc', 'string')
 				}, 300);
 			})
 			.mousedown(function() {
@@ -214,13 +227,14 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 	}
 	
 	function scale2hex(value) {
+		var legend = config["legend_"+currentStat];
 		color="#888888";
-		for (var i=0; i<config.legend.cutpoints.length;i++) {
-			if (value<config.legend.cutpoints[i]) {
-				return config.legend.colors[i];
+		for (var i=0; i<legend.cutpoints.length;i++) {
+			if (value<legend.cutpoints[i]) {
+				return legend.colors[i];
 			}
 		}
-		return config.legend.colors[config.legend.colors.length-1];
+		return legend.colors[legend.colors.length-1];
 	}
 	
 	/*function scale2rgb(percentage) {
@@ -515,6 +529,43 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 		}
 		
 		
+	}
+	
+	
+	
+	function changeMainStat(stat) {
+		console.log("changeMainStat: " + stat);
+		currentStat=stat;
+		updateLegend();
+	
+	
+		for (var country in image.shapes) {
+			var obj = map.getById(country);
+			if (obj) {
+				var exists=data[country] && !isNaN(data[country][stat]);
+				obj.attr({
+					fill: hex2rgb(exists ? scale2hex(data[country][stat]) : '#ccc', 'string'),	
+				});
+			}
+		}
+	}
+	
+	function updateLegend() {
+		console.log("updateLengend. currentStat is " + currentStat);
+		//Legend
+		var legend = config["legend_"+currentStat];
+		console.log(legend.title);
+		$("#legendtitle").html(legend.title);
+		if (legend.labels && legend.colors) {
+			//<li><span class="colourblock" style="background-color: #e0e2e2"></span><span class="colourlabel">0 - 50%</span></li>
+			var legendColors="";
+			for(var i=0; i<legend.labels.length; i++) {
+				var color=legend.colors[i];
+				var label=legend.labels[i];
+				legendColors+="<li><span class=\"colourblock\" style=\"background-color: "+color+"\"></span><span class=\"colourlabel\">"+label+"</span>\n";
+			}
+			$("#legendColors").html(legendColors);
+		}
 	}
 
 	
