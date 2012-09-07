@@ -41,7 +41,6 @@
 	"informationPanel":{
 		"showOnLoad": {
 			"enabled":true,
-			"label":"World",
 			"stat":"world"
 		},
 		"bars":{

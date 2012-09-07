@@ -184,7 +184,7 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
     });//        minHeight: 300,
     
     if (config.informationPanel.showOnLoad.enabled) {
-    	datachange(config.informationPanel.showOnLoad.label,
+    	datachange(data[config.informationPanel.showOnLoad.stat].label,
     		data[config.informationPanel.showOnLoad.stat]);
     } else {//hide panel on load
     	$("#attributepane").hide();

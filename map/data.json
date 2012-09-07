@@ -385,7 +385,7 @@
             "female": 73.5
         },
         "CD": {
-            "label": " The Democratic Republic of The Congo",
+            "label": "The Democratic Republic of The Congo",
             "total": 67.2,
             "male": 80.9,
             "female": 54.1
@@ -409,7 +409,7 @@
             "female": 99
         },
         "CI": {
-            "label": "CÃ´te D'ivoire",
+            "label": "Ivory Coast",
             "total": 48.7,
             "male": 60.8,
             "female": 38.6
@@ -615,7 +615,7 @@
             "female": 64.1
         },
         "TW": {
-            "label": " Province of China Taiwan",
+            "label": "Taiwan",
             "total": 96.1,
             "male": "Not Reported",
             "female": "Not Reported"
@@ -727,13 +727,13 @@
             "female": 64.7
         },
         "FM": {
-            "label": " Federated States of Micronesia",
+            "label": "Micronesia",
             "total": 89,
             "male": 91,
             "female": 88
         },
         "world": {
-            "label": "undefined",
+            "label": "World",
             "total": 82,
             "male": 87,
             "female": 77,
@@ -785,7 +785,7 @@
             "female": 88.6
         },
         "SH": {
-            "label": " Ascension and Tristan Da Cunha Saint Helena",
+            "label": "Ascension and Tristan Da Cunha Saint Helena",
             "total": 97,
             "male": 97,
             "female": 98
@@ -1007,7 +1007,7 @@
             "female": 80.2
         },
         "TZ": {
-            "label": " United Republic of Tanzania",
+            "label": "United Republic of Tanzania",
             "total": 69.4,
             "male": 77.5,
             "female": 62.2
@@ -1093,7 +1093,7 @@
             "female": 64.2
         },
         "IR": {
-            "label": " Islamic Republic of Iran",
+            "label": "Islamic Republic of Iran",
             "total": 77,
             "male": 83.5,
             "female": 70.4
@@ -1117,7 +1117,7 @@
             "female": 96
         },
         "VE": {
-            "label": " Bolivarian Republic of Venezuela",
+            "label": "Bolivarian Republic of Venezuela",
             "total": 93,
             "male": 93.3,
             "female": 92.7
@@ -1135,13 +1135,13 @@
             "female": "Not Reported"
         },
         "VI": {
-            "label": " U.S. Virgin Islands",
+            "label": "U.S. Virgin Islands",
             "total": 90,
             "male": "Not Reported",
             "female": "Not Reported"
         },
         "BO": {
-            "label": " Plurinational State of Bolivia",
+            "label": "Plurinational State of Bolivia",
             "total": 86.7,
             "male": 93.1,
             "female": 80.7
@@ -1249,13 +1249,13 @@
             "female": "Not Reported"
         },
         "KP": {
-            "label": " Democratic People's Republic of Korea",
+            "label": "North Korea",
             "total": 99,
             "male": 99,
             "female": 99
         },
         "KR": {
-            "label": " Republic of Korea",
+            "label": "South Korea",
             "total": 97.9,
             "male": 99.2,
             "female": 96.6
