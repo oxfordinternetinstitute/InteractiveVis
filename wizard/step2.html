@@ -1,0 +1,66 @@
+<html>
+
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+<script language="javascript">
+
+function add_stat(ele) {
+	var text = $('#newStat').val();
+	 $('#stats')
+         .append($("<option></option>")
+         .attr("value",text)
+         .text(text)); 	
+	$('#newStat').val('');
+}
+
+function remove_stat(ele) {
+	//val = $("#stats").find(':selected').val();
+	//$("#selectBox option[value='"+val+"']").remove();
+	val = $("#stats").find(':selected').remove();
+}
+
+
+</script>
+
+</head>
+
+<body>
+
+<h1>Step 2: Map</h1>
+
+<form action="" method="POST">
+
+
+
+<h2>Data</h2>
+Main statistic (used to initally color the map) // textfield / dropbox from having parsed data<br/>
+Main stat label for legend: textfield<br/>
+cutpoints<br/>
+labels<br/>
+colors<br/>
+
+Alternative statistics the user can select
+	<input type="text" id="newStat"> <button type="button" onClick="add_stat(this)">Add</button><br/>
+	<select name="stats" id="stats" multiple="multiple" size="5"></select><button type="button" onClick="remove_stat(this)">Remove</button><br/>
+<br/>
+Mouseover color for countries textfield<br/>
+
+<h2>Information panel</h2>
+Show information panel on load? Checkbox<br/>
+If so, what statistic should be shown? textfield<br/>
+
+Add an item to the information panel:<br/>
+Label: Textfield<br/>
+Statistic: textfield (or ideally we would have loaded and prased the data and provide a dropbox here)<br/>
+Display <select><option="bar">Bar</option><option="text">Text</option></select><br/>
+
+Display all items here and allow re-ordering<br/>
+
+If bars: <br/>
+Units textfield<br/>
+max value textfield<br/>
+
+
+
+
+</form>
