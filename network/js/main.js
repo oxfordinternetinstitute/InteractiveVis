@@ -2,6 +2,7 @@ var sigInst, canvas, $GP
 
 //Load configuration file
 var config={};
+
 jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 	config=data;
 	
@@ -13,7 +14,283 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 
 // FUNCTION DECLARATIONS
 
+function init(data) {
+	var data = data;
+	
+	var drawProps, graphProps,mouseProps;
+	if (config.sigma.drawingProperties) 
+		drawProps=config.sigma.drawingProperties;
+	else
+		drawProps={
+        defaultLabelColor: "#000",
+        defaultLabelSize: 14,
+        defaultLabelBGColor: "#ddd",
+        defaultHoverLabelBGColor: "#002147",
+        defaultLabelHoverColor: "#fff",
+        labelThreshold: 10,
+        defaultEdgeType: "curve",
+        hoverFontStyle: "bold",
+        fontStyle: "bold",
+        activeFontStyle: "bold"
+    };
+    
+    if (config.sigma.graphProperties)	
+    	graphProps=config.sigma.graphProperties;
+    else
+    	graphProps={
+        minNodeSize: 1,
+        maxNodeSize: 7,
+        minEdgeSize: 0.2,
+        maxEdgeSize: 0.5
+    	};
+	
+	if (config.sigma.mouseProperties) 
+		mouseProps=config.sigma.mouseProperties;
+	else
+		mouseProps={
+        minRatio: 0.75, // How far can we zoom out?
+        maxRatio: 20, // How far can we zoom in?
+    	};
+	
+    var a = sigma.init(document.getElementById("sigma-canvas")).drawingProperties(drawProps).graphProperties(graphProps).mouseProperties(mouseProps);
+    sigInst = a;
+    a.active = !1;
+    a.neighbors = {};
+    a.detail = !1;
+    a.parseGexf("data/"+data);
+    gexf = sigmaInst = null;
+    a.clusters = {};
 
+	a.iterNodes(
+		function (b) { //This is where we populate the array used for the group select box
+
+			// note: index may not be consistent for all nodes. Should calculate each time. 
+			 // alert(JSON.stringify(b.attr.attributes[5].val));
+			// alert(b.x);
+			a.clusters[b.color] || (a.clusters[b.color] = []);
+			a.clusters[b.color].push(b.id);//SAH: push id not label
+
+		}
+		
+	);
+	
+    a.bind("upnodes", function (a) {
+        nodeActive(a.content[0])
+    });
+
+    a.draw()
+}
+
+$(document).ready(function() {
+
+
+
+	// Initialise main interface elements
+
+	var logo=""; // Logo elements
+
+	if (config.logo.file) {
+
+		logo = "<img src=\"images/" + config.logo.file +"\"";
+		if (config.logo.text) logo+=" alt=\"" + config.logo.text + "\"";
+		logo+=">";
+	} else if (config.logo.text) {
+		logo="<h1>"+config.logo.text+"</h1>";
+	}
+	if (config.logo.link) logo="<a href=\"" + config.logo.link + "\">"+logo+"</a>";
+	$("#maintitle").html(logo);
+
+	// #title
+	$("#title").html("<h2>"+config.text.title+"</h2>");
+
+	// #titletext
+	$("#titletext").html(config.text.intro);
+
+	// More information
+	if (config.text.more) {
+		$("#information").html(config.text.more);
+	} else {
+		//hide more information link
+		$("#moreinformation").hide();
+	}
+
+	// Legend
+
+	// Node
+	if (config.legend.nodeLabel) {
+		$(".node").next().html(config.legend.nodeLabel);
+	} else {
+		//hide more information link
+		$(".node").hide();
+	}
+	// Edge
+	if (config.legend.edgeLabel) {
+		$(".edge").next().html(config.legend.edgeLabel);
+	} else {
+		//hide more information link
+		$(".edge").hide();
+	}
+	// Colours
+	if (config.legend.nodeLabel) {
+		$(".colours").next().html(config.legend.colorLabel);
+	} else {
+		//hide more information link
+		$(".colours").hide();
+	}
+
+    var a = $;
+    $GP = {
+        calculating: !1,
+        showgroup: !1
+    };
+    $GP.intro = a("#intro");
+    $GP.minifier = $GP.intro.find("#minifier");
+    $GP.mini = a("#minify");
+    $GP.info = a("#attributepane");
+    $GP.info_donnees = $GP.info.find(".nodeattributes");
+    $GP.info_name = $GP.info.find(".name");
+    $GP.info_link = $GP.info.find(".link");
+    $GP.info_data = $GP.info.find(".data");
+    $GP.info_close = $GP.info.find(".returntext");
+    $GP.info_close2 = $GP.info.find(".close");
+    $GP.info_p = $GP.info.find(".p");
+    $GP.info_close.click(nodeNormal);
+    $GP.info_close2.click(nodeNormal);
+    $GP.form = a("#mainpanel").find("form");
+    $GP.search = new Search($GP.form.find("#search"));
+    if (!config.features.search.enabled == true) {
+		$("#search").hide();
+	}
+	if (!config.features.groupSelector.enabled == true) {
+		$("#attributeselect").hide();
+	}
+    $GP.cluster = new Cluster($GP.form.find("#attributeselect"));
+    init(config.data);
+    
+    // Node hover behaviour
+    if (config.features.hoverBehaviour == "dim") {
+
+		var greyColor = '#ccc';
+		sigInst.bind('overnodes',function(event){
+		var nodes = event.content;
+		var neighbors = {};
+		sigInst.iterEdges(function(e){
+		if(nodes.indexOf(e.source)<0 && nodes.indexOf(e.target)<0){
+			if(!e.attr['grey']){
+				e.attr['true_color'] = e.color;
+				e.color = greyColor;
+				e.attr['grey'] = 1;
+			}
+		}else{
+			e.color = e.attr['grey'] ? e.attr['true_color'] : e.color;
+			e.attr['grey'] = 0;
+
+			neighbors[e.source] = 1;
+			neighbors[e.target] = 1;
+		}
+		}).iterNodes(function(n){
+			if(!neighbors[n.id]){
+				if(!n.attr['grey']){
+					n.attr['true_color'] = n.color;
+					n.color = greyColor;
+					n.attr['grey'] = 1;
+				}
+			}else{
+				n.color = n.attr['grey'] ? n.attr['true_color'] : n.color;
+				n.attr['grey'] = 0;
+			}
+		}).draw(2,2,2);
+		}).bind('outnodes',function(){
+		sigInst.iterEdges(function(e){
+			e.color = e.attr['grey'] ? e.attr['true_color'] : e.color;
+			e.attr['grey'] = 0;
+		}).iterNodes(function(n){
+			n.color = n.attr['grey'] ? n.attr['true_color'] : n.color;
+			n.attr['grey'] = 0;
+		}).draw(2,2,2);
+		});
+
+    } else if (config.features.hoverBehaviour == "hide") {
+
+		sigInst.bind('overnodes',function(event){
+			var nodes = event.content;
+			var neighbors = {};
+		sigInst.iterEdges(function(e){
+			if(nodes.indexOf(e.source)>=0 || nodes.indexOf(e.target)>=0){
+		    	neighbors[e.source] = 1;
+		    	neighbors[e.target] = 1;
+		  	}
+		}).iterNodes(function(n){
+		  	if(!neighbors[n.id]){
+		    	n.hidden = 1;
+		  	}else{
+		    	n.hidden = 0;
+		  }
+		}).draw(2,2,2);
+		}).bind('outnodes',function(){
+		sigInst.iterEdges(function(e){
+		  	e.hidden = 0;
+		}).iterNodes(function(n){
+		  	n.hidden = 0;
+		}).draw(2,2,2);
+		});
+
+    }
+    $GP.bg = a(sigInst._core.domElements.bg);
+    $GP.bg2 = a(sigInst._core.domElements.bg2);
+    var a = [],
+        b,x=1;
+		for (b in sigInst.clusters) a.push('<div style="line-height:12px"><a href="#' + b + '"><div style="width:40px;height:12px;border:1px solid #fff;background:' + b + ';display:inline-block"></div> Group ' + (x++) + ' (' + sigInst.clusters[b].length + ' members)</a></div>');
+    //a.sort();
+    $GP.cluster.content(a.join(""));
+    b = {
+        minWidth: 400,
+        maxWidth: 800,
+        maxHeight: 600
+    };//        minHeight: 300,
+    $("a.fb").fancybox(b);
+    $("#zoom").find("div.z").each(function () {
+        var a = $(this),
+            b = a.attr("rel");
+        a.click(function () {
+			if (b == "center") {
+				sigInst.position(0,0,1).draw();
+			} else {
+		        var a = sigInst._core;
+	            sigInst.zoomTo(a.domElements.nodes.width / 2, a.domElements.nodes.height / 2, a.mousecaptor.ratio * ("in" == b ? 1.5 : 0.5));		
+			}
+
+        })
+    });
+    $GP.mini.click(function () {
+        $GP.mini.hide();
+        $GP.intro.show();
+        $GP.minifier.show()
+    });
+    $GP.minifier.click(function () {
+        $GP.intro.hide();
+        $GP.minifier.hide();
+        $GP.mini.show()
+    });
+    $GP.intro.find("#showGroups").click(function () {
+        !0 == $GP.showgroup ? showGroups(!1) : showGroups(!0)
+    });
+    a = window.location.hash.substr(1);
+    if (0 < a.length) switch (a) {
+    case "Groups":
+        showGroups(!0);
+        break;
+    case "information":
+        $.fancybox.open($("#information"), b);
+        break;
+    default:
+        $GP.search.exactMatch = !0, $GP.search.search(a)
+		$GP.search.clean();
+    }
+
+	});
+
+});//End JSON Config load
 
 function Search(a) {
     this.input = a.find("input[name=search]");
@@ -296,280 +573,4 @@ function showCluster(a) {
     return !1
 }
 
-function init(data) {
-	var data = data;
-	
-	var drawProps, graphProps,mouseProps;
-	if (config.sigma.drawingProperties) 
-		drawProps=config.sigma.drawingProperties;
-	else
-		drawProps={
-        defaultLabelColor: "#000",
-        defaultLabelSize: 14,
-        defaultLabelBGColor: "#ddd",
-        defaultHoverLabelBGColor: "#002147",
-        defaultLabelHoverColor: "#fff",
-        labelThreshold: 10,
-        defaultEdgeType: "curve",
-        hoverFontStyle: "bold",
-        fontStyle: "bold",
-        activeFontStyle: "bold"
-    };
-    
-    if (config.sigma.graphProperties)	
-    	graphProps=config.sigma.graphProperties;
-    else
-    	graphProps={
-        minNodeSize: 1,
-        maxNodeSize: 7,
-        minEdgeSize: 0.2,
-        maxEdgeSize: 0.5
-    	};
-	
-	if (config.sigma.mouseProperties) 
-		mouseProps=config.sigma.mouseProperties;
-	else
-		mouseProps={
-        minRatio: 0.75, // How far can we zoom out?
-        maxRatio: 20, // How far can we zoom in?
-    	};
-	
-    var a = sigma.init(document.getElementById("sigma-canvas")).drawingProperties(drawProps).graphProperties(graphProps).mouseProperties(mouseProps);
-    sigInst = a;
-    a.active = !1;
-    a.neighbors = {};
-    a.detail = !1;
-    a.parseGexf("data/"+data);
-    gexf = sigmaInst = null;
-    a.clusters = {};
 
-	a.iterNodes(
-		function (b) { //This is where we populate the array used for the group select box
-
-			// note: index may not be consistent for all nodes. Should calculate each time. 
-			 // alert(JSON.stringify(b.attr.attributes[5].val));
-			// alert(b.x);
-			a.clusters[b.color] || (a.clusters[b.color] = []);
-			a.clusters[b.color].push(b.id);//SAH: push id not label
-
-		}
-		
-	);
-	
-    a.bind("upnodes", function (a) {
-        nodeActive(a.content[0])
-    });
-
-    a.draw()
-}
-
-$(document).ready(function() {
-
-
-
-	// Initialise main interface elements
-
-	var logo=""; // Logo elements
-
-	if (config.logo.file) {
-
-		logo = "<img src=\"images/" + config.logo.file +"\"";
-		if (config.logo.text) logo+=" alt=\"" + config.logo.text + "\"";
-		logo+=">";
-	} else if (config.logo.text) {
-		logo="<h1>"+config.logo.text+"</h1>";
-	}
-	if (config.logo.link) logo="<a href=\"" + config.logo.link + "\">"+logo+"</a>";
-	$("#maintitle").html(logo);
-
-	// #title
-	$("#title").html("<h2>"+config.text.title+"</h2>");
-
-	// #titletext
-	$("#titletext").html(config.text.intro);
-
-	// More information
-	if (config.text.more) {
-		$("#information").html(config.text.more);
-	} else {
-		//hide more information link
-		$("#moreinformation").hide();
-	}
-
-	// Legend
-
-	// Node
-	if (config.legend.nodeLabel) {
-		$(".node").next().html(config.legend.nodeLabel);
-	} else {
-		//hide more information link
-		$(".node").hide();
-	}
-	// Edge
-	if (config.legend.edgeLabel) {
-		$(".edge").next().html(config.legend.edgeLabel);
-	} else {
-		//hide more information link
-		$(".edge").hide();
-	}
-	// Colours
-	if (config.legend.nodeLabel) {
-		$(".colours").next().html(config.legend.colorLabel);
-	} else {
-		//hide more information link
-		$(".colours").hide();
-	}
-
-    var a = $;
-    $GP = {
-        calculating: !1,
-        showgroup: !1
-    };
-    $GP.intro = a("#intro");
-    $GP.minifier = $GP.intro.find("#minifier");
-    $GP.mini = a("#minify");
-    $GP.info = a("#attributepane");
-    $GP.info_donnees = $GP.info.find(".nodeattributes");
-    $GP.info_name = $GP.info.find(".name");
-    $GP.info_link = $GP.info.find(".link");
-    $GP.info_data = $GP.info.find(".data");
-    $GP.info_close = $GP.info.find(".returntext");
-    $GP.info_close2 = $GP.info.find(".close");
-    $GP.info_p = $GP.info.find(".p");
-    $GP.info_close.click(nodeNormal);
-    $GP.info_close2.click(nodeNormal);
-    $GP.form = a("#mainpanel").find("form");
-    $GP.search = new Search($GP.form.find("#search"));
-    if (!config.features.search.enabled == true) {
-		$("#search").hide();
-	}
-	if (!config.features.groupSelector.enabled == true) {
-		$("#attributeselect").hide();
-	}
-    $GP.cluster = new Cluster($GP.form.find("#attributeselect"));
-    init(config.data);
-    
-    // Node hover behaviour
-    if (config.features.hoverBehaviour == "dim") {
-
-		var greyColor = '#ccc';
-		sigInst.bind('overnodes',function(event){
-		var nodes = event.content;
-		var neighbors = {};
-		sigInst.iterEdges(function(e){
-		if(nodes.indexOf(e.source)<0 && nodes.indexOf(e.target)<0){
-			if(!e.attr['grey']){
-				e.attr['true_color'] = e.color;
-				e.color = greyColor;
-				e.attr['grey'] = 1;
-			}
-		}else{
-			e.color = e.attr['grey'] ? e.attr['true_color'] : e.color;
-			e.attr['grey'] = 0;
-
-			neighbors[e.source] = 1;
-			neighbors[e.target] = 1;
-		}
-		}).iterNodes(function(n){
-			if(!neighbors[n.id]){
-				if(!n.attr['grey']){
-					n.attr['true_color'] = n.color;
-					n.color = greyColor;
-					n.attr['grey'] = 1;
-				}
-			}else{
-				n.color = n.attr['grey'] ? n.attr['true_color'] : n.color;
-				n.attr['grey'] = 0;
-			}
-		}).draw(2,2,2);
-		}).bind('outnodes',function(){
-		sigInst.iterEdges(function(e){
-			e.color = e.attr['grey'] ? e.attr['true_color'] : e.color;
-			e.attr['grey'] = 0;
-		}).iterNodes(function(n){
-			n.color = n.attr['grey'] ? n.attr['true_color'] : n.color;
-			n.attr['grey'] = 0;
-		}).draw(2,2,2);
-		});
-
-    } else if (config.features.hoverBehaviour == "hide") {
-
-		sigInst.bind('overnodes',function(event){
-			var nodes = event.content;
-			var neighbors = {};
-		sigInst.iterEdges(function(e){
-			if(nodes.indexOf(e.source)>=0 || nodes.indexOf(e.target)>=0){
-		    	neighbors[e.source] = 1;
-		    	neighbors[e.target] = 1;
-		  	}
-		}).iterNodes(function(n){
-		  	if(!neighbors[n.id]){
-		    	n.hidden = 1;
-		  	}else{
-		    	n.hidden = 0;
-		  }
-		}).draw(2,2,2);
-		}).bind('outnodes',function(){
-		sigInst.iterEdges(function(e){
-		  	e.hidden = 0;
-		}).iterNodes(function(n){
-		  	n.hidden = 0;
-		}).draw(2,2,2);
-		});
-
-    }
-    $GP.bg = a(sigInst._core.domElements.bg);
-    $GP.bg2 = a(sigInst._core.domElements.bg2);
-    var a = [],
-        b,x=1;
-		for (b in sigInst.clusters) a.push('<div style="line-height:12px"><a href="#' + b + '"><div style="width:40px;height:12px;border:1px solid #fff;background:' + b + ';display:inline-block"></div> Group ' + (x++) + ' (' + sigInst.clusters[b].length + ' members)</a></div>');
-    //a.sort();
-    $GP.cluster.content(a.join(""));
-    b = {
-        minWidth: 400,
-        maxWidth: 800,
-        maxHeight: 600
-    };//        minHeight: 300,
-    $("a.fb").fancybox(b);
-    $("#zoom").find("div.z").each(function () {
-        var a = $(this),
-            b = a.attr("rel");
-        a.click(function () {
-			if (b == "center") {
-				sigInst.position(0,0,1).draw();
-			} else {
-		        var a = sigInst._core;
-	            sigInst.zoomTo(a.domElements.nodes.width / 2, a.domElements.nodes.height / 2, a.mousecaptor.ratio * ("in" == b ? 1.5 : 0.5));		
-			}
-
-        })
-    });
-    $GP.mini.click(function () {
-        $GP.mini.hide();
-        $GP.intro.show();
-        $GP.minifier.show()
-    });
-    $GP.minifier.click(function () {
-        $GP.intro.hide();
-        $GP.minifier.hide();
-        $GP.mini.show()
-    });
-    $GP.intro.find("#showGroups").click(function () {
-        !0 == $GP.showgroup ? showGroups(!1) : showGroups(!0)
-    });
-    a = window.location.hash.substr(1);
-    if (0 < a.length) switch (a) {
-    case "Groups":
-        showGroups(!0);
-        break;
-    case "information":
-        $.fancybox.open($("#information"), b);
-        break;
-    default:
-        $GP.search.exactMatch = !0, $GP.search.search(a)
-		$GP.search.clean();
-    }
-
-	});
-
-});//End JSON Config load
