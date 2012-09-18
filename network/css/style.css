@@ -246,7 +246,7 @@ padding: 0px 0 0 0;
 
 #mainpanel .col {
 width: 240px;
-padding: 18px 18px 8px 18px;
+padding: 18px 18px 18px 18px;
 margin: 0;
 
 }
@@ -263,12 +263,9 @@ padding: 6px 0 10px 0;
 	padding-bottom:15px;
 }
 
-#mainpanel #legend {
-border-bottom: 1px solid #999;
-}
 
 #search {
-
+	border-top: 1px solid #999;
 	padding: 20px 0 0px 2px;
 }
 
@@ -302,7 +299,7 @@ background-position: -11px -13px;
 	display: none;
 /*	border: 1px solid #999;*/
 	margin: 6px;
-	height: 150px;
+	/*height: 150px;*/
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
@@ -425,6 +422,11 @@ background-position: -11px -119px;
 background-position: -51px -122px;
 }
 
+#mainpanel .colours {
+
+background-image:url('../images/rainbow.png');
+
+}
 #legend .note {
 margin-bottom: 8px;
 
