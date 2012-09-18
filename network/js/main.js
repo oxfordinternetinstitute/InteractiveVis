@@ -32,7 +32,7 @@ function init(data) {
 	var data = data;
 	
 	var drawProps, graphProps,mouseProps;
-	if (config.sigma.drawingProperties) 
+	if (config.sigma && config.sigma.drawingProperties) 
 		drawProps=config.sigma.drawingProperties;
 	else
 		drawProps={
@@ -48,7 +48,7 @@ function init(data) {
         activeFontStyle: "bold"
     };
     
-    if (config.sigma.graphProperties)	
+    if (config.sigma && config.sigma.graphProperties)	
     	graphProps=config.sigma.graphProperties;
     else
     	graphProps={
@@ -58,7 +58,7 @@ function init(data) {
         maxEdgeSize: 0.5
     	};
 	
-	if (config.sigma.mouseProperties) 
+	if (config.sigma && config.sigma.mouseProperties) 
 		mouseProps=config.sigma.mouseProperties;
 	else
 		mouseProps={
@@ -416,7 +416,7 @@ function nodeNormal() {
 function nodeActive(a) {
 
 	var groupByDirection=false;
-	if (config.informationPanel.groupByEdgeDirection==true)	groupByDirection=true;
+	if (config.informationPanel.groupByEdgeDirection && config.informationPanel.groupByEdgeDirection==true)	groupByDirection=true;
 	
     sigInst.neighbors = {};
     sigInst.detail = !0;
