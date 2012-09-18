@@ -3,7 +3,21 @@ var sigInst, canvas, $GP
 //Load configuration file
 var config={};
 
-jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
+//For debug allow a config=file.json parameter to specify the config
+function GetQueryStringParams(sParam,defaultVal) {
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) {
+            return sParameterName[1];
+        }
+    }
+    return defaultVal;
+}
+
+
+jQuery.getJSON(GetQueryStringParams("config","config.json"), function(data, textStatus, jqXHR) {
 	config=data;
 	
 	if (config.type!="network") {
