@@ -28,7 +28,7 @@
         }
     },
     "informationPanel": {
-        "groupByEdgeDirection": true,
+        "groupByEdgeDirection": false,
         "showImage": false,
         "imageAttribute": "Image File"
     }
