@@ -2,7 +2,7 @@ var sigInst, canvas, $GP
 
 //Load configuration file
 var config={};
-jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
+jQuery.getJSON("config_ukgov.json", function(data, textStatus, jqXHR) {
 	config=data;
 	
 	if (config.type!="network") {
