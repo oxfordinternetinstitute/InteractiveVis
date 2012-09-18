@@ -1,6 +1,6 @@
 {
     "type": "network",
-    "data": "twitter_mutual2.gexf",
+    "data": "facebook.gexf",
     "version": "1.0",
     "logo": {
         "file": "oii_brand.png",
@@ -21,15 +21,15 @@
         "search": {
             "enabled": true
         },
-        "hoverBehaviour": "default",
+        "hoverBehaviour": "dim",
         "groupSelector": {
             "enabled": true,
             "attribute": "whatAttributeShouldWeGroupBy"
         }
     },
     "informationPanel": {
-        "groupByEdgeDirection": false,
-        "showImage": true,
+        "groupByEdgeDirection": true,
+        "showImage": false,
         "imageAttribute": "Image File"
     }
 }
