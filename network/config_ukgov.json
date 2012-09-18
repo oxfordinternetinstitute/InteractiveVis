@@ -21,7 +21,7 @@
         "search": {
             "enabled": true
         },
-        "hoverBehaviour": "dim",
+        "hoverBehaviour": "hide",
         "groupSelector": {
             "enabled": false,
             "attribute": "whatAttributeShouldWeGroupBy"
