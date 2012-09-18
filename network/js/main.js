@@ -274,7 +274,9 @@ function init(data) {
 
 	a.iterNodes(
 		function (b) { //This is where we populate the array used for the group select box
-			 alert(JSON.stringify(b.attr.attributes[5].val));
+
+			// note: index may not be consistent for all nodes. Should calculate each time. 
+			 // alert(JSON.stringify(b.attr.attributes[5].val));
 			// alert(b.x);
 			a.clusters[b.color] || (a.clusters[b.color] = []);
 			a.clusters[b.color].push(b.id);//SAH: push id not label
