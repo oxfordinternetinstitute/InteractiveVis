@@ -40,12 +40,13 @@ function Search(a) {
         this.state.removeClass("searching");
         this.results.hide();
         this.searching = !1;
+        this.input.val("");//SAH -- let's erase string when we close
         nodeNormal()
     };
     this.clean = function () {
         this.results.empty().hide();
         this.state.removeClass("searching");
-        this.input.val("")
+        this.input.val("");
     };
     this.search = function (a) {
         var b = !1,
@@ -122,13 +123,20 @@ function nodeNormal() {
 }
 
 function nodeActive(a) {
+
+	var groupByDirection=false;
+	if (config.informationPanel.groupByEdgeDirection==true)	groupByDirection=true;
+	
     sigInst.neighbors = {};
     sigInst.detail = !0;
     var b = sigInst._core.graph.nodesIndex[a];
     showGroups(!1);
+	var outgoing=[],incoming=[],mutual=[];//SAH
     sigInst.iterEdges(function (b) {
         b.attr.lineWidth = !1;
         b.hidden = !0;
+   	   if (a==b.source) outgoing.push(b.target);		//SAH
+	   else if (a==b.target) incoming.push(b.source);		//SAH
         if (a == b.source || a == b.target) sigInst.neighbors[a == b.target ? b.source : b.target] = {
             name: b.label,
             colour: b.color
@@ -140,9 +148,24 @@ function nodeActive(a) {
         a.attr.lineWidth = !1;
         a.attr.color = a.color
     });
-    var e = [],
-        c = sigInst.neighbors,
-        g;
+    
+    if (groupByDirection) {
+		//SAH - Compute intersection for mutual and remove these from incoming/outgoing
+		for (e in outgoing) {
+			name=outgoing[e];
+			if (incoming.indexOf(name)!=-1) {
+				mutual.push(name);
+				incoming.splice(incoming.indexOf(name),1);
+				outgoing.splice(outgoing.indexOf(name),1);
+			}
+		}
+    }
+    
+    var createList=function(c) {
+        var f = [];
+    	var e = [],
+      	 	 c = sigInst.neighbors,
+       		 g;
     for (g in c) {
         var d = sigInst._core.graph.nodesIndex[g];
         d.hidden = !1;
@@ -163,7 +186,38 @@ function nodeActive(a) {
         return c != d ? c < d ? -1 : c > d ? 1 : 0 : e < f ? -1 : e > f ? 1 : 0
     });
     d = "";
-    for (g in e) c = e[g], c.group != d && (d = c.group, f.push('<li class="cf" rel="' + c.colour + '"><div class=""></div><div class="">' + d + "</div></li>")), f.push('<li class="membership"><a href="#' + c.name + '" onmouseover="sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex[\'' + c.id + "'])\" onclick=\"nodeActive('" + c.id + '\')" onmouseout="sigInst.refresh()">' + c.name + "</a></li>");
+		for (g in e) {
+			c = e[g];
+			/*if (c.group != d) {
+				d = c.group;
+				f.push('<li class="cf" rel="' + c.color + '"><div class=""></div><div class="">' + d + "</div></li>");
+			}*/
+			f.push('<li class="membership"><a href="#' + c.name + '" onmouseover="sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex[\'' + c.id + '\'])\" onclick=\"nodeActive(\'' + c.id + '\')" onmouseout="sigInst.refresh()">' + c.name + "</a></li>");
+		}
+		return f;
+	}
+	
+	/*console.log("mutual:" + mutual);
+	console.log("incoming:" + incoming);
+	console.log("outgoing:" + outgoing);
+	*/
+	
+	var f=[];
+	
+	//console.log(outgoing);
+	//console.log(sigInst.neighbors);
+
+	if (groupByDirection) {
+		f.push("<h2>Mututal (" + mutual.length + ")</h2>");
+		(mutual.length>0)? f=f.concat(createList(mutual)) : f.push("No mutual links<br>");
+		f.push("<h2>Incoming (" + incoming.length + ")</h2>");
+		(incoming.length>0)? f=f.concat(createList(incoming)) : f.push("No incoming links<br>");
+		f.push("<h2>Outgoing (" + outgoing.length + ")</h2>");
+		(outgoing.length>0)? f=f.concat(createList(outgoing)) : f.push("No outgoing links<br>");
+	} else {
+		f=f.concat(createList(sigInst.neighbors));
+	}
+	//b is object of active node -- SAH
     b.hidden = !1;
     b.attr.color = b.color;
     b.attr.lineWidth = 6;
