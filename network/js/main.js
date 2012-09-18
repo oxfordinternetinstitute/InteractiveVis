@@ -455,7 +455,7 @@ function nodeActive(a) {
     var createList=function(c) {
         var f = [];
     	var e = [],
-      	 	 c = sigInst.neighbors,
+      	 	 //c = sigInst.neighbors,
        		 g;
     for (g in c) {
         var d = sigInst._core.graph.nodesIndex[g];
