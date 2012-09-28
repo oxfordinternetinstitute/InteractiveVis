@@ -33,22 +33,29 @@ def rgb2hex(r,g,b):
 gexf = xml.dom.minidom.parse(sys.argv[1])
 
 #Parse Attributes
-nodesAttributes = {}#The list of attributes of the nodes of the graph that we build in json
-edgesAttributes = {}#The list of attributes of the edges of the graph that we build in json
+nodesAttributes = []#The list of attributes of the nodes of the graph that we build in json
+edgesAttributes = []#The list of attributes of the edges of the graph that we build in json
 #In the gexf (that is an xml), the list of xml nodes 'attributes' (note the plural 's')
 attributesNodes = gexf.getElementsByTagName("attributes")
 for attr in attributesNodes:
 	if (attr.getAttribute("class") == "node"):
 		attributeNodes = attr.getElementsByTagName("attribute")#The list of xml nodes 'attribute' (no 's')
-		for attr in attributeNodes:
-			id = attr.getAttribute('id')
-			title = attr.getAttribute('title')
-			#type = attr.getAttribute('type');
-			if (title!=None):
-				nodesAttributes[id]=title
-			else:
-				nodesAttributes[id]=id
-		break#once we find one tag attributes with class "node" we are done
+		for attributeNodes in attributeNodes:
+			id = attributeNodes.getAttribute('id')
+			title = attributeNodes.getAttribute('title')
+			type = attributeNodes.getAttribute('type')
+			attribute = {"id":id, "title":title, "type":type}
+        	nodesAttributes.append(attribute);
+	elif (attr.getAttribute("class")=="edge"):
+		attributeNodes = attr.getElementsByTagName('attribute')#The list of xml nodes 'attribute' (no 's')
+		for attributeNode in attributeNodes:
+			#Each xml node 'attribute'
+			id = attributeNode.getAttribute('id')
+		  	title = attributeNode.getAttribute('title')
+		  	type = attributeNode.getAttribute('type')
+		  	
+		  	attribute = {"id":id, "title":title, "type":type}
+		  	edgesAttributes.append(attribute)
 	 
 jsonNodes = []#The nodes of the graph
 nodesNodes = gexf.getElementsByTagName("nodes")#The list of xml nodes 'nodes' (plural)
@@ -100,7 +107,7 @@ for nodes in nodesNodes:
 		for attvalueNode in attvalueNodes:
 			attr = attvalueNode.getAttribute('for');
 			val = attvalueNode.getAttribute('value');
-			node["attributes"].append({"attr":nodesAttributes[attr], "val":val})
+			node["attributes"].append({"attr":attr, "val":val})
 
 		jsonNodes.append(node)
 
@@ -116,11 +123,21 @@ for edgesNode in edgesNodes:
 		id = edgeNode.getAttribute("id") if edgeNode.hasAttribute("id") else edgeId
 		edgeId=edgeId+1
 		
-		edge = {"id":id, "sourceID":source, "targetID":target,"label":label, "attributes":[]}
+		edge = {
+		    "id":         id,
+		    "sourceID":   source,
+		    "targetID":   target,
+		    "label":      label,
+		    "attributes": []
+		}
+
+		if(edgeNode.hasAttribute("weight")):
+			edge["weight"] = edgeNode.getAttribute('weight')
+
 		attvalueNodes = edgeNode.getElementsByTagName('attvalue')
 		for attvalueNode in attvalueNodes:
 			attr = attvalueNode.getAttribute('for')
-			al = attvalueNode.getAttribute('value')
+			val = attvalueNode.getAttribute('value')
 			edge["attributes"].append({"attr":attr, "val":val})
 
 		jsonEdges.append(edge)
