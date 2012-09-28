@@ -5,8 +5,8 @@ $(document).ready(function() {
 //Load
 var config={};
 var data={};//Previusly mapData and countrycodes. These should no longer be used
-jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
-	config=data;
+jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
+	config=conf;
 	
 	if (config.type!="map") {
 		//bad config
@@ -14,8 +14,8 @@ jQuery.getJSON("config.json", function(data, textStatus, jqXHR) {
 		return;
 	}
 	
-	jQuery.getJSON("data.json", function(data, textStatus, jqXHR) {
-	data=data.data;
+	jQuery.getJSON("data.json", function(datajson, textStatus, jqXHR) {
+	data=datajson.data;
 	
 	var currentStat=config.features.mainStat;
 
