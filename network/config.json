@@ -1,6 +1,6 @@
 {
     "type": "network",
-    "data": "twitter_mutual2.gexf",
+    "data": "twitter_mutual2.json",
     "version": "1.0",
     "logo": {
         "file": "oii_brand.png",

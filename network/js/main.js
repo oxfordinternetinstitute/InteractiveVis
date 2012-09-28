@@ -5,7 +5,9 @@ var config={};
 
 //For debug allow a config=file.json parameter to specify the config
 function GetQueryStringParams(sParam,defaultVal) {
-    var sPageURL = window.location.search.substring(1);
+    var sPageURL = ""+window.location;//.search.substring(1);//This might be causing error in Safari?
+    if (sPageURL.indexOf("?")==-1) return defaultVal;
+    sPageURL=sPageURL.substr(sPageURL.indexOf("?")+1);    
     var sURLVariables = sPageURL.split('&');
     for (var i = 0; i < sURLVariables.length; i++) {
         var sParameterName = sURLVariables[i].split('=');
@@ -25,11 +27,16 @@ jQuery.getJSON(GetQueryStringParams("config","config.json"), function(data, text
 		alert("Invalid configuration settings.")
 		return;
 	}
+	
+	//As soon as page is ready (and data ready) set up it
+	$(document).ready(setupGUI(config));
+});//End JSON Config load
+
 
 // FUNCTION DECLARATIONS
 
-function init(data) {
-	var data = data;
+function initSigma(config) {
+	var data=config.data
 	
 	var drawProps, graphProps,mouseProps;
 	if (config.sigma && config.sigma.drawingProperties) 
@@ -71,38 +78,42 @@ function init(data) {
     a.active = !1;
     a.neighbors = {};
     a.detail = !1;
-    a.parseGexf("data/"+data);
-    gexf = sigmaInst = null;
-    a.clusters = {};
 
-	a.iterNodes(
-		function (b) { //This is where we populate the array used for the group select box
 
-			// note: index may not be consistent for all nodes. Should calculate each time. 
-			 // alert(JSON.stringify(b.attr.attributes[5].val));
-			// alert(b.x);
-			a.clusters[b.color] || (a.clusters[b.color] = []);
-			a.clusters[b.color].push(b.id);//SAH: push id not label
+    dataReady = function() {//This is called as soon as data is loaded
+		a.clusters = {};
 
-		}
+		a.iterNodes(
+			function (b) { //This is where we populate the array used for the group select box
+
+				// note: index may not be consistent for all nodes. Should calculate each time. 
+				 // alert(JSON.stringify(b.attr.attributes[5].val));
+				// alert(b.x);
+				a.clusters[b.color] || (a.clusters[b.color] = []);
+				a.clusters[b.color].push(b.id);//SAH: push id not label
+			}
 		
-	);
+		);
 	
-    a.bind("upnodes", function (a) {
-        nodeActive(a.content[0])
-    });
+		a.bind("upnodes", function (a) {
+		    nodeActive(a.content[0])
+		});
 
-    a.draw()
+		a.draw();
+		configSigmaElements(config);
+	}
+
+    if (data.indexOf("gexf")>0 || data.indexOf("xml")>0)
+        a.parseGexf("data/"+data,dataReady);
+    else
+	    a.parseJson("data/"+data,dataReady);
+    gexf = sigmaInst = null;
 }
 
-$(document).ready(function() {
 
-
-
+function setupGUI(config) {
 	// Initialise main interface elements
-
 	var logo=""; // Logo elements
-
 	if (config.logo.file) {
 
 		logo = "<img src=\"images/" + config.logo.file +"\"";
@@ -152,15 +163,14 @@ $(document).ready(function() {
 		$(".colours").hide();
 	}
 
-    var a = $;
-    $GP = {
-        calculating: !1,
-        showgroup: !1
-    };
-    $GP.intro = a("#intro");
+	$GP = {
+		calculating: !1,
+		showgroup: !1
+	};
+    $GP.intro = $("#intro");
     $GP.minifier = $GP.intro.find("#minifier");
-    $GP.mini = a("#minify");
-    $GP.info = a("#attributepane");
+    $GP.mini = $("#minify");
+    $GP.info = $("#attributepane");
     $GP.info_donnees = $GP.info.find(".nodeattributes");
     $GP.info_name = $GP.info.find(".name");
     $GP.info_link = $GP.info.find(".link");
@@ -170,7 +180,7 @@ $(document).ready(function() {
     $GP.info_p = $GP.info.find(".p");
     $GP.info_close.click(nodeNormal);
     $GP.info_close2.click(nodeNormal);
-    $GP.form = a("#mainpanel").find("form");
+    $GP.form = $("#mainpanel").find("form");
     $GP.search = new Search($GP.form.find("#search"));
     if (!config.features.search.enabled == true) {
 		$("#search").hide();
@@ -179,7 +189,12 @@ $(document).ready(function() {
 		$("#attributeselect").hide();
 	}
     $GP.cluster = new Cluster($GP.form.find("#attributeselect"));
-    init(config.data);
+    config.GP=$GP;
+    initSigma(config);
+}
+
+function configSigmaElements(config) {
+	$GP=config.GP;
     
     // Node hover behaviour
     if (config.features.hoverBehaviour == "dim") {
@@ -250,8 +265,8 @@ $(document).ready(function() {
 		});
 
     }
-    $GP.bg = a(sigInst._core.domElements.bg);
-    $GP.bg2 = a(sigInst._core.domElements.bg2);
+    $GP.bg = $(sigInst._core.domElements.bg);
+    $GP.bg2 = $(sigInst._core.domElements.bg2);
     var a = [],
         b,x=1;
 		for (b in sigInst.clusters) a.push('<div style="line-height:12px"><a href="#' + b + '"><div style="width:40px;height:12px;border:1px solid #fff;background:' + b + ';display:inline-block"></div> Group ' + (x++) + ' (' + sigInst.clusters[b].length + ' members)</a></div>');
@@ -302,9 +317,7 @@ $(document).ready(function() {
 		$GP.search.clean();
     }
 
-	});
-
-});//End JSON Config load
+}
 
 function Search(a) {
     this.input = a.find("input[name=search]");
@@ -458,7 +471,10 @@ function nodeActive(a) {
       	 	 //c = sigInst.neighbors,
        		 g;
     for (g in c) {
-        var d = sigInst._core.graph.nodesIndex[g];
+        if (groupByDirection)//less than ideal; should be refactored
+        	var d = sigInst._core.graph.nodesIndex[c[g]];
+        else
+        	var d = sigInst._core.graph.nodesIndex[g];
         d.hidden = !1;
         d.attr.lineWidth = !1;
         d.attr.color = c[g].colour;
@@ -490,12 +506,12 @@ function nodeActive(a) {
 	
 	/*console.log("mutual:" + mutual);
 	console.log("incoming:" + incoming);
-	console.log("outgoing:" + outgoing);
-	*/
+	console.log("outgoing:" + outgoing);*/
+	
 	
 	var f=[];
 	
-	//console.log(outgoing);
+	//console.log("neighbors:");
 	//console.log(sigInst.neighbors);
 
 	if (groupByDirection) {

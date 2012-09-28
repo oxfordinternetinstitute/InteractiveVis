@@ -1,6 +1,6 @@
 {
     "type": "network",
-	"data":"ukgov3.gexf",
+	"data":"ukgov3.json",
     "version": "1.0",
     "logo": {
         "file": "oii_brand.png",
@@ -28,7 +28,7 @@
         }
     },
     "informationPanel": {
-        "groupByEdgeDirection": false,
+        "groupByEdgeDirection": true,
         "showImage": false,
         "imageAttribute": "Image File"
     },
