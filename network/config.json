@@ -29,7 +29,6 @@
     },
     "informationPanel": {
         "groupByEdgeDirection": false,
-        "showImage": true,
         "imageAttribute": "Image File"
     },
     "sigma": {
