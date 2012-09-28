@@ -35,6 +35,14 @@ jQuery.getJSON(GetQueryStringParams("config","config.json"), function(data, text
 
 // FUNCTION DECLARATIONS
 
+Object.size = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
+
 function initSigma(config) {
 	var data=config.data
 	
@@ -435,16 +443,20 @@ function nodeActive(a) {
     sigInst.detail = !0;
     var b = sigInst._core.graph.nodesIndex[a];
     showGroups(!1);
-	var outgoing=[],incoming=[],mutual=[];//SAH
+	var outgoing={},incoming={},mutual={};//SAH
     sigInst.iterEdges(function (b) {
         b.attr.lineWidth = !1;
         b.hidden = !0;
-   	   if (a==b.source) outgoing.push(b.target);		//SAH
-	   else if (a==b.target) incoming.push(b.source);		//SAH
-        if (a == b.source || a == b.target) sigInst.neighbors[a == b.target ? b.source : b.target] = {
+        
+        n={
             name: b.label,
             colour: b.color
-        }, b.hidden = !1, b.attr.color = "rgba(0, 0, 0, 1)"
+        };
+        
+   	   if (a==b.source) outgoing[b.target]=n;		//SAH
+	   else if (a==b.target) incoming[b.source]=n;		//SAH
+       if (a == b.source || a == b.target) sigInst.neighbors[a == b.target ? b.source : b.target] = n;
+       b.hidden = !1, b.attr.color = "rgba(0, 0, 0, 1)";
     });
     var f = [];
     sigInst.iterNodes(function (a) {
@@ -456,11 +468,11 @@ function nodeActive(a) {
     if (groupByDirection) {
 		//SAH - Compute intersection for mutual and remove these from incoming/outgoing
 		for (e in outgoing) {
-			name=outgoing[e];
-			if (incoming.indexOf(name)!=-1) {
-				mutual.push(name);
-				incoming.splice(incoming.indexOf(name),1);
-				outgoing.splice(outgoing.indexOf(name),1);
+			//name=outgoing[e];
+			if (e in incoming) {
+				mutual[e]=outgoing[e];
+				delete incoming[e];
+				delete outgoing[e];
 			}
 		}
     }
@@ -471,10 +483,7 @@ function nodeActive(a) {
       	 	 //c = sigInst.neighbors,
        		 g;
     for (g in c) {
-        if (groupByDirection)//less than ideal; should be refactored
-        	var d = sigInst._core.graph.nodesIndex[c[g]];
-        else
-        	var d = sigInst._core.graph.nodesIndex[g];
+        var d = sigInst._core.graph.nodesIndex[g];
         d.hidden = !1;
         d.attr.lineWidth = !1;
         d.attr.color = c[g].colour;
@@ -504,9 +513,12 @@ function nodeActive(a) {
 		return f;
 	}
 	
-	/*console.log("mutual:" + mutual);
-	console.log("incoming:" + incoming);
-	console.log("outgoing:" + outgoing);*/
+	/*console.log("mutual:");
+	console.log(mutual);
+	console.log("incoming:");
+	console.log(incoming);
+	console.log("outgoing:");
+	console.log(outgoing);*/
 	
 	
 	var f=[];
@@ -515,12 +527,15 @@ function nodeActive(a) {
 	//console.log(sigInst.neighbors);
 
 	if (groupByDirection) {
-		f.push("<h2>Mututal (" + mutual.length + ")</h2>");
-		(mutual.length>0)? f=f.concat(createList(mutual)) : f.push("No mutual links<br>");
-		f.push("<h2>Incoming (" + incoming.length + ")</h2>");
-		(incoming.length>0)? f=f.concat(createList(incoming)) : f.push("No incoming links<br>");
-		f.push("<h2>Outgoing (" + outgoing.length + ")</h2>");
-		(outgoing.length>0)? f=f.concat(createList(outgoing)) : f.push("No outgoing links<br>");
+		size=Object.size(mutual);
+		f.push("<h2>Mututal (" + size + ")</h2>");
+		(size>0)? f=f.concat(createList(mutual)) : f.push("No mutual links<br>");
+		size=Object.size(incoming);
+		f.push("<h2>Incoming (" + size + ")</h2>");
+		(size>0)? f=f.concat(createList(incoming)) : f.push("No incoming links<br>");
+		size=Object.size(outgoing);
+		f.push("<h2>Outgoing (" + size + ")</h2>");
+		(size>0)? f=f.concat(createList(outgoing)) : f.push("No outgoing links<br>");
 	} else {
 		f=f.concat(createList(sigInst.neighbors));
 	}
