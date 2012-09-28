@@ -30,7 +30,7 @@
     "informationPanel": {
         "groupByEdgeDirection": false,
         "showImage": true,
-        "imageAttribute": "v_Image File"
+        "imageAttribute": "Image File"
     },
     "sigma": {
     	"drawingProperties":{    

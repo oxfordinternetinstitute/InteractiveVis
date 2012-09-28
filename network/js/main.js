@@ -537,25 +537,27 @@ function nodeActive(a) {
             b = a.attr("rel");
     });
     f = b.attr;
-    if (f.attributes && 0 < f.attributes.length) {
+    if (f.attributes) {
+  		var image_attribute = false;
+  		if (config.informationPanel.imageAttribute) {
+  			image_attribute=config.informationPanel.imageAttribute;
+  		}
         e = [];
         temp_array = [];
         g = 0;
-        for (c = f.attributes.length; g < c; g++) {
-            var d = f.attributes[g].val,
+        for (var attr in f.attributes) {
+            var d = f.attributes[attr],
                 h = "";
-			if (f.attributes[g].attr == "Image File") {
-			} else {
-                h = '<span><strong>' + f.attributes[g].attr + ':</strong> ' + d + '</span><br/>'
+			if (attr!=image_attribute) {
+                h = '<span><strong>' + attr + ':</strong> ' + d + '</span><br/>'
 			}
-            temp_array.push(f.attributes[g].attr);
+            //temp_array.push(f.attributes[g].attr);
             e.push(h)
         }
 
-        if (config.informationPanel.showImage == true) {
-       		image_attribute = config.informationPanel.imageAttribute;
-        	image_index = jQuery.inArray(image_attribute, temp_array);
-        	$GP.info_name.html("<div><img src=" + f.attributes[image_index].val + " style=\"vertical-align:middle\" /> <span onmouseover=\"sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex['" + b.id + '\'])" onmouseout="sigInst.refresh()">' + b.label + "</span></div>");
+        if (image_attribute) {
+        	//image_index = jQuery.inArray(image_attribute, temp_array);
+        	$GP.info_name.html("<div><img src=" + f.attributes[image_attribute] + " style=\"vertical-align:middle\" /> <span onmouseover=\"sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex['" + b.id + '\'])" onmouseout="sigInst.refresh()">' + b.label + "</span></div>");
         } else {
         	$GP.info_name.html("<div><span onmouseover=\"sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex['" + b.id + '\'])" onmouseout="sigInst.refresh()">' + b.label + "</span></div>");
         }
