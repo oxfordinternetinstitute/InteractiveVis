@@ -1,4 +1,5 @@
 //library=$(function() {
+"use strict";
 $(document).ready(function() {
 
 
@@ -10,7 +11,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 	
 	if (config.type!="map") {
 		//bad config
-		alert("Cannot find configuration settings.")
+		alert("Cannot find configuration settings.");
 		return;
 	}
 	
@@ -58,9 +59,13 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 		///txt+="<li class=\"changestat\">" +//<a class=\"changestat\" href=\"javascript:changeMainStat('" + config.features.mainStat + "');\">"
 		//	config["legend_"+config.features.mainStat].title + "</li>";//</a>
 		//console.log(config.features.alternativeMainStats);
+		var stat;
 		for (var i=-1; i<config.features.alternativeMainStats.length; i++) {
-			if (i==-1) stat=config.features.mainStat;
-			else stat=config.features.alternativeMainStats[i];
+			if (i==-1) {
+				stat=config.features.mainStat;
+			} else {
+				stat=config.features.alternativeMainStats[i];
+			}
 			//$("<option value=\"" + stat +"\">"+config["legend_"+stat].title+"</option>").appendTo(txt);
 			$("<li id=\"" + stat +"\">"+config["legend_"+stat].title+"</li>").click(function() {changeMainStat(this.id);$("#altStats").toggle();}).appendTo(txt);
 			//txt+="<li class=\"changestat\"><a class=\"changestat\" href=\"javascript:changeMainStat('" + stat + "');\">" +
@@ -92,7 +97,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 		Used to skip: XS,XP,XN,XO,XC,XA*/
 		paint(country);
 	}
-	obj=map.rect(0, 0, image.width, image.height, 0).attr({stroke: 'none', fill: '#fff', opacity: 0});
+	var obj=map.rect(0, 0, image.width, image.height, 0).attr({stroke: 'none', fill: '#fff', opacity: 0});
 	obj.id='container';
 	obj.toBack();
 	var set=map.setFinish();
@@ -228,7 +233,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 	
 	function scale2hex(value) {
 		var legend = config["legend_"+currentStat];
-		color="#888888";
+		var color="#888888";
 		for (var i=0; i<legend.cutpoints.length;i++) {
 			if (value<legend.cutpoints[i]) {
 				return legend.colors[i];
@@ -262,12 +267,13 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 
 	function zoom(e, delta) {
 		var width, height,factor,x,y;
-		width=viewbox.width;
-		height=viewbox.height;
+		var width=viewbox.width;
+		var height=viewbox.height;
 
-		centerX=viewbox.width/2+viewbox.x;
-		centerY=viewbox.height/2+viewbox.y;
+		var centerX=viewbox.width/2+viewbox.x;
+		var centerY=viewbox.height/2+viewbox.y;
 		
+		var coords;
 		if (e!=null) {
 			e.preventDefault();
 			coords=screen2svgCoords(e.clientX,e.clientY);
@@ -283,9 +289,9 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 			viewbox.x-=(viewbox.width-width)*0.5;
 			viewbox.y-=(viewbox.height-height)*0.5;
 			if (e!=null) {//line up map with mouse cursor
-				coords2=screen2svgCoords(e.clientX,e.clientY);//updated coords
-				dx=(coords.x-coords2.x);
-				dy=(coords.y-coords2.y);
+				var coords2=screen2svgCoords(e.clientX,e.clientY);//updated coords
+				var dx=(coords.x-coords2.x);
+				var dy=(coords.y-coords2.y);
 				viewbox.x=viewbox.x+dx;
 				viewbox.y=viewbox.y+dy;
 			}
@@ -366,16 +372,16 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 
 	
 	function screen2svgCoords(x,y) {
-		factor=viewbox.width/svg.width();
-		svgX=(x*factor)+viewbox.x;
-		svgY=(y*factor)+viewbox.y;
+		var factor=viewbox.width/svg.width();
+		var svgX=(x*factor)+viewbox.x;
+		var svgY=(y*factor)+viewbox.y;
 		return {x:svgX,y:svgY};
 	}
 	
 	function svg2screenCoords(x,y) {
-		factor=viewbox.width/svg.width();
-		sX=(x-viewbox.x)/factor;
-		sY=(y-viewbox.y)/factor;
+		var factor=viewbox.width/svg.width();
+		var sX=(x-viewbox.x)/factor;
+		var sY=(y-viewbox.y)/factor;
 		return {x:sX,y:sY};
 	}	
 
@@ -461,7 +467,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 	}
 	
 	function datachange(name, data) {
-		animate = $("#attributepane").is(":visible"); //only animate if the panel is shown
+		var animate = $("#attributepane").is(":visible"); //only animate if the panel is shown
 		$("#attributepane").show();
 
 		$('#chartname').text(name);
