@@ -9,7 +9,7 @@ var data={};//Previusly mapData and countrycodes. These should no longer be used
 jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 	config=conf;
 	
-	if (config.type!="map") {
+	if (!config.global || !config.global.type=="map") {
 		//bad config
 		alert("Cannot find configuration settings.");
 		return;
@@ -18,8 +18,29 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 	jQuery.getJSON("data.json", function(datajson, textStatus, jqXHR) {
 	data=datajson.data;
 	
-	var currentStat=config.features.mainStat;
-
+	var currentStat="";
+	var altStats=[];
+	var barStats=[];
+	var textStats=[];
+	for (var i=0; i<config.features.stats.length; i++) {
+		var stat = config.features.stats[i];
+		var leg = config["features"]["legend_"+stat]
+		if (leg.type=="main_statistic") {
+			currentStat=stat;
+			altStats.push(stat);
+		} else if (leg.type=="alternative_statistic") {
+			altStats.push(stat);
+		}
+		
+		if (leg.style=="bar") {
+			barStats.push({"stat":stat,"label":leg.label});
+		} else if (leg.style=="text") {
+			textStats.push({"stat":stat,"label":leg.label});
+		}
+	}
+	if (currentStat=="" && altStats.length>0) {
+		currentStat=altStats[0];
+	}
 	
 	//init GUI
 	var logo="";//Default title
@@ -51,7 +72,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 	updateLegend();
 	
 	//alternative main stats?
-	if (config.features.alternativeMainStats) {
+	if (altStats.length>0) {
 		$("#legendtitle").click(function() {$("#altStats").toggle();});
 		$("#legendtitle #expand").show();
 		//var txt=$("<select/>");
@@ -60,14 +81,10 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 		//	config["legend_"+config.features.mainStat].title + "</li>";//</a>
 		//console.log(config.features.alternativeMainStats);
 		var stat;
-		for (var i=-1; i<config.features.alternativeMainStats.length; i++) {
-			if (i==-1) {
-				stat=config.features.mainStat;
-			} else {
-				stat=config.features.alternativeMainStats[i];
-			}
+		for (var i=0; i<altStats.length; i++) {
+			stat=altStats[i];
 			//$("<option value=\"" + stat +"\">"+config["legend_"+stat].title+"</option>").appendTo(txt);
-			$("<li id=\"" + stat +"\">"+config["legend_"+stat].title+"</li>").click(function() {changeMainStat(this.id);$("#altStats").toggle();}).appendTo(txt);
+			$("<li id=\"" + stat +"\">"+config["features"]["legend_"+stat].title+"</li>").click(function() {changeMainStat(this.id);$("#altStats").toggle();}).appendTo(txt);
 			//txt+="<li class=\"changestat\"><a class=\"changestat\" href=\"javascript:changeMainStat('" + stat + "');\">" +
 			//config["legend_"+stat].title + "</a></li>";
 		}
@@ -111,10 +128,10 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 	map.setViewBox(viewbox.x, viewbox.y, viewbox.width, viewbox.height);
 	
 	// chart
-	if (config.informationPanel.bars) {
+	if (barStats.length>0) {
 		var elem=$('#chart');
-		var chartlabels=config.informationPanel.bars.labels;//['Total', 'Male', 'Female'];
-		var chartsuffix=config.informationPanel.bars.units;//'%';
+		//var chartlabels=config.informationPanel.bars.labels;//['Total', 'Male', 'Female'];
+		var chartsuffix=config.features.bars.units;//'%';
 		var chartstyle={};
 		chartstyle.labels={'text-anchor': 'middle', 'font': '12px Helvetica, Arial, sans-serif', fill: '#666'};
 		chartstyle.plots={
@@ -134,13 +151,13 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 		plot.x=0;
 		plot.y=0;
 		plot.gutter=Math.round(chart.width*0.1);
-		plot.width=(chart.width-(plot.gutter*(chartlabels.length-1)))/chartlabels.length;
+		plot.width=(chart.width-(plot.gutter*(barStats.length-1)))/barStats.length;
 		plot.height=Math.min(chart.height,300);
 	
 		var labels=chart.set();
-		for (var i=0; i<chartlabels.length; i++) {
+		for (var i=0; i<barStats.length; i++) {
 			var label=chart.text(plot.x+((plot.width+plot.gutter)*i)+plot.width/2, plot.y).attr(chartstyle.labels);
-			var words=chartlabels[i].split(' '), tmp='';
+			var words=barStats[i]["label"].split(' '), tmp='';
 			for (var n=0; n<words.length; n++) {
 				label.attr('text', tmp+' '+words[n]);
 				if (label.getBBox(0).width > plot.width) tmp+='\n'+words[n];
@@ -156,14 +173,14 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 		plot.height=plot.height-labels.getBBox(0).height-5;
 
 		var bars=chart.set();
-		for (var i=0; i<chartlabels.length; i++) {
+		for (var i=0; i<barStats.length; i++) {
 			chart.rect(plot.x+((plot.width+plot.gutter)*i), plot.y, plot.width, plot.height).attr({stroke:'none', fill:'#ccc'});
 			var bar=chart.rect(plot.x+((plot.width+plot.gutter)*i), plot.y+plot.height, plot.width, 0).attr(chartstyle.plots.colours[i]);
 			bars.push(bar);
 		}
 
 		var values=chart.set();
-		for (var i=0; i<chartlabels.length; i++) {
+		for (var i=0; i<barStats.length; i++) {
 			var value=chart.text(plot.x+((plot.width+plot.gutter)*i)+plot.width/2, 0).attr(chartstyle.plots.text[i]);
 			if (chartsuffix) value.suffix=chartsuffix;
 			value.attr('text', '0'+chartsuffix);
@@ -188,9 +205,9 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
         maxHeight: 600
     });//        minHeight: 300,
     
-    if (config.informationPanel.showOnLoad.enabled) {
-    	datachange(data[config.informationPanel.showOnLoad.stat].label,
-    		data[config.informationPanel.showOnLoad.stat]);
+    if (config.features.onLoad.enabled) {
+    	datachange(data[config.features.onLoad.datapoint].label,
+    		data[config.features.onLoad.datapoint]);
     } else {//hide panel on load
     	$("#attributepane").hide();
     }
@@ -232,7 +249,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 	}
 	
 	function scale2hex(value) {
-		var legend = config["legend_"+currentStat];
+		var legend = config["features"]["legend_"+currentStat];
 		var color="#888888";
 		for (var i=0; i<legend.cutpoints.length;i++) {
 			if (value<legend.cutpoints[i]) {
@@ -472,14 +489,14 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 
 		$('#chartname').text(name);
 		
-		if (config.informationPanel.bars) {
-			var maxvalue=config.informationPanel.bars.maxValue;
+		if (barStats.length>0) {
+			var maxvalue=config.features.bars.maxValue;
 			var scale=plot.height/maxvalue;
 
 			if (animate) values.attr('opacity', 0);
 			for (var i=0; i<values.length; i++) {
 			//for (var i=0; i<chartlabels.length; i++) {
-				var stat=config.informationPanel.bars.stats[i];
+				var stat=barStats[i]["stat"];//config.informationPanel.bars.stats[i];
 				var t, ty;
 				if (data && !(isNaN(data[stat]))) {
 					t=new String(data[stat]);
@@ -495,7 +512,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 		
 
 			for (var i=0; i<bars.length; i++) {
-				var stat=config.informationPanel.bars.stats[i];
+				var stat=barStats[i]["stat"];//config.informationPanel.bars.stats[i];
 				var h=0;
 				//TODO: Order these based on the config data (config.informationPanel.bars.stats)
 				if (data && !(isNaN(data[stat]))) {
@@ -523,13 +540,13 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 			}
 		}//end if bars		
 		//If text is set to display, display any text
-		if (config.informationPanel.text.labels) {
+		if (textStats.length>0) {
 			var text ="<ul>";
-			var labels=config.informationPanel.text.labels;
-			var stats=config.informationPanel.text.stats;
-			for (var i=0; i<labels.length; i++) {
-				if (data[stats[i]])
-					text+="<li><span class=\"label\">"+labels[i]+"</span>" + data[stats[i]]+"</li>";
+			//var labels=config.informationPanel.text.labels;
+			//var stats=config.informationPanel.text.stats;
+			for (var i=0; i<textStats.length; i++) {
+				if (data[textStats[i]["stat"]])
+					text+="<li><span class=\"label\">"+textStats[i]["label"]+"</span>" + data[textStats[i]["stat"]]+"</li>";
 			}
 			$("#attributeText").html(text+"</ul>");
 		}
@@ -559,7 +576,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 	function updateLegend() {
 		console.log("updateLengend. currentStat is " + currentStat);
 		//Legend
-		var legend = config["legend_"+currentStat];
+		var legend = config["features"]["legend_"+currentStat];
 		console.log(legend.title);
 		$("#legendtitle span").html(legend.title);
 		if (legend.labels && legend.colors) {
