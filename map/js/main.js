@@ -16,7 +16,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 	}
 	
 	jQuery.getJSON("data.json", function(datajson, textStatus, jqXHR) {
-	data=datajson.data;
+	data=datajson;
 	
 	var currentStat="";
 	var altStats=[];
