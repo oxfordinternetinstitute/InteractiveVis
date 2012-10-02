@@ -130,8 +130,8 @@ for edgesNode in edgesNodes:
 		
 		edge = {
 		    "id":         id,
-		    "sourceID":   source,
-		    "targetID":   target,
+		    "source":   source,
+		    "target":   target,
 		    "label":      label,
 		    "attributes": {}
 		}
