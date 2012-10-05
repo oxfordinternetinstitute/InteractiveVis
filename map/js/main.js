@@ -73,25 +73,43 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 	
 	//alternative main stats?
 	if (altStats.length>0) {
-		$("#legendtitle").click(function() {$("#altStats").toggle();});
-		$("#legendtitle #expand").show();
-		//var txt=$("<select/>");
-		var txt=$("<ul/>");
-		///txt+="<li class=\"changestat\">" +//<a class=\"changestat\" href=\"javascript:changeMainStat('" + config.features.mainStat + "');\">"
-		//	config["legend_"+config.features.mainStat].title + "</li>";//</a>
-		//console.log(config.features.alternativeMainStats);
-		var stat;
+		var legendtitle=$('#legendtitle'), statoptions=$('<ul>', {id: 'altStats'});
+		legendtitle.parent('#legend').addClass('hasAltStats');
+		legendtitle.after(statoptions.hide());
 		for (var i=0; i<altStats.length; i++) {
-			stat=altStats[i];
-			//$("<option value=\"" + stat +"\">"+config["legend_"+stat].title+"</option>").appendTo(txt);
-			$("<li id=\"" + stat +"\">"+config["features"]["legend_"+stat].title+"</li>").click(function() {changeMainStat(this.id);$("#altStats").toggle();}).appendTo(txt);
-			//txt+="<li class=\"changestat\"><a class=\"changestat\" href=\"javascript:changeMainStat('" + stat + "');\">" +
-			//config["legend_"+stat].title + "</a></li>";
+			var item=$('<li><a href="#"' + altStats[i] + ' data-altstat="'+altStats[i]+'">'+config["features"]["legend_"+altStats[i]].title+'</a></li>');
+			item.children('a').click(function(evt){
+				evt.preventDefault();
+				$(this).parent().siblings('li').children('a').removeClass('selected');
+				$(this).addClass('selected');
+				changeMainStat($(this).attr('data-altstat'));
+			});
+			statoptions.append(item);
 		}
-		//.click(function() {changeMainStat(this.id);})
-		//txt.change(function() {changeMainStat(this.options[this.selectedIndex].value);})
-		//$("#mainpanel").mouseout(function() {$("#altStats").hide();});
-		$("#altStats").html(txt);
+		statoptions
+		.on('show', function() {			
+			if(statoptions.is(':animated')) {
+				return false;
+			}
+			legendtitle.addClass('expanded');
+			statoptions.slideDown(300);})
+		.on('hide', function() {
+			if(statoptions.is(':animated')) {
+				return false;
+			}
+			legendtitle.removeClass('expanded');
+			statoptions.slideUp(300);})
+		.on('toggle', function() {
+			if(legendtitle.hasClass('expanded')) statoptions.trigger('hide');
+			else statoptions.trigger('show');
+		});
+		$('#legendtitle').click(function(){
+			statoptions.trigger('toggle');
+			return false;
+		});
+		$(document).click(function(){
+			statoptions.trigger('hide');
+		});	
 	}
 	
 	// map
@@ -578,7 +596,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 		//Legend
 		var legend = config["features"]["legend_"+currentStat];
 		console.log(legend.title);
-		$("#legendtitle span").html(legend.title);
+		$("#legendtitle").html(legend.title);
 		if (legend.labels && legend.colors) {
 			//<li><span class="colourblock" style="background-color: #e0e2e2"></span><span class="colourlabel">0 - 50%</span></li>
 			var legendColors="";
