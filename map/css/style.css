@@ -563,27 +563,50 @@ display: none;
 	margin-bottom: 10px;
 }
 
-
-#legendtitle #expand {
-	background-image: url('../images/expand.png');
-	height: 7px;
-	width: 12px;
-	margin-top: -.75em;
-	display: none;
+#legendtitle {
+	padding-bottom: 0 !important;
+	margin-bottom: 10px;
 }
 
-#legendtitle span {
-	margin-left: 20px;
+#legend.hasAltStats #legendtitle {
+	margin-bottom: 0;
+	padding: .75em !important;
+	border: 1px solid #ccc;
+	cursor: default;
+	background-image: url(../images/menu_arrow_down.png);
+	background-repeat: no-repeat;
+	background-position: right center;
 }
-
-#altStats {
-	display: none;
-	margin-bottom: 1em;
-	margin-left: 20px;
-	font-size: 14px;
-	line-height: 1.5em;
+#legend.hasAltStats #legendtitle.expanded {
+	background-image: url(../images/menu_arrow_up.png);
 }
-#altStats ul {
+#legend.hasAltStats #altStats {
 	list-style-type: none;
+	font-size: 1.15em;
 }
+#legend.hasAltStats #altStats li {
+	padding: .25em;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+}
+#legend.hasAltStats #altStats a {
+	display: block;
+	padding: .5em;
+	color: inherit;
+	text-decoration: none;
+}
+#legend.hasAltStats #altStats a:hover {
+	background-color: #ddd;
+}
+#legend.hasAltStats #legendColors {
+	margin-top: 10px;
+}
+
+
+
+
+
+
+
 
