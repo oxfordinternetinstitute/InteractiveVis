@@ -230,9 +230,9 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
         maxHeight: 600
     });//        minHeight: 300,
     
-    if (config.features.onLoad.enabled) {
-    	datachange(data[config.features.onLoad.datapoint].paneltitle,
-    		data[config.features.onLoad.datapoint]);
+    if (config.features.onLoad.enabled && config.features.onLoad.datapoint && data[config.features.onLoad.datapoint]) {
+		datachange(data[config.features.onLoad.datapoint].paneltitle,
+			data[config.features.onLoad.datapoint]);		
     } else {//hide panel on load
     	$("#attributepane").hide();
     }
