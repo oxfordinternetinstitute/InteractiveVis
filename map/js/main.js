@@ -33,9 +33,9 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 		}
 		
 		if (leg.style=="bar") {
-			barStats.push({"stat":stat,"label":leg.label});
+			barStats.push({"stat":stat,"label":leg.paneltitle});
 		} else if (leg.style=="text") {
-			textStats.push({"stat":stat,"label":leg.label});
+			textStats.push({"stat":stat,"label":leg.paneltitle});
 		}
 	}
 	if (currentStat=="" && altStats.length>0) {
@@ -72,12 +72,13 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 	updateLegend();
 	
 	//alternative main stats?
-	if (altStats.length>0) {
+	if (altStats.length>1) {
 		var legendtitle=$('#legendtitle'), statoptions=$('<ul>', {id: 'altStats'});
 		legendtitle.parent('#legend').addClass('hasAltStats');
 		legendtitle.after(statoptions.hide());
 		for (var i=0; i<altStats.length; i++) {
-			var item=$('<li><a href="#"' + altStats[i] + ' data-altstat="'+altStats[i]+'">'+config["features"]["legend_"+altStats[i]].title+'</a></li>');
+			//if (currentStat == altStats[i]) continue;
+			var item=$('<li><a href="#"' + altStats[i] + ' data-altstat="'+altStats[i]+'">'+config["features"]["legend_"+altStats[i]].legendtitle+'</a></li>');
 			item.children('a').click(function(evt){
 				evt.preventDefault();
 				$(this).parent().siblings('li').children('a').removeClass('selected');
@@ -175,13 +176,19 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 		var labels=chart.set();
 		for (var i=0; i<barStats.length; i++) {
 			var label=chart.text(plot.x+((plot.width+plot.gutter)*i)+plot.width/2, plot.y).attr(chartstyle.labels);
-			var words=barStats[i]["label"].split(' '), tmp='';
-			for (var n=0; n<words.length; n++) {
-				label.attr('text', tmp+' '+words[n]);
-				if (label.getBBox(0).width > plot.width) tmp+='\n'+words[n];
-				else tmp+=' '+words[n];
+			var words=barStats[i]["label"]
+			if (words) {
+				words=words.split(' ');
+				var tmp='';
+				for (var n=0; n<words.length; n++) {
+					label.attr('text', tmp+' '+words[n]);
+					if (label.getBBox(0).width > plot.width) tmp+='\n'+words[n];
+					else tmp+=' '+words[n];
+				}
+				label.attr('text', tmp.substring(1));
+			} else {		
+				label.attr('text', "");
 			}
-			label.attr('text', tmp.substring(1));		
 			labels.push(label);
 		}
 		var labely=plot.height-labels.getBBox(0).height;
@@ -224,7 +231,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
     });//        minHeight: 300,
     
     if (config.features.onLoad.enabled) {
-    	datachange(data[config.features.onLoad.datapoint].label,
+    	datachange(data[config.features.onLoad.datapoint].paneltitle,
     		data[config.features.onLoad.datapoint]);
     } else {//hide panel on load
     	$("#attributepane").hide();
@@ -469,8 +476,8 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 		//TODO: THis isn't working
 		var hdelta=(svg.width()-image.width*scale)/2;
 		if (hdelta<0) hdelta=0;
-		console.log("hdelta: "+hdelta);
-		console.log("vdelta: "+vdelta);
+		//console.log("hdelta: "+hdelta);
+		//console.log("vdelta: "+vdelta);
 
 		//console.log("Scale:  " + scale);
 		//console.log($(window).width() +","+ $(window).height());
@@ -479,7 +486,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 			//if scale is choosen based on height, use above instead.
 			map.setSize(svg.width(), svg.height());
 			//scale the map to fit and translate to center vertically
-			console.log("scaling,translating");	
+			//console.log("scaling,translating");	
 			set.transform("s" + scale + "," + image.width/2 +  "," + image.height/2  + "t" + hdelta + "," + vdelta);
 		//} else {
 		//	console.log("normal");
@@ -508,9 +515,8 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 		$('#chartname').text(name);
 		
 		if (barStats.length>0) {
-			var maxvalue=config.features.bars.maxValue;
+			var maxvalue=config.features.bars.maxvalue;
 			var scale=plot.height/maxvalue;
-
 			if (animate) values.attr('opacity', 0);
 			for (var i=0; i<values.length; i++) {
 			//for (var i=0; i<chartlabels.length; i++) {
@@ -536,6 +542,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 				if (data && !(isNaN(data[stat]))) {
 					h=data[stat]*scale;
 				}
+			
 			
 				//animale only if the pane is visible
 				if( animate ) {
@@ -569,13 +576,12 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 			$("#attributeText").html(text+"</ul>");
 		}
 		
-		
 	}
 	
 	
 	
 	function changeMainStat(stat) {
-		console.log("changeMainStat: " + stat);
+		//console.log("changeMainStat: " + stat);
 		currentStat=stat;
 		updateLegend();
 	
@@ -592,11 +598,11 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 	}
 	
 	function updateLegend() {
-		console.log("updateLengend. currentStat is " + currentStat);
+		//console.log("updateLengend. currentStat is " + currentStat);
 		//Legend
 		var legend = config["features"]["legend_"+currentStat];
-		console.log(legend.title);
-		$("#legendtitle").html(legend.title);
+		//console.log(legend.legendtitle);
+		$("#legendtitle").html(legend.legendtitle);
 		if (legend.labels && legend.colors) {
 			//<li><span class="colourblock" style="background-color: #e0e2e2"></span><span class="colourlabel">0 - 50%</span></li>
 			var legendColors="";
