@@ -66,7 +66,8 @@ canvas#sigma_bg_1 {
 	word-wrap: break-word;
 	background-color:rgba(255,255,255,0.8);
 	border-left: 1px solid #ccc;
-	padding: 0px 18px 0px 18px;			
+	padding: 0px 18px 0px 18px;	
+	z-index: 1;
 }
 
 
@@ -448,8 +449,10 @@ margin-left: 5px;
 
 #copyright {
 	margin:0 auto;	
-	width:300px;
-	margin-top:30px;
+	position: fixed;
+	right: 40px;
+	bottom: 25px;
+	z-index:0;
 }
 
 #copyright a {
@@ -460,32 +463,19 @@ color: #000;
 display: none;
 }
 
-#zoomcontainer {
-	position:fixed;
-	bottom:0px;
-	margin:0px auto;
-	padding:0;
-	text-align:center;
-	width: 100px;
-	margin-left: -50px;
-	left: 50%;
-	/*width:100%;*/
-	/*margin-left: auto ;
-	margin-right: auto ;
-	margin: 0px auto;*/
-}
-
 #zoom {
-	margin-bottom: 20px;
-	margin:0 auto;
 	z-index:999;
+	position: fixed;
+	left: 45%;
+	bottom: 25px;
+	margin:0 auto;
+	padding: 0;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	width:200px;
 	text-align:left;
 }
 
