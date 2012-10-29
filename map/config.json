@@ -43,7 +43,7 @@
             "type": "alternative_statistic",
             "legendtitle": "Male Literacy",
             "style": "bar",
-            "color": "#990000",
+            "color": "#e54028",
             "colors": [
                 "#edf8fb",
                 "#ccece6",
@@ -74,7 +74,7 @@
             "type": "main_statistic",
             "legendtitle": "Adult Literacy",
             "style": "bar",
-            "color": "#990000",
+            "color": "#d70060",
             "colors": [
                 "#edf8fb",
                 "#ccece6",
@@ -126,7 +126,7 @@
             "type": "alternative_statistic",
             "legendtitle": "Female Literacy",
             "style": "bar",
-            "color": "#990000",
+            "color": "#f18d05",
             "colors": [
                 "#edf8fb",
                 "#ccece6",
