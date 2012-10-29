@@ -250,7 +250,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 		if (data[country]) {//If no in data, don't provide any interaction
 			obj.mouseover(function(){
 				this.animate({
-					fill: 'rgba(247, 102, 10, 1)'
+					fill: (config.features.countryHighlightColor?config.features.countryHighlightColor:'rgba(247, 102, 10, 1)')
 				}, 300);
 			})
 			.mouseout(function(){
