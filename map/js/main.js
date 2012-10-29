@@ -33,7 +33,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 		}
 		
 		if (leg.style=="bar") {
-			barStats.push({"stat":stat,"label":leg.paneltitle});
+			barStats.push({"stat":stat,"label":leg.paneltitle,"color":leg.color});
 		} else if (leg.style=="text") {
 			textStats.push({"stat":stat,"label":leg.paneltitle});
 		}
@@ -153,16 +153,11 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 		var chartsuffix=config.features.bars.units;//'%';
 		var chartstyle={};
 		chartstyle.labels={'text-anchor': 'middle', 'font': '12px Helvetica, Arial, sans-serif', fill: '#666'};
-		chartstyle.plots={
-			'colours': [
-				{fill: '#d70060', stroke: 'none', 'stroke-width': 0},
-				{fill: '#e54028', stroke: 'none', 'stroke-width': 0},
-				{fill: '#f18d05', stroke: 'none', 'stroke-width': 0}],
-			'text': [
-				{'text-anchor': 'middle', 'font': '12px Helvetica, Arial, sans-serif', fill: '#fff'},
-				{'text-anchor': 'middle', 'font': '12px Helvetica, Arial, sans-serif', fill: '#fff'},
-				{'text-anchor': 'middle', 'font': '12px Helvetica, Arial, sans-serif', fill: '#fff'}]
-		};
+		chartstyle.plots={'colors':[],'text':[]};
+		for (var i=0; i<barStats.length; i++) {
+			chartstyle.plots["colors"].push({fill: barStats[i].color, stroke: 'none', 'stroke-width': 0});
+			chartstyle.plots["text"].push({'text-anchor': 'middle', 'font': '12px Helvetica, Arial, sans-serif', fill: '#fff'});
+		}
 	
 		//var chart=Raphael(elem.attr('id'), elem.parent().width(), elem.parent().height()-(elem.position().top));
 		var chart=Raphael(elem.attr('id'), elem.parent().width(), elem.parent().height());//-$('#chartname').outerHeight()
@@ -200,7 +195,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 		var bars=chart.set();
 		for (var i=0; i<barStats.length; i++) {
 			chart.rect(plot.x+((plot.width+plot.gutter)*i), plot.y, plot.width, plot.height).attr({stroke:'none', fill:'#ccc'});
-			var bar=chart.rect(plot.x+((plot.width+plot.gutter)*i), plot.y+plot.height, plot.width, 0).attr(chartstyle.plots.colours[i]);
+			var bar=chart.rect(plot.x+((plot.width+plot.gutter)*i), plot.y+plot.height, plot.width, 0).attr(chartstyle.plots.colors[i]);
 			bars.push(bar);
 		}
 
