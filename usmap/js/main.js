@@ -464,7 +464,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 		map.setViewBox(viewbox.x, viewbox.y, viewbox.width, viewbox.height);
 	}
 	//zoomMoveTo(400,75,70,150);
-	zoomMoveTo(350,75,image.width/2,image.height/2);
+	zoomMoveTo(500,100,image.width/4,image.height/4);
 	
 	function movestart () {
 		this.dx=this.dy=0;
