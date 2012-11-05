@@ -1,0 +1,204 @@
+{
+    "text": {
+        "title": "2012 US Election on Twitter",
+        "intro": "Geocoded tweets referencing \"Obama,\" \"Romney,\" \"Ryan,\" or \"Biden\".",
+        "more": "<p>The data was obtained from Twitter on between October 1, 2012 and November 1, 2012. Searches were conducted for the words 'Obama', 'Romney', 'Ryan', and 'Biden'. Map by <a href=\"http://www.scotthale.net/\">Scott A. Hale</a> and <a href=\"http://www.zerogeography.net/\">Mark Graham</a>. The visualization was created with tools developed with funding by <a href=\"http://blogs.oii.ox.ac.uk/vis/\">JISC for the InteractiveVis project</a>. Data was collected as part of a <a herf=\"http://www.oii.ox.ac.uk/research/projects/?id=89\">John Fell Fund supported grant</a> investigating the geographies of the Internet. Assistance provided by Adham Tamer and Ning Wang, <a href=\"http://www.oii.ox.ac.uk/\">Oxford Internet Institute</a>.</p>"
+    },
+    "logo": {
+        "text": "Oxford Internet Institute",
+        "link": "http://www.oii.ox.ac.uk/",
+        "file": "images/oii_brand.png"
+    },
+    "global": {
+        "data": "data.json",
+        "type": "map",
+        "version": 1
+    },
+    "features": {
+        "legend_RomneyPer": {
+            "labels": [
+                "0-50%"
+            ],
+            "cutpoints": [],
+            "paneltitle": "Romney",
+            "type": "no_legend",
+            "legendtitle": "",
+            "style": "bar",
+            "color": "#e60000",
+            "colors": [
+                "#990000"
+            ]
+        },
+        "countryHighlightColor": "#F7660A",
+        "bars": {
+            "units": "%",
+            "maxvalue": 100
+        },
+        "legend_Ryan": {
+            "labels": [
+                "0-50%"
+            ],
+            "cutpoints": [],
+            "paneltitle": "Ryan",
+            "type": "no_legend",
+            "legendtitle": "",
+            "style": "text",
+            "color": "#990000",
+            "colors": [
+                "#990000"
+            ]
+        },
+        "legend_Biden": {
+            "labels": [
+                "0-50%"
+            ],
+            "cutpoints": [],
+            "paneltitle": "Biden",
+            "type": "no_legend",
+            "legendtitle": "",
+            "style": "text",
+            "color": "#990000",
+            "colors": [
+                "#990000"
+            ]
+        },
+        "legend_ObamaRomneyDiff": {
+            "labels": [
+                "More Romney mentions",
+                "-",
+                "-",
+                "-",
+                "-",
+                "-",
+                "-",
+                "-",
+                "-",
+                "More Obama mentions"
+            ],
+            "cutpoints": [
+                -49,
+                -9,
+                -4,
+                0,
+                1,
+                2,
+                6,
+                11,
+                49
+            ],
+            "paneltitle": "",
+            "type": "alternative_statistic",
+            "legendtitle": "Obama vs Romney(Scale)",
+            "style": "not_in_panel",
+            "color": "#990000",
+            "colors": [
+                "#d62f27",
+                "#e66043",
+                "#f28d61",
+                "#fab984",
+                "#ffe9ad",
+                "#e9edbe",
+                "#c0ccbe",
+                "#99aebd",
+                "#6e8fb8",
+                "#4575b5"
+            ]
+        },
+        "legend_Obama": {
+            "labels": [
+                "0-50%"
+            ],
+            "cutpoints": [],
+            "paneltitle": "Obama",
+            "type": "no_legend",
+            "legendtitle": "",
+            "style": "text",
+            "color": "#990000",
+            "colors": [
+                "#990000"
+            ]
+        },
+        "stats": [
+            "Obama",
+            "Romney",
+            "Ryan",
+            "Biden",
+            "RomneyRyan",
+            "ObamaRomneyDiff",
+            "ObamaRomneyBin",
+            "ObamaPer",
+            "RomneyPer"
+        ],
+        "legend_ObamaRomneyBin": {
+            "labels": [
+                "More Obama mentions",
+                "More Romney mentions",
+                "equal number"
+            ],
+            "cutpoints": [
+                2,
+                3
+            ],
+            "paneltitle": "",
+            "type": "main_statistic",
+            "legendtitle": "Obama vs Romney",
+            "style": "not_in_panel",
+            "color": "#990000",
+            "colors": [
+                "#005ce6",
+                "#e60000",
+                "#9c9c9c"
+            ]
+        },
+        "legend_Romney": {
+            "labels": [
+                "0-50%"
+            ],
+            "cutpoints": [],
+            "paneltitle": "Romney",
+            "type": "no_legend",
+            "legendtitle": "",
+            "style": "text",
+            "color": "#990000",
+            "colors": [
+                "#990000"
+            ]
+        },
+        "onLoad": {
+            "datapoint": "world",
+            "enabled": false
+        },
+        "legend_RomneyRyan": {
+            "labels": [
+                "More Romney mentions",
+                "More Ryan mentions"
+            ],
+            "cutpoints": [
+                2
+            ],
+            "paneltitle": "",
+            "type": "alternative_statistic",
+            "legendtitle": "Romney vs Ryan",
+            "style": "not_in_panel",
+            "color": "#990000",
+            "colors": [
+                "#cccccc",
+                "#ff73df"
+            ]
+        },
+        "legend_ObamaPer": {
+            "labels": [
+                "0-50%"
+            ],
+            "cutpoints": [],
+            "paneltitle": "Obama",
+            "type": "no_legend",
+            "legendtitle": "",
+            "style": "bar",
+            "color": "#005ce6",
+            "colors": [
+                "#990000"
+            ]
+        }
+    }
+}
