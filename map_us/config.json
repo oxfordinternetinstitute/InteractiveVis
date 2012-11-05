@@ -65,7 +65,7 @@
         },
         "legend_ObamaRomneyDiff": {
             "labels": [
-                "More Romney mentions",
+                "more Romney mentions",
                 "-",
                 "-",
                 "-",
@@ -74,7 +74,7 @@
                 "-",
                 "-",
                 "-",
-                "More Obama mentions"
+                "more Obama mentions"
             ],
             "cutpoints": [
                 -49,
@@ -132,8 +132,8 @@
         ],
         "legend_ObamaRomneyBin": {
             "labels": [
-                "More Obama mentions",
-                "More Romney mentions",
+                "more Obama mentions",
+                "more Romney mentions",
                 "equal number"
             ],
             "cutpoints": [
@@ -171,8 +171,8 @@
         },
         "legend_RomneyRyan": {
             "labels": [
-                "More Romney mentions",
-                "More Ryan mentions"
+                "more Romney mentions",
+                "more Ryan mentions"
             ],
             "cutpoints": [
                 2
