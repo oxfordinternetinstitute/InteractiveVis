@@ -580,6 +580,7 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 			}
 		}//end if bars		
 		//If text is set to display, display any text
+		text="";
 		if (textStats.length>0) {
 			var text ="<ul>";
 			//var labels=config.informationPanel.text.labels;
@@ -588,8 +589,12 @@ jQuery.getJSON("config.json", function(conf, textStatus, jqXHR) {
 				if (data[textStats[i]["stat"]])
 					text+="<li><span class=\"label\">"+textStats[i]["label"]+"</span>" + data[textStats[i]["stat"]]+"</li>";
 			}
-			$("#attributeText").html(text+"</ul>");
+			text+="</ul>";
 		}
+		if (config["global"]["rightPanelText"]) {
+			text+="<p>"+config["global"]["rightPanelText"]+"</p>";
+		}
+		$("#attributeText").html(text);	
 		
 	}
 	

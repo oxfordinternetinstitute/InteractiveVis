@@ -12,7 +12,8 @@
     "global": {
         "data": "data.json",
         "type": "map",
-        "version": 1
+        "version": 1,
+        "rightPanelText": "Twitter references to candidates' names. Numbers are the raw number of geocoded tweets captured mentioning each candidate. The \"Obama percentage\" is the fraction of tweets mentioning Obama over the total number of tweets mentioning either Obama or Romney. The \"Romney percentage\" is defined similarly."
     },
     "features": {
         "legend_RomneyPer": {
