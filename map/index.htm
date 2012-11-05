@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en">
+
+<head>
+<title>Interactive Visualization</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/literacy.css" type="text/css"/>
+<link rel="stylesheet" href="css/style.css" type="text/css"/>
+
+  	<script src="js/jquery/jquery.min.js" type="text/javascript"></script>
+	<!-- Add fancyBox -->
+	<link rel="stylesheet" href="js/fancybox/source/jquery.fancybox.css?v=2.0.6" type="text/css" media="screen" />
+	<script type="text/javascript" src="js/fancybox/source/jquery.fancybox.pack.js?v=2.0.6"></script>
+
+	<!-- Optionally add helpers - button, thumbnail and/or media -->
+	<link rel="stylesheet" href="js/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.2" type="text/css" media="screen" />
+	<script type="text/javascript" src="js/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.2"></script>
+	<script type="text/javascript" src="js/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.0"></script>
+
+	<link rel="stylesheet" href="js/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=2.0.6" type="text/css" media="screen" />
+	<script type="text/javascript" src="js/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=2.0.6"></script>
+
+
+	<script src="js/jquery/plugins/jquery.mousewheel.min.js"></script>
+	<script src="js/jquery/plugins/jquery.smartresize.js"></script>
+	<script src="js/raphael/2.0.2/raphael-min.js"></script>
+	<script src="js/worldmap.js"></script>
+	<script src="js/main.js"></script>
+
+
+</head>
+
+
+<body>
+
+  <div class="sigma-parent">
+    <div class="sigma-expand" id="svg"></div>
+  </div>
+  
+<div id="mainpanel">
+  
+  <div class="col">
+	<div id="maintitle">&nbsp;</div>
+    <div id="title">&nbsp;</div>
+    <div id="titletext">&nbsp;</div>
+    <div id="moreinformation" class="info cf">
+      <dl>
+        <dt class="moreinformation"></dt>
+        <dd class="line"><a href="#information" class="line fb">More about this visualisation</a></dd>
+      </dl>
+    </div>
+    <div id="legend">
+    	<h2 id="legendtitle"></h2>
+		<ul id="legendColors">&nbsp;</ul>
+    </div> 
+  </div>
+
+
+
+  <div id="information">&nbsp;
+  </div>
+
+</div>
+
+<div id="zoom">
+  <div class="z" rel="in" id="zoomIn"></div> <div class="z" rel="out" id="zoomOut"></div> <div id="reset" class="y" rel="center"></div>
+	<div style="clear:both"></div>
+</div>
+
+<div id="attributepane">
+<div class="text">
+<div class="headertext" id="chartname"><span>Information Pane</span></div>	
+  <div class="nodeattributes">
+    <div class="name"></div>
+	<div class="data">
+			<div class="panel">
+
+				<div id="chart"></div>
+				<div id="attributeText"></div>
+			</div>
+	</div>
+  </div>
+  <div title="Close" class="left-close"></div>  
+</div>
+</div>
+</div>
+
+
+<div id="jisc"><a href="http://jisc.ac.uk" title="JISC"><span>JISC</span></a></div>
+<!-- <div id="oii"><a href="http://oii.ox.ac.uk" title="OII"><span>OII</span></a></div> -->
+<div id="copyright">
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="images/CC.png" /></a></div>
+</div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-21293169-4']);
+  _gaq.push(['_setDomainName', 'none']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>

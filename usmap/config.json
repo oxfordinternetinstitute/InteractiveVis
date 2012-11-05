@@ -1,0 +1,108 @@
+{
+    "text": {
+        "title": "Geocoded Tweets Mentioning Flooding",
+        "intro": "Collected Oct. 29-30 from the Twitter streaming api",
+        "more": "<p>The data was obtained from the Twitter filter streaming API on from the beginning of October 29, 2012 until noon GMT on October 30. Searches were conducted for the words 'flood' and 'flooding'. Map by <a href=\"http://www.scotthale.net/\">Scott A. Hale</a> and <a href=\"http://www.zerogeography.net/\">Mark Graham</a>. The visualization was created with tools developed with funding by <a href=\"http://blogs.oii.ox.ac.uk/vis/\">JISC for the InteractiveVis project</a>. Data was collected as part of a <a href=\"http://www.oii.ox.ac.uk/research/projects/?id=89\">John Fell Fund supported grant</a> investigating the geographies of the Internet. Assistance provided by Adham Tamer and Ning Wang, <a href=\"http://www.oii.ox.ac.uk/\">Oxford Internet Institute</a>.</p>"
+            },
+    "logo": {
+        "text": "Oxford Internet Institute",
+        "link": "http://www.oii.ox.ac.uk/",
+        "file": "images/oii_brand.png"
+    },
+    "global": {
+        "data": "data.json",
+        "type": "map",
+        "version": 1
+    },
+    "features": {
+        "legend_SandyCount": {
+            "labels": [
+                "No tweets",
+                "1 - 50",
+                "51 - 100",
+                "101 - 150",
+                "151 - 200",
+                "201 - 250",
+                "251 - 300"
+            ],
+            "cutpoints": [
+                1,
+                51,
+                101,
+                151,
+                201,
+                251
+            ],
+            "paneltitle": "Tweets about flooding",
+            "type": "main_statistic",
+            "legendtitle": "Tweets about flooding",
+            "style": [
+                "bar",
+                "text"
+            ],
+            "color": "#b81a1a",
+            "colors": [
+            	"#CCCCCC",
+				"#EDF8FB",
+				"#CCECE6",
+				"#99D8C9",
+				"#66C2A4",
+				"#2CA25F",
+				"#006D2C" 
+            ]
+        },
+        "onLoad": {
+            "datapoint": "world",
+            "enabled": false
+        },
+        "stats": [
+            "SandyCount"
+        ],
+        "legend_POP2000": {
+            "labels": [
+                "0-50%"
+            ],
+            "cutpoints": [],
+            "paneltitle": "Population (2000)",
+            "type": "no_legend",
+            "legendtitle": "POP2000",
+            "style": "text",
+            "color": "#990000",
+            "colors": [
+                "#990000"
+            ]
+        },
+        "bars": {
+            "units": "",
+            "maxvalue": 300
+        },
+        "legend_AREA": {
+            "labels": [
+                "0-50%"
+            ],
+            "cutpoints": [],
+            "paneltitle": "Area",
+            "type": "no_legend",
+            "legendtitle": "",
+            "style": "text",
+            "color": "#990000",
+            "colors": [
+                "#990000"
+            ]
+        },
+        "legend_HOUSEHOLDS": {
+            "labels": [
+                "0-50%"
+            ],
+            "cutpoints": [],
+            "paneltitle": "Households",
+            "type": "no_legend",
+            "legendtitle": "",
+            "style": "text",
+            "color": "#990000",
+            "colors": [
+                "#990000"
+            ]
+        }
+   }
+}

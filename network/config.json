@@ -1,0 +1,59 @@
+{
+    "type": "network",
+    "data": "twitter_mutual2.json",
+    "version": "1.0",
+    "logo": {
+        "file": "oii_brand.png",
+        "link": "http://www.oii.ox.ac.uk/",
+        "text": "Oxford Internet Institute"
+    },
+    "text": {
+        "title": "Twitter Network of @OIIOxford",
+        "intro": "In Internet research, the sheer volume of data available can be overwhelming; however, its variety and scale also offer exciting opportunities for finding new ways to answer old questions. This network shows those following and being followed by <a href=\"http://www.twitter.com/oiioxford\">@OIIOxford</a>.",
+        "more": "<h3>Description</h3><p>In Internet research, the sheer volume of data available can be overwhelming; however, its variety and scale also offer exciting opportunities for finding new ways to answer old questions. Social network analysis is well-suited to probing the nature and extent of the various ways we now relate to each other online. Visualising data can reveal patterns not immediately apparent in data.</p><p>This network graph shows the relationships between Twitter users following <a href=\"http://www.twitter.com/oiioxford\">@oiioxford</a> and being followed by oiioxford. Each node represents a Twitter account, and a tie between two nodes represents a mutual follower--following relationship: that is, a tie is present only on the graph if two users both follow each other. The nodes are positioned according to a force-directed algorithm to move highly connected nodes close together and less connected nodes further apart. The colours represent different communities found by a standard community detection algorithm.</p><h3>Data and Visualization</h3><p>Data was collected using <a href=\"http://nodexl.codeplex.com/\">NodeXL</a> and laid out with <a href=\"http://gephi.org/\">Gephi</a>. The interactive display is created with the <a href=\"http://sigmajs.org/\">Sigma.js library</a>, JavaScipt, and CSS based on an earlier interface by Greenpeace. The visualization is part of the ongoing JISC-sponsored <a href=\"http://blogs.oii.ox.ac.uk/vis/\">InteractiveVis Project</a> to produce online tools to allow the easy the creation of such visualizations.</p><p>Please note that this is an experimental visualization that may not work on all browsers. It has been tested to work on Firefox 12, Chrome 18, Android Ice Cream Sandwich and Jelly Bean, and iPad 2. We welcome your comments and feedback about compatibility with other browsers at <a href=\"http://blogs.oii.ox.ac.uk/vis/\">the InteractiveVis project blog</a> via email or comment. All individuals leaving helpful feedback will be entered into a draw for prizes.</p><p>The data was collected by <a href=\"http://www.oii.ox.ac.uk/people/?id=195\">Scott A. Hale</a> and the visualization produced by <a href=\"http://www.oii.ox.ac.uk/people/?id=273\">Joshua R. Melville</a>, <a href=\"http://www.oii.ox.ac.uk/people/?id=195\">Scott A. Hale</a>, and Kunika Kono.</p>"
+    },
+    "legend": {
+        "nodeLabel": "A twitter account.",
+        "edgeLabel": "A follower/followee relationship between two accounts",
+        "colorLabel": "Colour represents an automatic grouping of users according to who they are most connected to."
+    },
+    "features": {
+        "search": {
+            "enabled": true
+        },
+        "hoverBehaviour": "default",
+        "groupSelector": {
+            "enabled": true,
+            "attribute": "whatAttributeShouldWeGroupBy"
+        }
+    },
+    "informationPanel": {
+        "groupByEdgeDirection": false,
+        "imageAttribute": "Image File"
+    },
+    "sigma": {
+    	"drawingProperties":{    
+			"defaultLabelColor": "#000",
+			"defaultLabelSize": 14,
+			"defaultLabelBGColor": "#ddd",
+			"defaultHoverLabelBGColor": "#002147",
+			"defaultLabelHoverColor": "#fff",
+			"labelThreshold": 10,
+			"defaultEdgeType": "curve",
+			"hoverFontStyle": "bold",
+			"fontStyle": "bold",
+			"activeFontStyle": "bold"
+		},
+		"graphProperties":{
+			"minNodeSize": 1,
+			"maxNodeSize": 7,
+			"minEdgeSize": 0.2,
+			"maxEdgeSize": 0.5
+		},		
+		"mouseProperties":{
+			"minRatio": 0.75, 
+			"maxRatio": 20
+		}
+    }
+    
+}

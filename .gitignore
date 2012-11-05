@@ -1,0 +1,6 @@
+/free-vector-user-interface-icons*
+# For OSX view settings 
+.DS_Store
+
+# Ignore files ending with ~ (these are backups from my text editor)
+*~

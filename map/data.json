@@ -1,0 +1,1298 @@
+{
+    "LC": {
+        "label": "Saint Lucia",
+        "total": 90.1,
+        "male": 89.5,
+        "female": 90.6
+    },
+    "AE": {
+        "label": "United Arab Emirates",
+        "total": 77.9,
+        "male": 76.1,
+        "female": 81.7
+    },
+    "LI": {
+        "label": "Liechtenstein",
+        "total": 100,
+        "male": 100,
+        "female": 100
+    },
+    "LK": {
+        "label": "Sri Lanka",
+        "total": 90.7,
+        "male": 92.3,
+        "female": 89.1
+    },
+    "LR": {
+        "label": "Liberia",
+        "total": 57.5,
+        "male": 73.3,
+        "female": 41.6
+    },
+    "LS": {
+        "label": "Lesotho",
+        "total": 84.8,
+        "male": 74.5,
+        "female": 94.5
+    },
+    "LT": {
+        "label": "Lithuania",
+        "total": 99.6,
+        "male": 99.6,
+        "female": 99.6
+    },
+    "LU": {
+        "label": "Luxembourg",
+        "total": 100,
+        "male": 100,
+        "female": 100
+    },
+    "LV": {
+        "label": "Latvia",
+        "total": 99.7,
+        "male": 99.8,
+        "female": 99.7
+    },
+    "LY": {
+        "label": "Libya",
+        "total": 82.6,
+        "male": 92.4,
+        "female": 72
+    },
+    "MA": {
+        "label": "Morocco",
+        "total": 52.3,
+        "male": 65.7,
+        "female": 39.6
+    },
+    "MC": {
+        "label": "Monaco",
+        "total": 99,
+        "male": 99,
+        "female": 99
+    },
+    "MD": {
+        "label": " Republic of Moldova",
+        "total": 99.1,
+        "male": 99.7,
+        "female": 98.6
+    },
+    "MG": {
+        "label": "Madagascar",
+        "total": 68.9,
+        "male": 75.5,
+        "female": 62.5
+    },
+    "MH": {
+        "label": "Marshall Islands",
+        "total": 93.7,
+        "male": 93.6,
+        "female": 93.7
+    },
+    "MK": {
+        "label": " The Former Yugoslav Republic of Macedonia",
+        "total": 96.1,
+        "male": 98.2,
+        "female": 94.1
+    },
+    "ML": {
+        "label": "Mali",
+        "total": 46.4,
+        "male": 53.5,
+        "female": 39.6
+    },
+    "MM": {
+        "label": "Myanmar",
+        "total": 89.9,
+        "male": 93.9,
+        "female": 86.4
+    },
+    "MN": {
+        "label": "Mongolia",
+        "total": 97.8,
+        "male": 98,
+        "female": 97.5
+    },
+    "AD": {
+        "label": "Andorra",
+        "total": 100,
+        "male": 100,
+        "female": 100
+    },
+    "MP": {
+        "label": "Northern Mariana Islands",
+        "total": 97,
+        "male": 97,
+        "female": 96
+    },
+    "AF": {
+        "label": "Afghanistan",
+        "total": 28.1,
+        "male": 43.1,
+        "female": 12.6
+    },
+    "MR": {
+        "label": "Mauritania",
+        "total": 51.2,
+        "male": 59.5,
+        "female": 43.4
+    },
+    "MS": {
+        "label": "Montserrat",
+        "total": 97,
+        "male": 97,
+        "female": 97
+    },
+    "AI": {
+        "label": "Anguilla",
+        "total": 95,
+        "male": 95,
+        "female": 95
+    },
+    "MU": {
+        "label": "Mauritius",
+        "total": 84.4,
+        "male": 88.4,
+        "female": 80.5
+    },
+    "MV": {
+        "label": "Maldives",
+        "total": 93.8,
+        "male": 93,
+        "female": 94.7
+    },
+    "AL": {
+        "label": "Albania",
+        "total": 98.7,
+        "male": 99.2,
+        "female": 98.3
+    },
+    "AM": {
+        "label": "Armenia",
+        "total": 99.4,
+        "male": 99.7,
+        "female": 99.2
+    },
+    "MY": {
+        "label": "Malaysia",
+        "total": 88.7,
+        "male": 92,
+        "female": 85.4
+    },
+    "MZ": {
+        "label": "Mozambique",
+        "total": 47.8,
+        "male": 63.5,
+        "female": 32.7
+    },
+    "AR": {
+        "label": "Argentina",
+        "total": 97.2,
+        "male": 97.2,
+        "female": 97.2
+    },
+    "AS": {
+        "label": "American Samoa",
+        "total": 97,
+        "male": 98,
+        "female": 97
+    },
+    "AT": {
+        "label": "Austria",
+        "total": 98,
+        "male": "Not Reported",
+        "female": "Not Reported"
+    },
+    "AU": {
+        "label": "Australia",
+        "total": 99,
+        "male": 99,
+        "female": 99
+    },
+    "ZM": {
+        "label": "Zambia",
+        "total": 80.6,
+        "male": 86.8,
+        "female": 74.8
+    },
+    "AW": {
+        "label": "Aruba",
+        "total": 97.3,
+        "male": 97.5,
+        "female": 97.1
+    },
+    "NE": {
+        "label": "Niger",
+        "total": 28.7,
+        "male": 42.9,
+        "female": 15.1
+    },
+    "AZ": {
+        "label": "Azerbaijan",
+        "total": 98.8,
+        "male": 99.5,
+        "female": 98.2
+    },
+    "NG": {
+        "label": "Nigeria",
+        "total": 68,
+        "male": 75.7,
+        "female": 60.6
+    },
+    "NI": {
+        "label": "Nicaragua",
+        "total": 67.5,
+        "male": 67.2,
+        "female": 67.8
+    },
+    "BA": {
+        "label": "Bosnia and Herzegovina",
+        "total": 96.7,
+        "male": 99,
+        "female": 94.4
+    },
+    "BB": {
+        "label": "Barbados",
+        "total": 99.7,
+        "male": 99.7,
+        "female": 99.7
+    },
+    "UY": {
+        "label": "Uruguay",
+        "total": 98,
+        "male": 97.6,
+        "female": 98.4
+    },
+    "BD": {
+        "label": "Bangladesh",
+        "total": 47.9,
+        "male": 54,
+        "female": 41.4
+    },
+    "MX": {
+        "label": "Mexico",
+        "total": 86.1,
+        "male": 86.9,
+        "female": 85.3
+    },
+    "BF": {
+        "label": "Burkina Faso",
+        "total": 21.8,
+        "male": 29.4,
+        "female": 15.2
+    },
+    "BG": {
+        "label": "Bulgaria",
+        "total": 98.2,
+        "male": 98.7,
+        "female": 97.7
+    },
+    "BH": {
+        "label": "Bahrain",
+        "total": 86.5,
+        "male": 88.6,
+        "female": 83.6
+    },
+    "BI": {
+        "label": "Burundi",
+        "total": 59.3,
+        "male": 67.3,
+        "female": 52.2
+    },
+    "NU": {
+        "label": "Niue",
+        "total": 95,
+        "male": "Not Reported",
+        "female": "Not Reported"
+    },
+    "NC": {
+        "label": "New Caledonia",
+        "total": 96.2,
+        "male": 96.8,
+        "female": 95.5
+    },
+    "NA": {
+        "label": "Namibia",
+        "total": 85,
+        "male": 86.8,
+        "female": 83.5
+    },
+    "BN": {
+        "label": "Brunei Darussalam",
+        "total": 92.7,
+        "male": 95.2,
+        "female": 90.2
+    },
+    "NZ": {
+        "label": "New Zealand",
+        "total": 99,
+        "male": 99,
+        "female": 99
+    },
+    "MW": {
+        "label": "Malawi",
+        "total": 62.7,
+        "male": 76.1,
+        "female": 49.8
+    },
+    "BR": {
+        "label": "Brazil",
+        "total": 88.6,
+        "male": 88.4,
+        "female": 88.8
+    },
+    "BS": {
+        "label": "Bahamas",
+        "total": 95.6,
+        "male": 94.7,
+        "female": 96.5
+    },
+    "BT": {
+        "label": "Bhutan",
+        "total": 47,
+        "male": 60,
+        "female": 34
+    },
+    "BW": {
+        "label": "Botswana",
+        "total": 81.2,
+        "male": 80.4,
+        "female": 81.8
+    },
+    "BY": {
+        "label": "Belarus",
+        "total": 99.6,
+        "male": 99.8,
+        "female": 99.4
+    },
+    "BZ": {
+        "label": "Belize",
+        "total": 76.9,
+        "male": 76.7,
+        "female": 77.1
+    },
+    "CA": {
+        "label": "Canada",
+        "total": 99,
+        "male": 99,
+        "female": 99
+    },
+    "OM": {
+        "label": "Oman",
+        "total": 81.4,
+        "male": 86.8,
+        "female": 73.5
+    },
+    "CD": {
+        "label": "The Democratic Republic of The Congo",
+        "total": 67.2,
+        "male": 80.9,
+        "female": 54.1
+    },
+    "CF": {
+        "label": "Central African Republic",
+        "total": 48.6,
+        "male": 64.8,
+        "female": 33.5
+    },
+    "CG": {
+        "label": "Congo",
+        "total": 83.8,
+        "male": 89.6,
+        "female": 78.4
+    },
+    "CH": {
+        "label": "Switzerland",
+        "total": 99,
+        "male": 99,
+        "female": 99
+    },
+    "CI": {
+        "label": "Ivory Coast",
+        "total": 48.7,
+        "male": 60.8,
+        "female": 38.6
+    },
+    "CK": {
+        "label": "Cook Islands",
+        "total": 95,
+        "male": "Not Reported",
+        "female": "Not Reported"
+    },
+    "CL": {
+        "label": "Chile",
+        "total": 95.7,
+        "male": 95.8,
+        "female": 95.6
+    },
+    "CM": {
+        "label": "Cameroon",
+        "total": 67.9,
+        "male": 77,
+        "female": 59.8
+    },
+    "CN": {
+        "label": "China",
+        "total": 92.2,
+        "male": 96,
+        "female": 88.5
+    },
+    "CO": {
+        "label": "Colombia",
+        "total": 90.4,
+        "male": 90.1,
+        "female": 90.7
+    },
+    "CR": {
+        "label": "Costa Rica",
+        "total": 94.9,
+        "male": 94.7,
+        "female": 95.1
+    },
+    "CU": {
+        "label": "Cuba",
+        "total": 99.8,
+        "male": 99.8,
+        "female": 99.8
+    },
+    "CV": {
+        "label": "Cape Verde",
+        "total": 76.6,
+        "male": 85.8,
+        "female": 69.2
+    },
+    "MO": {
+        "label": "Macao",
+        "total": 91.3,
+        "male": 95.3,
+        "female": 87.8
+    },
+    "CZ": {
+        "label": "Czech Republic",
+        "total": 99,
+        "male": 99,
+        "female": 99
+    },
+    "PG": {
+        "label": "Papua New Guinea",
+        "total": 57.3,
+        "male": 63.4,
+        "female": 50.9
+    },
+    "PH": {
+        "label": "Philippines",
+        "total": 92.6,
+        "male": 92.5,
+        "female": 92.7
+    },
+    "AG": {
+        "label": "Antigua and Barbuda",
+        "total": 85.8,
+        "male": "Not Reported",
+        "female": "Not Reported"
+    },
+    "PK": {
+        "label": "Pakistan",
+        "total": 49.9,
+        "male": 63,
+        "female": 36
+    },
+    "PL": {
+        "label": "Poland",
+        "total": 99.8,
+        "male": 99.8,
+        "female": 99.7
+    },
+    "PM": {
+        "label": "Saint Pierre and Miquelon",
+        "total": 99,
+        "male": 99,
+        "female": 99
+    },
+    "PS-GAZASTRIP": {
+        "label": "Gaza Strip",
+        "total": 92.4,
+        "male": 96.7,
+        "female": 88
+    },
+    "DE": {
+        "label": "Germany",
+        "total": 99,
+        "male": 99,
+        "female": 99
+    },
+    "PR": {
+        "label": "Puerto Rico",
+        "total": 94.1,
+        "male": 93.9,
+        "female": 94.4
+    },
+    "PT": {
+        "label": "Portugal",
+        "total": 93.3,
+        "male": 95.5,
+        "female": 91.3
+    },
+    "DJ": {
+        "label": "Djibouti",
+        "total": 67.9,
+        "male": 78,
+        "female": 58.4
+    },
+    "DK": {
+        "label": "Denmark",
+        "total": 99,
+        "male": 99,
+        "female": 99
+    },
+    "PW": {
+        "label": "Palau",
+        "total": 92,
+        "male": 93,
+        "female": 90
+    },
+    "DM": {
+        "label": "Dominica",
+        "total": 94,
+        "male": 94,
+        "female": 94
+    },
+    "PY": {
+        "label": "Paraguay",
+        "total": 94,
+        "male": 94.9,
+        "female": 93
+    },
+    "CY": {
+        "label": "Cyprus",
+        "total": 97.6,
+        "male": 98.9,
+        "female": 96.3
+    },
+    "SI": {
+        "label": "Slovenia",
+        "total": 99.7,
+        "male": 99.7,
+        "female": 99.6
+    },
+    "QA": {
+        "label": "Qatar",
+        "total": 89,
+        "male": 89.1,
+        "female": 88.6
+    },
+    "ZA": {
+        "label": "South Africa",
+        "total": 86.4,
+        "male": 87,
+        "female": 85.7
+    },
+    "SN": {
+        "label": "Senegal",
+        "total": 39.3,
+        "male": 51.1,
+        "female": 29.2
+    },
+    "DZ": {
+        "label": "Algeria",
+        "total": 69.9,
+        "male": 79.6,
+        "female": 60.1
+    },
+    "GB": {
+        "label": "United Kingdom",
+        "total": 99,
+        "male": 99,
+        "female": 99,
+        "year":"2003 est.",
+        "definition":"age 15 and over has completed five or more years of schooling"
+    },
+    "KH": {
+        "label": "Cambodia",
+        "total": 73.6,
+        "male": 84.7,
+        "female": 64.1
+    },
+    "TW": {
+        "label": "Taiwan",
+        "total": 96.1,
+        "male": "Not Reported",
+        "female": "Not Reported"
+    },
+    "EC": {
+        "label": "Ecuador",
+        "total": 91,
+        "male": 92.3,
+        "female": 89.7
+    },
+    "EE": {
+        "label": "Estonia",
+        "total": 99.8,
+        "male": 99.8,
+        "female": 99.8
+    },
+    "KE": {
+        "label": "Kenya",
+        "total": 85.1,
+        "male": 90.6,
+        "female": 79.7
+    },
+    "EG": {
+        "label": "Egypt",
+        "total": 71.4,
+        "male": 83,
+        "female": 59.4,
+        "year":"2010 est.",
+        "definition":"age 10 and over can read and write"
+    },
+    "UA": {
+        "label": "Ukraine",
+        "total": 99.4,
+        "male": 99.7,
+        "female": 99.2
+    },
+    "ER": {
+        "label": "Eritrea",
+        "total": 58.6,
+        "male": 69.9,
+        "female": 47.6
+    },
+    "ES": {
+        "label": "Spain",
+        "total": 97.9,
+        "male": 98.7,
+        "female": 97.2,
+        "year":"2010 est.",
+        "definition": "age 15 and over can read and write"
+    },
+    "ET": {
+        "label": "Ethiopia",
+        "total": 42.7,
+        "male": 50.3,
+        "female": 35.1
+    },
+    "ZW": {
+        "label": "Zimbabwe",
+        "total": 90.7,
+        "male": 94.2,
+        "female": 87.2
+    },
+    "SS": {
+        "label": "South Sudan",
+        "total": 27,
+        "male": 40,
+        "female": 16
+    },
+    "SY": {
+        "label": "Syrian Arab Republic",
+        "total": 79.6,
+        "male": 86,
+        "female": 73.6
+    },
+    "RO": {
+        "label": "Romania",
+        "total": 97.3,
+        "male": 98.4,
+        "female": 96.3
+    },
+    "YE": {
+        "label": "Yemen",
+        "total": 50.2,
+        "male": 70.5,
+        "female": 30
+    },
+    "RS": {
+        "label": "Serbia",
+        "total": 96.4,
+        "male": 98.9,
+        "female": 94.1
+    },
+    "FI": {
+        "label": "Finland",
+        "total": 100,
+        "male": 100,
+        "female": 100
+    },
+    "FJ": {
+        "label": "Fiji",
+        "total": 93.7,
+        "male": 95.5,
+        "female": 91.9
+    },
+    "RW": {
+        "label": "Rwanda",
+        "total": 70.4,
+        "male": 76.3,
+        "female": 64.7
+    },
+    "FM": {
+        "label": "Micronesia",
+        "total": 89,
+        "male": 91,
+        "female": 88
+    },
+    "world": {
+        "label": "World",
+        "total": 82,
+        "male": 87,
+        "female": 77,
+        "year":"2005 est.",
+        "definition":"age 15 and over can read and write"
+    },
+    "FR": {
+        "label": "France",
+        "total": 99,
+        "male": 99,
+        "female": 99,
+        "year":"2003 est.",
+        "definition":"age 15 and over can read and write"
+    },
+    "SA": {
+        "label": "Saudi Arabia",
+        "total": 78.8,
+        "male": 84.7,
+        "female": 70.8
+    },
+    "SC": {
+        "label": "Seychelles",
+        "total": 91.8,
+        "male": 91.4,
+        "female": 92.3
+    },
+    "SD": {
+        "label": "Sudan",
+        "total": 61.1,
+        "male": 71.8,
+        "female": 50.5
+    },
+    "SE": {
+        "label": "Sweden",
+        "total": 99,
+        "male": 99,
+        "female": 99
+    },
+    "BE": {
+        "label": "Belgium",
+        "total": 99,
+        "male": 99,
+        "female": 99
+    },
+    "SG": {
+        "label": "Singapore",
+        "total": 92.5,
+        "male": 96.6,
+        "female": 88.6
+    },
+    "SH": {
+        "label": "Ascension and Tristan Da Cunha Saint Helena",
+        "total": 97,
+        "male": 97,
+        "female": 98
+    },
+    "AO": {
+        "label": "Angola",
+        "total": 67.4,
+        "male": 82.9,
+        "female": 54.2
+    },
+    "SK": {
+        "label": "Slovakia",
+        "total": 99.6,
+        "male": 99.7,
+        "female": 99.6
+    },
+    "GA": {
+        "label": "Gabon",
+        "total": 63.2,
+        "male": 73.7,
+        "female": 53.3
+    },
+    "SM": {
+        "label": "San Marino",
+        "total": 96,
+        "male": 97,
+        "female": 95
+    },
+    "RU": {
+        "label": "Russian Federation",
+        "total": 99.4,
+        "male": 99.7,
+        "female": 99.2
+    },
+    "SO": {
+        "label": "Somalia",
+        "total": 37.8,
+        "male": 49.7,
+        "female": 25.8
+    },
+    "GE": {
+        "label": "Georgia",
+        "total": 100,
+        "male": 100,
+        "female": 100
+    },
+    "SR": {
+        "label": "Suriname",
+        "total": 89.6,
+        "male": 92,
+        "female": 87.2
+    },
+    "GH": {
+        "label": "Ghana",
+        "total": 57.9,
+        "male": 66.4,
+        "female": 49.8
+    },
+    "ST": {
+        "label": "Sao Tome and Principe",
+        "total": 84.9,
+        "male": 92.2,
+        "female": 77.9
+    },
+    "SV": {
+        "label": "El Salvador",
+        "total": 81.1,
+        "male": 82.8,
+        "female": 79.6
+    },
+    "GL": {
+        "label": "Greenland",
+        "total": 96,
+        "male": "Not Reported",
+        "female": "NotReported"
+    },
+    "GM": {
+        "label": "Gambia",
+        "total": 40.1,
+        "male": 47.8,
+        "female": 32.8
+    },
+    "GN": {
+        "label": "Guinea",
+        "total": 29.5,
+        "male": 42.6,
+        "female": 18.1
+    },
+    "SZ": {
+        "label": "Swaziland",
+        "total": 81.6,
+        "male": 82.6,
+        "female": 80.8
+    },
+    "BJ": {
+        "label": "Benin",
+        "total": 34.7,
+        "male": 47.9,
+        "female": 23.3
+    },
+    "GQ": {
+        "label": "Equatorial Guinea",
+        "total": 87,
+        "male": 93.4,
+        "female": 80.5
+    },
+    "GR": {
+        "label": "Greece",
+        "total": 96,
+        "male": 97.8,
+        "female": 94.2
+    },
+    "BM": {
+        "label": "Bermuda",
+        "total": 98,
+        "male": 98,
+        "female": 99
+    },
+    "GT": {
+        "label": "Guatemala",
+        "total": 69.1,
+        "male": 75.4,
+        "female": 63.3
+    },
+    "GU": {
+        "label": "Guam",
+        "total": 99,
+        "male": 99,
+        "female": 99
+    },
+    "GW": {
+        "label": "Guinea-bissau",
+        "total": 42.4,
+        "male": 58.1,
+        "female": 27.4
+    },
+    "TD": {
+        "label": "Chad",
+        "total": 25.7,
+        "male": 40.8,
+        "female": 12.8
+    },
+    "GY": {
+        "label": "Guyana",
+        "total": 91.8,
+        "male": 92,
+        "female": 91.6
+    },
+    "TG": {
+        "label": "Togo",
+        "total": 60.9,
+        "male": 75.4,
+        "female": 46.9
+    },
+    "TH": {
+        "label": "Thailand",
+        "total": 92.6,
+        "male": 94.9,
+        "female": 90.5
+    },
+    "TJ": {
+        "label": "Tajikistan",
+        "total": 99.5,
+        "male": 99.7,
+        "female": 99.2
+    },
+    "TL": {
+        "label": "Timor-leste",
+        "total": 58.6,
+        "male": "Not Reported",
+        "female": "Not Reported"
+    },
+    "TM": {
+        "label": "Turkmenistan",
+        "total": 98.8,
+        "male": 99.3,
+        "female": 98.3
+    },
+    "TN": {
+        "label": "Tunisia",
+        "total": 74.3,
+        "male": 83.4,
+        "female": 65.3
+    },
+    "TO": {
+        "label": "Tonga",
+        "total": 98.9,
+        "male": 98.8,
+        "female": 99
+    },
+    "TR": {
+        "label": "Turkey",
+        "total": 87.4,
+        "male": 95.3,
+        "female": 79.6
+    },
+    "TT": {
+        "label": "Trinidad and Tobago",
+        "total": 98.6,
+        "male": 99.1,
+        "female": 98
+    },
+    "HK": {
+        "label": "Hong Kong",
+        "total": 93.5,
+        "male": 96.9,
+        "female": 89.6
+    },
+    "PA": {
+        "label": "Panama",
+        "total": 91.9,
+        "male": 92.5,
+        "female": 91.2
+    },
+    "HN": {
+        "label": "Honduras",
+        "total": 80,
+        "male": 79.8,
+        "female": 80.2
+    },
+    "TZ": {
+        "label": "United Republic of Tanzania",
+        "total": 69.4,
+        "male": 77.5,
+        "female": 62.2
+    },
+    "PE": {
+        "label": "Peru",
+        "total": 92.9,
+        "male": 96.4,
+        "female": 89.4
+    },
+    "PF": {
+        "label": "French Polynesia",
+        "total": 98,
+        "male": 98,
+        "female": 98
+    },
+    "HR": {
+        "label": "Croatia",
+        "total": 98.1,
+        "male": 99.3,
+        "female": 97.1
+    },
+    "HT": {
+        "label": "Haiti",
+        "total": 52.9,
+        "male": 54.8,
+        "female": 51.2
+    },
+    "HU": {
+        "label": "Hungary",
+        "total": 99.4,
+        "male": 99.5,
+        "female": 99.3
+    },
+    "UG": {
+        "label": "Uganda",
+        "total": 66.8,
+        "male": 76.8,
+        "female": 57.7
+    },
+    "ID": {
+        "label": "Indonesia",
+        "total": 90.4,
+        "male": 94,
+        "female": 86.8
+    },
+    "IE": {
+        "label": "Ireland",
+        "total": 99,
+        "male": 99,
+        "female": 99
+    },
+    "US": {
+        "label": "United States",
+        "total": 99,
+        "male": 99,
+        "female": 99,
+        "year":"2003 est.",
+        "definition":"age 15 and over can read and write"
+    },
+    "IL": {
+        "label": "Israel",
+        "total": 97.1,
+        "male": 98.5,
+        "female": 95.9
+    },
+    "IN": {
+        "label": "India",
+        "total": 61,
+        "male": 73.4,
+        "female": 47.8
+    },
+    "UZ": {
+        "label": "Uzbekistan",
+        "total": 99.3,
+        "male": 99.6,
+        "female": 99
+    },
+    "IQ": {
+        "label": "Iraq",
+        "total": 74.1,
+        "male": 84.1,
+        "female": 64.2
+    },
+    "IR": {
+        "label": "Islamic Republic of Iran",
+        "total": 77,
+        "male": 83.5,
+        "female": 70.4
+    },
+    "IS": {
+        "label": "Iceland",
+        "total": 99,
+        "male": 99,
+        "female": 99
+    },
+    "IT": {
+        "label": "Italy",
+        "total": 98.4,
+        "male": 98.8,
+        "female": 98
+    },
+    "VC": {
+        "label": "Saint Vincent and The Grenadines",
+        "total": 96,
+        "male": 96,
+        "female": 96
+    },
+    "VE": {
+        "label": "Bolivarian Republic of Venezuela",
+        "total": 93,
+        "male": 93.3,
+        "female": 92.7
+    },
+    "NL": {
+        "label": "Netherlands",
+        "total": 99,
+        "male": 99,
+        "female": 99
+    },
+    "VG": {
+        "label": " British Virgin Islands",
+        "total": 97.8,
+        "male": "Not Reported",
+        "female": "Not Reported"
+    },
+    "VI": {
+        "label": "U.S. Virgin Islands",
+        "total": 90,
+        "male": "Not Reported",
+        "female": "Not Reported"
+    },
+    "BO": {
+        "label": "Plurinational State of Bolivia",
+        "total": 86.7,
+        "male": 93.1,
+        "female": 80.7
+    },
+    "VN": {
+        "label": "Viet Nam",
+        "total": 94,
+        "male": 96.1,
+        "female": 92
+    },
+    "WS": {
+        "label": "Samoa",
+        "total": 99.7,
+        "male": 99.6,
+        "female": 99.7
+    },
+    "VU": {
+        "label": "Vanuatu",
+        "total": 74,
+        "male": "Not Reported",
+        "female": "Not Reported"
+    },
+    "JM": {
+        "label": "Jamaica",
+        "total": 87.9,
+        "male": 84.1,
+        "female": 91.6
+    },
+    "JO": {
+        "label": "Jordan",
+        "total": 89.9,
+        "male": 95.1,
+        "female": 84.7
+    },
+    "JP": {
+        "label": "Japan",
+        "total": 99,
+        "male": 99,
+        "female": 99
+    },
+    "PS-WESTBANK": {
+        "label": "West Bank",
+        "total": 92.4,
+        "male": 96.7,
+        "female": 88
+    },
+    "TC": {
+        "label": "Turks and Caicos Islands",
+        "total": 98,
+        "male": 99,
+        "female": 98
+    },
+    "WF": {
+        "label": "Wallis and Futuna",
+        "total": 50,
+        "male": 50,
+        "female": 50
+    },
+    "SL": {
+        "label": "Sierra Leone",
+        "total": 35.1,
+        "male": 46.9,
+        "female": 24.4
+    },
+    "NO": {
+        "label": "Norway",
+        "total": 100,
+        "male": 100,
+        "female": 100
+    },
+    "NP": {
+        "label": "Nepal",
+        "total": 48.6,
+        "male": 62.7,
+        "female": 34.9
+    },
+    "MT": {
+        "label": "Malta",
+        "total": 92.8,
+        "male": 91.7,
+        "female": 93.9
+    },
+    "KG": {
+        "label": "Kyrgyzstan",
+        "total": 98.7,
+        "male": 99.3,
+        "female": 98.1
+    },
+    "DO": {
+        "label": "Dominican Republic",
+        "total": 87,
+        "male": 86.8,
+        "female": 87.2
+    },
+    "KM": {
+        "label": "Comoros",
+        "total": 56.5,
+        "male": 63.6,
+        "female": 49.3
+    },
+    "KN": {
+        "label": "Saint Kitts and Nevis",
+        "total": 97.8,
+        "male": "Not Reported",
+        "female": "Not Reported"
+    },
+    "KP": {
+        "label": "North Korea",
+        "total": 99,
+        "male": 99,
+        "female": 99
+    },
+    "KR": {
+        "label": "South Korea",
+        "total": 97.9,
+        "male": 99.2,
+        "female": 96.6
+    },
+    "KW": {
+        "label": "Kuwait",
+        "total": 93.3,
+        "male": 94.4,
+        "female": 91
+    },
+    "KY": {
+        "label": "Cayman Islands",
+        "total": 98,
+        "male": 98,
+        "female": 98
+    },
+    "KZ": {
+        "label": "Kazakhstan",
+        "total": 99.5,
+        "male": 99.8,
+        "female": 99.3
+    },
+    "XK": {
+        "label": "Kosovo",
+        "total": 91.9,
+        "male": 96.6,
+        "female": 87.5
+    },
+    "LA": {
+        "label": "Lao People's Democratic Republic",
+        "total": 73,
+        "male": 83,
+        "female": 63
+    },
+    "LB": {
+        "label": "Lebanon",
+        "total": 87.4,
+        "male": 93.1,
+        "female": 82.2
+    }
+}

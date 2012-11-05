@@ -1,0 +1,18 @@
+* {margin: 0; padding: 0;}
+body {font: 18px/1.166 Helvetica, Arial, sans-serif; background-color: #eee; -webkit-font-smoothing: subpixel-antialiased;}
+#canvas {background: url(../../images/ajax-loader.gif) no-repeat center;}
+#svg {margin: 0 auto; background-color: #eee; opacity: 0;}
+#toolbar {position: absolute; top: 0; right: 5%; padding: 10px; background-color: #fff; opacity: 0.8;}
+#toolbar #reset {text-indent: -9999px; display: block; width: 24px; 	height: 24px; background: url(../../images/glyphicons_214_resize_small.png) no-repeat center;}
+/*#info {position: absolute; left: 5%; top: 45%; padding: 10px; width: 240px; height: 360px; background-color: #fff; border: 1px solid #eee;}*/
+#info {position: absolute; left: 5%; top: 45%; width: 480px; background-color: #fff; border: 1px solid #eee; opacity: 0.9;}
+.panel {width: 230px; padding: 10px; display: table-cell; opacity: 1;}
+h1.title {font-size: 1.5em; line-height: 1; padding: 10px; border-bottom: 1px dotted #ccc;}
+#info .subtitle {height: 36px; margin-bottom: 12px;}
+#legendColors li {list-style-type: none; clear: both;}
+#legendColors li span {display: table-cell;}
+#legendColors li span.colourblock {width: 30px; height: 30px; margin-right: 10px;}
+#legendColors li span.colourlabel {padding-left: 10px; vertical-align: middle; font-size: 12px;}
+
+
+
