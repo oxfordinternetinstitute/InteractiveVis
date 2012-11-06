@@ -1,9 +1,9 @@
 {
     "type": "network",
-	"data":"ukgov3.json",
+	"data":"data/ukgov3.json",
     "version": "1.0",
     "logo": {
-        "file": "oii_brand.png",
+        "file": "images/oii_brand.png",
         "link": "http://www.oii.ox.ac.uk/",
         "text": "Oxford Internet Institute"
     },
@@ -18,14 +18,9 @@
 		"colorLabel":"Color is an automated grouping of sites"
     },
     "features": {
-        "search": {
-            "enabled": true
-        },
-        "hoverBehaviour": "default",
-        "groupSelector": {
-            "enabled": false,
-            "attribute": "whatAttributeShouldWeGroupBy"
-        }
+        "search": true,
+        "hoverBehavior": "default",
+        "groupSelectorAttribute": false
     },
     "informationPanel": {
         "groupByEdgeDirection": true

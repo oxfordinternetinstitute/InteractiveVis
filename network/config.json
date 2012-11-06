@@ -1,9 +1,9 @@
 {
     "type": "network",
-    "data": "twitter_mutual2.json",
+    "data": "data/twitter_mutual2.json",
     "version": "1.0",
     "logo": {
-        "file": "oii_brand.png",
+        "file": "images/oii_brand.png",
         "link": "http://www.oii.ox.ac.uk/",
         "text": "Oxford Internet Institute"
     },
@@ -18,14 +18,9 @@
         "colorLabel": "Colour represents an automatic grouping of users according to who they are most connected to."
     },
     "features": {
-        "search": {
-            "enabled": true
-        },
-        "hoverBehaviour": "default",
-        "groupSelector": {
-            "enabled": true,
-            "attribute": "whatAttributeShouldWeGroupBy"
-        }
+        "search": true,
+        "hoverBehavior": "default",
+        "groupSelectorAttribute": "color"
     },
     "informationPanel": {
         "groupByEdgeDirection": false,

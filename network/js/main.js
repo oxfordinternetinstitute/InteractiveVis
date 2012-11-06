@@ -112,9 +112,9 @@ function initSigma(config) {
 	}
 
     if (data.indexOf("gexf")>0 || data.indexOf("xml")>0)
-        a.parseGexf("data/"+data,dataReady);
+        a.parseGexf(data,dataReady);
     else
-	    a.parseJson("data/"+data,dataReady);
+	    a.parseJson(data,dataReady);
     gexf = sigmaInst = null;
 }
 
@@ -124,7 +124,7 @@ function setupGUI(config) {
 	var logo=""; // Logo elements
 	if (config.logo.file) {
 
-		logo = "<img src=\"images/" + config.logo.file +"\"";
+		logo = "<img src=\"" + config.logo.file +"\"";
 		if (config.logo.text) logo+=" alt=\"" + config.logo.text + "\"";
 		logo+=">";
 	} else if (config.logo.text) {
@@ -190,10 +190,10 @@ function setupGUI(config) {
     $GP.info_close2.click(nodeNormal);
     $GP.form = $("#mainpanel").find("form");
     $GP.search = new Search($GP.form.find("#search"));
-    if (!config.features.search.enabled == true) {
+    if (!config.features.search) {
 		$("#search").hide();
 	}
-	if (!config.features.groupSelector.enabled == true) {
+	if (!config.features.groupSelectorAttribute) {
 		$("#attributeselect").hide();
 	}
     $GP.cluster = new Cluster($GP.form.find("#attributeselect"));
@@ -205,7 +205,7 @@ function configSigmaElements(config) {
 	$GP=config.GP;
     
     // Node hover behaviour
-    if (config.features.hoverBehaviour == "dim") {
+    if (config.features.hoverBehavior == "dim") {
 
 		var greyColor = '#ccc';
 		sigInst.bind('overnodes',function(event){
@@ -247,7 +247,7 @@ function configSigmaElements(config) {
 		}).draw(2,2,2);
 		});
 
-    } else if (config.features.hoverBehaviour == "hide") {
+    } else if (config.features.hoverBehavior == "hide") {
 
 		sigInst.bind('overnodes',function(event){
 			var nodes = event.content;

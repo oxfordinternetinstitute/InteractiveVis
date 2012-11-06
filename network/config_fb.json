@@ -1,9 +1,9 @@
 {
     "type": "network",
-    "data": "facebook.gexf",
+    "data": "data/facebook.gexf",
     "version": "1.0",
     "logo": {
-        "file": "oii_brand.png",
+        "file": "images/oii_brand.png",
         "link": "http://www.oii.ox.ac.uk/",
         "text": "Oxford Internet Institute"
     },
@@ -18,18 +18,12 @@
         "colorLabel": "Colour represents an automatic grouping of users according to who they are most connected to."
     },
     "features": {
-        "search": {
-            "enabled": true
-        },
-        "hoverBehaviour": "dim",
-        "groupSelector": {
-            "enabled": true,
-            "attribute": "whatAttributeShouldWeGroupBy"
-        }
+        "search": true,
+        "hoverBehavior": "dim",
+        "groupSelectorAttribute": false
     },
     "informationPanel": {
         "groupByEdgeDirection": false,
-        "showImage": false,
-        "imageAttribute": "Image File"
+        "imageAttribute": false
     }
 }
