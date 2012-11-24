@@ -136,6 +136,15 @@ for edgesNode in edgesNodes:
 		    "attributes": {}
 		}
 		
+		colorNodes = edgeNode.getElementsByTagName('color')
+		colorNodes = colorNodes if len(colorNodes)!=0 else edgeNode.getElementsByTagNameNS('*','color')
+		if(len(colorNodes)>0):
+			colorNode = colorNodes[0]
+			color = '#'+rgb2hex(int(colorNode.getAttribute('r')),
+						int(colorNode.getAttribute('g')),
+						int(colorNode.getAttribute('b')))
+			edge["color"]=color
+		
 		#Anything besies source,target,label that is inside the actual edge tag
 		attrs = edgeNode.attributes #NamedNodeMap in python
 		for i in range(0,attrs.length):
