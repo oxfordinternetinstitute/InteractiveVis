@@ -490,7 +490,7 @@ function nodeActive(a) {
         a != g && e.push({
             id: g,
             name: d.label,
-            group: (c[g].name)? c[g].name:"",
+            group: (c[g].name)? ""+c[g].name:"",
             colour: c[g].colour
         })
     }
