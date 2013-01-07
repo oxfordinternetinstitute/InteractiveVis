@@ -583,6 +583,9 @@ display: none;
 #legend.hasAltStats #altStats {
 	list-style-type: none;
 	font-size: 1.15em;
+	position:absolute;
+	width:240px;
+	background: #ffffff;
 }
 #legend.hasAltStats #altStats li {
 	padding: .25em;
@@ -602,6 +605,7 @@ display: none;
 #legend.hasAltStats #legendColors {
 	margin-top: 10px;
 }
+
 
 
 
