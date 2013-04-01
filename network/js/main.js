@@ -563,8 +563,12 @@ function nodeActive(a) {
         for (var attr in f.attributes) {
             var d = f.attributes[attr],
                 h = "";
-			if (attr!=image_attribute) {
-                h = '<span><strong>' + attr + ':</strong> ' + d + '</span><br/>'
+			if (attr==image_attribute) {
+                continue;
+			} else if (attr=="url") {
+				h = '<iframe src="' + d + '" width="225" height="150"></iframe>';
+			} else {
+				h = '<span><strong>' + attr + ':</strong> ' + d + '</span><br/>';
 			}
             //temp_array.push(f.attributes[g].attr);
             e.push(h)
