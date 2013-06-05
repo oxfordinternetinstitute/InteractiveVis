@@ -81,40 +81,39 @@ function initSigma(config) {
         maxRatio: 20, // How far can we zoom in?
     	};
 	
-    var a = sigma.init(document.getElementById("sigma-canvas")).drawingProperties(drawProps).graphProperties(graphProps).mouseProperties(mouseProps);
-    sigInst = a;
-    a.active = !1;
-    a.neighbors = {};
-    a.detail = !1;
+    sigInst = sigma.init(document.getElementById("sigma-canvas")).drawingProperties(drawProps).graphProperties(graphProps).mouseProperties(mouseProps);
+    sigInst.active = !1;
+    sigInst.neighbors = {};
+    sigInst.detail = !1;
 
 
     dataReady = function() {//This is called as soon as data is loaded
-		a.clusters = {};
+		sigInst.clusters = {};
 
-		a.iterNodes(
+		sigInst.iterNodes(
 			function (b) { //This is where we populate the array used for the group select box
 
 				// note: index may not be consistent for all nodes. Should calculate each time. 
 				 // alert(JSON.stringify(b.attr.attributes[5].val));
 				// alert(b.x);
-				a.clusters[b.color] || (a.clusters[b.color] = []);
-				a.clusters[b.color].push(b.id);//SAH: push id not label
+				sigInst.clusters[b.color] || (sigInst.clusters[b.color] = []);
+				sigInst.clusters[b.color].push(b.id);//SAH: push id not label
 			}
 		
 		);
 	
-		a.bind("upnodes", function (a) {
+		sigInst.bind("upnodes", function (a) {
 		    nodeActive(a.content[0])
 		});
 
-		a.draw();
+		sigInst.draw();
 		configSigmaElements(config);
 	}
 
     if (data.indexOf("gexf")>0 || data.indexOf("xml")>0)
-        a.parseGexf(data,dataReady);
+        sigInst.parseGexf(data,dataReady);
     else
-	    a.parseJson(data,dataReady);
+	    sigInst.parseJson(data,dataReady);
     gexf = sigmaInst = null;
 }
 
