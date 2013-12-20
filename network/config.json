@@ -22,6 +22,9 @@
         "hoverBehavior": "default",
         "groupSelectorAttribute": "color"
     },
+    "search":{
+    	"fulltext":true
+    },
     "informationPanel": {
         "groupByEdgeDirection": false,
         "imageAttribute": "Image File"

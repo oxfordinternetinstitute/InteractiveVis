@@ -371,12 +371,24 @@ function Search(a) {
         this.results.empty();
         if (2 >= a.length) this.results.html("<i>You must search for a name with a minimum of 3 letters.</i>");
         else {
-            sigInst.iterNodes(function (a) {
-                g.test(a.label.toLowerCase()) && c.push({
-                    id: a.id,
-                    name: a.label
-                })
-            });
+	        sigInst.iterNodes(function (a) {
+	            if (g.test(a.label.toLowerCase())) {
+	            	c.push({
+	                	id: a.id,
+	                	name: a.label
+	            	});
+	            } else if (config["search"] && config["search"]["fulltext"]) { //Check attributes for this node if fulltext is on
+	            	for (attr in a["attr"]["attributes"]) {
+	            		if (g.test((""+a["attr"]["attributes"][attr]).toLowerCase())) {
+					    	c.push({
+					        	id: a.id,
+					        	name: a.label
+					    	});
+					    	break;//Matched not need to check further
+					 	}
+					}
+	            }
+	        });
             c.length ? (b = !0, nodeActive(c[0].id)) : b = showCluster(a);
             a = ["<b>Search Results: </b>"];
             if (1 < c.length) for (var d = 0, h = c.length; d < h; d++) a.push('<a href="#' + c[d].name + '" onclick="nodeActive(\'' + c[d].id + "')\">" + c[d].name + "</a>");
