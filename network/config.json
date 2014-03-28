@@ -20,7 +20,8 @@
     "features": {
         "search": true,
         "hoverBehavior": "default",
-        "groupSelectorAttribute": "color"
+        "groupSelectorAttribute": "color",
+        "labelToggle":true
     },
     "search":{
     	"fulltext":true
@@ -36,7 +37,7 @@
 			"defaultLabelBGColor": "#ddd",
 			"defaultHoverLabelBGColor": "#002147",
 			"defaultLabelHoverColor": "#fff",
-			"labelThreshold": 10,
+			"labelThreshold": 2,
 			"defaultEdgeType": "curve",
 			"hoverFontStyle": "bold",
 			"fontStyle": "bold",

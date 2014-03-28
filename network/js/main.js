@@ -110,6 +110,14 @@ function initSigma(config) {
 		a.draw();
 		configSigmaElements(config);
 	}
+	
+	if (config.features.labelToggle==true) {
+		$("#labelToggle").click(function() {
+			toggleLabels(a,drawProps);
+		});
+	} else {
+		$("#labelToggle").hide();
+	}
 
     if (data.indexOf("gexf")>0 || data.indexOf("xml")>0)
         a.parseGexf(data,dataReady);
@@ -640,6 +648,14 @@ function showCluster(a) {
         return !0
     }
     return !1
+}
+
+function toggleLabels(sig,drawProps) {
+	var tmp=drawProps.labelThreshold;
+	drawProps.labelThreshold=drawProps.labelThresholdOld||99;
+	drawProps.labelThresholdOld=tmp;
+	sig.drawingProperties(drawProps)
+	sig.draw();
 }
 
 
