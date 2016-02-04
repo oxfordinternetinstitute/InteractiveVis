@@ -642,4 +642,14 @@ function showCluster(a) {
     return !1
 }
 
-
+$(document).ready(function(){
+	$("#mainpanel").click(function() {
+		console.log("here");
+		var panel = $(this);
+		if (panel.hasClass("closed")) {
+			panel.removeClass("closed");
+		} else {
+			panel.addClass("closed");
+		}
+	});
+});

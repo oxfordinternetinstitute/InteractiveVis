@@ -239,6 +239,11 @@ border:1px solid #ccc;
 z-index:20;
 position:fixed;
 top:0;
+transition: 2s;
+}
+
+#mainpanel.closed {
+	margin-left: -225px;
 }
 
 #mainpanel .b1 {
