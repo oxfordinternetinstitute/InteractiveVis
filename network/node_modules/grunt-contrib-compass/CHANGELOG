@@ -1,0 +1,110 @@
+v1.1.1:
+  date: 2016-03-04
+  changes:
+    - pass only compass package name, not full path
+v1.1.0:
+  date: 2016-02-15
+  changes:
+    - Use `which` to find compass binary cross platform.
+    - Update async and tmp dependencies.
+v1.0.4:
+  date: 2015-09-29
+  changes:
+    - Use the `compass` flag for the `httpPath` option.
+    - Use single-quotes in the config.rb generated file.
+v1.0.3:
+  date: 2015-04-02
+  changes:
+   - Add `--config` path before `--` option/argument separator.
+v1.0.2:
+  date: 2015-03-31
+  changes:
+    - Improve POSIX compliance.
+v1.0.1:
+  date: 2014-09-08
+  changes:
+    - Use compass long flag for `importPath`
+v1.0.0:
+  date: 2014-09-05
+  changes:
+    - Fix `bundleExec` option on Windows.
+v0.9.1:
+  date: 2014-07-31
+  changes:
+    - Fixes npm peerDependency warnings.
+v0.9.0:
+  date: 2014-06-24
+  changes:
+    - Add Compass version check to ensure only a supported version is used.
+v0.8.0:
+  date: 2014-05-16
+  changes:
+    - Add `spriteLoadPath` option.
+v0.7.2:
+  date: 2014-02-09
+  changes:
+    - Improve compatibility with Compass 0.13.
+v0.7.1:
+  date: 2014-01-26
+  changes:
+    - Fix `assetCacheBuster` option.
+v0.7.0:
+  date: 2013-12-07
+  changes:
+    - Add `cacheDir` option.
+v0.6.0:
+  date: 2013-10-04
+  changes:
+    - Add `watch` option.
+    - Fix Compass errors not propagating.
+v0.5.0:
+  date: 2013-08-8
+  changes:
+    - Add `assetCacheBuster` option.
+v0.4.1:
+  date: 2013-07-28
+  changes:
+    - Fix `banner` option with `.css.scss` files.
+v0.4.0:
+  date: 2013-07-19
+  changes:
+    - Add `banner` option. Show compilation time.
+v0.3.0:
+  date: 2013-06-24
+  changes:
+    - Add `extensionDir` and `extensionPath` options. *Requires Compass >=0.12.2*.
+v0.2.0:
+  date: 2013-04-11
+  changes:
+    - Add `clean` option.
+    - Expose `raw` options as Grunt options.
+    - Fix detection of `Nothing to compile` situation.
+v0.1.3:
+  date: 2013-02-27
+  changes:
+    - Fixes bundleExec.
+v0.1.2:
+  date: 2013-02-17
+  changes:
+    - Ensure Gruntfile.js is included on npm.
+v0.1.1:
+  date: 2013-02-15
+  changes:
+    - First official release for Grunt 0.4.0.
+v0.1.1rc8:
+  date: 2013-02-05
+  changes:
+    - 'Added new options: basePath specify, debugInfo.'
+v0.1.1rc7:
+  date: 2013-01-25
+  changes:
+    - Updating grunt/gruntplugin dependencies to rc7.
+    - Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
+v0.1.1rc5:
+  date: 2013-01-10
+  changes:
+    - Updating to work with grunt v0.4.0rc5.
+v0.1.0:
+  date: 2012-10-22
+  changes:
+    - Initial release

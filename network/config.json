@@ -29,29 +29,15 @@
         "groupByEdgeDirection": false,
         "imageAttribute": "Image File"
     },
-    "sigma": {
-    	"drawingProperties":{    
+    "sigmaProps": {
 			"defaultLabelColor": "#000",
 			"defaultLabelSize": 14,
 			"defaultLabelBGColor": "#ddd",
 			"defaultHoverLabelBGColor": "#002147",
 			"defaultLabelHoverColor": "#fff",
-			"labelThreshold": 10,
 			"defaultEdgeType": "curve",
-			"hoverFontStyle": "bold",
-			"fontStyle": "bold",
-			"activeFontStyle": "bold"
-		},
-		"graphProperties":{
-			"minNodeSize": 1,
-			"maxNodeSize": 7,
-			"minEdgeSize": 0.2,
-			"maxEdgeSize": 0.5
-		},		
-		"mouseProperties":{
-			"minRatio": 0.75, 
-			"maxRatio": 20
-		}
+      "zoomMin": 0.02,
+      "zoomMax": 10
     }
-    
+
 }

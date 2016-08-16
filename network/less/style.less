@@ -1,0 +1,64 @@
+@import "../bower_components/bootstrap/less/bootstrap.less";
+@import "../bower_components/font-awesome/less/font-awesome.less";
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700';
+
+
+@fa-font-path:        "../bower_components/font-awesome/fonts";
+
+// Colors
+@body-bg: #eeeeee;
+@panel-color: #ffffff;
+
+@font-size-base: 15px;
+@font-family-sans-serif: 'Roboto', sans-serif;
+@font-size-h1:            floor((@font-size-base * 1.9));
+@font-size-h2:            floor((@font-size-base * 1.7));
+@font-size-h3:            ceil((@font-size-base * 1.6));
+@font-size-h4:            ceil((@font-size-base * 1.25));
+@font-size-h5:            @font-size-base;
+@font-size-h6:            ceil((@font-size-base * 0.85));
+
+body {
+  font-weight: 300;
+}
+
+#sigma {
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  left:0;
+}
+
+#mainpanel {
+  position:absolute;
+  background: @panel-color;
+  top:100px;
+  left:10px;
+  padding: @padding-large-vertical @padding-large-horizontal;
+  border-radius: @border-radius-large;
+}
+
+#attributepanel {
+  position:absolute;
+  background: @panel-color;
+  top:0;
+  right:0;
+  height:100%;
+}
+
+#zoom {
+  position:fixed;
+  bottom: 0;
+  width: 100%;
+  left:0;
+  text-align: center;
+  height:100px;
+}
+
+footer {
+  position: absolute !important;
+  bottom:10px;
+  left:0;
+  width:100% !important;
+}

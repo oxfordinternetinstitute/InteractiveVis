@@ -1,0 +1,39 @@
+v1.0.0:
+  date: 2016-03-04
+  changes:
+    - Point main to task and remove peerDeps.
+    - Updates to docs.
+v0.5.0:
+  date: 2015-07-18
+  changes:
+    - Add ability to register custom formatters.
+v0.4.0:
+  date: 2015-01-18
+  changes:
+    - The `.csslintrc` file can now contain comments.
+v0.3.1:
+  date: 2014-09-07
+  changes:
+    - Show affected browsers in errors and warnings.
+v0.3.0:
+  date: 2014-09-07
+  changes:
+    - CSSLint "warnings" no longer fail build.
+    - Updated dependencies.
+v0.2.0:
+  date: 2013-12-02
+  changes:
+    - Bump to csslint 0.10.0
+v0.1.2:
+  date: 2013-04-02
+  changes:
+    - Allow absolute filepaths in reports.
+v0.1.1:
+  date: 2013-03-14
+  changes:
+    - Support formatters
+    - Support .csslintrc
+v0.1.0:
+  date: 2013-03-07
+  changes:
+    - Initial release.

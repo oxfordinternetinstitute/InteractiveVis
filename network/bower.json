@@ -1,0 +1,22 @@
+{
+  "name": "InteractiveVis-Network",
+  "homepage": "https://github.com/oxfordinternetinstitute/InteractiveVis",
+  "authors": [
+    "Joshua Melville <joshua.melville@oii.ox.ac.uk>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.6.3"
+  }
+}
