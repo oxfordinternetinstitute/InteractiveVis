@@ -574,7 +574,36 @@ function nodeActive(a) {
             b = a.attr("rel");
     });
     f = b.attr;
-    if (f.attributes) {
+    if (config.informationPanel.attributes) {
+  		var image_attribute = false;
+  		if (config.informationPanel.imageAttribute) {
+  			image_attribute=config.informationPanel.imageAttribute;
+  		}
+    		e=[];
+    		for (var attr in config.informationPanel.attributes) {
+    			console.log(attr);
+    			var d = attr in f.attributes? f.attributes[attr] : "";
+    			if (config.informationPanel.attributes[attr]=="hyperlink") {
+    				d="<a href='" + d + "' target='_blank'>" +d + "</a>";
+    			}
+			if (attr!=image_attribute) {
+                h = '<span><strong>' + attr + ':</strong> ' + d + '</span><br/>'
+			}
+            e.push(h);
+
+    		}
+
+        if (image_attribute) {
+        	//image_index = jQuery.inArray(image_attribute, temp_array);
+        	$GP.info_name.html("<div><img src=" + f.attributes[image_attribute] + " style=\"vertical-align:middle\" /> <span onmouseover=\"sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex['" + b.id + '\'])" onmouseout="sigInst.refresh()">' + b.label + "</span></div>");
+        } else {
+        	$GP.info_name.html("<div><span onmouseover=\"sigInst._core.plotter.drawHoverNode(sigInst._core.graph.nodesIndex['" + b.id + '\'])" onmouseout="sigInst.refresh()">' + b.label + "</span></div>");
+        }
+        // Image field for attribute pane
+        $GP.info_data.html(e.join("<br/>"));
+    	
+    }
+    else if (f.attributes) {
   		var image_attribute = false;
   		if (config.informationPanel.imageAttribute) {
   			image_attribute=config.informationPanel.imageAttribute;
